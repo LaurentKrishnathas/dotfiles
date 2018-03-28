@@ -1,0 +1,3 @@
+- always add header with author, brief description
+
+- functions: add comments which can be seen by 'where function_name'

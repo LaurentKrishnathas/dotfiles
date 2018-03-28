@@ -1,0 +1,37 @@
+#cloud-config
+users:
+  - name: core
+    passwd: $1$YC16nOh.$sqUV5ikS2V9OcICsLTHNT1
+    ssh-authorized-keys:
+      - "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCd6TyxYEK3uELPsTE6vEs03o+Uav3rNX/ABDowXqSgIDyCFTxRefz54+6Gnl9lwDXqb1edmLvOp3dk44weUC24Lze2naElu/NS3pG4UK54L4muFTPP1EP0/2hfzvw6rSS5u2EIsRxFnbz3Bo30W1AttcSXxeJ3PSwqaQ54dykjIRlrndx88rJOh1lTZAtN5JBBNcb1DO+yn4PoJuaBTzpnulz/yC/7kh1hHBRmGFYCy5TSFf7HhE4s0RPpr2N7u/y7nDMlwiNj4vCPY4/k+Z6GeXSWSKjmxPae5rCN/eYML/nDChpSD64j2fGsiTloLuVoBQqKQfR2H1mcci20K8gz lk@mac05.local"
+    groups:
+      - sudo
+      - docker
+
+coreos:
+  units:
+    - name: docker-open-vm-tools.service
+      enable: true
+      command: start
+      content: |
+        [Unit]
+        Description=Service for virtual machines hosted on VMware
+        Documentation=http://open-vm-tools.sourceforge.net/about.php
+        ConditionVirtualization=vmware
+
+        [Service]
+        Restart=always
+        ExecStart=/usr/bin/docker run --rm --net=host -v /run/systemd:/run/systemd --name open-vm-tools godmodelabs/open-vm-tools
+        ExecStop=-/usr/bin/docker stop open-vm-tools
+
+    - name: tomcat8.service
+      enable: true
+      command: start
+      content: |
+        [Unit]
+        Description=Service for virtual machines hosted on VMware
+
+        [Service]
+        Restart=always
+        ExecStart=/usr/bin/docker run --rm --name tomcat8 tomcat:8
+        ExecStop=-/usr/bin/docker stop tomcat8

@@ -1,0 +1,50 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+Vagrant.configure("2") do |config|
+  config.vm.box = "base"
+
+
+  # config.vm.provider "virtualbox" do |vb|
+  #   vb.gui = true
+  #   vb.memory = "1024"
+  # end
+
+  # config.vm.provision "shell", inline: <<-SHELL
+  #   apt-get update
+  #   apt-get install -y apache2
+  # SHELL
+
+  config.vm.box = 'dummy'
+  config.vm.box_url = './box/vsphere.box'
+
+
+  config.ssh.username = 'root'
+  config.ssh.password = ''
+
+  config.vm.provider :vsphere do |vsphere|
+    config.vm.network 'private_network', ip: '192.168.64.179'
+
+    vsphere.memory_mb = "4012"
+    vsphere.cpu_count = 4
+
+    vsphere.host = ''
+    vsphere.compute_resource_name = ''
+    vsphere.resource_pool_name = ''
+
+    vsphere.name = 'lk-test-centos7-v20170815'
+    vsphere.user = ''
+    vsphere.insecure = true
+
+    vsphere.template_name = 'lk-template-centos7'
+
+    if ENV['VSPHERE_PASSWORD'].nil?
+        raise 'You must set the environment variables "VSPHERE_PASSWORD".'
+    end
+#    vsphere.password = :ask
+    vsphere.password = "#{ENV['VSPHERE_PASSWORD']}"
+
+  end
+
+
+end

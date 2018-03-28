@@ -1,0 +1,30 @@
+Software to install on Windows:
+
+Chocolatey to automate
+
+chrome
+cygwin
+docker
+docker-machine
+docker-compose
+eclipse-jee
+firefox
+google drive
+ggts (Groovy/Grails Tool Suite)
+java6
+java8
+idea
+notepad++
+oracle xe 11g
+putty
+safari
+sqldeveloper
+skype
+svn 1.8
+sublime text 3
+tomcat
+virtualbox or oraclebox
+
+
+eclipse plugin via Help-Eclipse market
+subclipse

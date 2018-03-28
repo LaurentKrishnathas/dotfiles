@@ -1,0 +1,33 @@
+---  
+
+- name: Installs subversion
+  apt: pkg=subversion state=installed update_cache=true
+
+
+- name: Copy svnserve file 
+  template:
+    src: "svnserve"
+    dest: /etc/init.d/svnserve
+    owner: "root"
+    group: "root"
+    mode: 0700
+
+- name: Show contents
+  command: cat /etc/init.d/svnserve
+  become_user: "root"
+
+- name: update-rc.d svnserve defaults
+  command: update-rc.d svnserve defaults
+  become_user: "root"
+
+- name: stop svnserve
+  command: /etc/init.d/svnserve stop
+  become_user: "root"
+
+- name: start svnserve
+  command: /etc/init.d/svnserve start
+  become_user: "root"
+
+- name: status svnserve
+  command: /etc/init.d/svnserve status
+  become_user: "root"

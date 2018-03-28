@@ -1,0 +1,9 @@
+[ci-slave]
+test-001
+test-002
+test-003
+
+[svnserve]
+tst-003
+tst-002
+tst-001

@@ -1,0 +1,21 @@
+version: '3.2'
+services:
+    tomcat8:
+        image: tomcat:8
+
+    tomcat7:
+        image: tomcat:7
+
+    tomcat6:
+        image: tomcat:6
+
+    nginx:
+        image: nginx
+        links:
+            - tomcat8
+            - tomcat7
+            - tomcat6
+        ports:
+            - '80:80'
+        volumes:
+            - ${PWD}/nginx.conf:/etc/nginx/nginx.conf

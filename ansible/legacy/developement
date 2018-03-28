@@ -1,0 +1,11 @@
+#WARNING: use groupName.hostname ansible_ssh_host=uk-bis-vcs-001 instead of 
+#tst-001 to make --limit=svnserve to works, as limit only match hostnames
+
+[ci-server]
+127.0.0.1 ansible_ssh_host=127.0.0.1 ansible_ssh_port=2222 ansible_ssh_user=vagrant ansible_ssh_private_key_file=.vagrant/machines/default/virtualbox/private_key
+
+[ci-slave]
+127.0.0.1 ansible_ssh_host=127.0.0.1 ansible_ssh_port=2222 ansible_ssh_user=vagrant ansible_ssh_private_key_file=.vagrant/machines/default/virtualbox/private_key
+
+[svnserve]
+127.0.0.1 ansible_ssh_host=127.0.0.1 ansible_ssh_port=2222 ansible_ssh_user=vagrant ansible_ssh_private_key_file=.vagrant/machines/default/virtualbox/private_key

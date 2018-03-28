@@ -1,0 +1,13 @@
+#pluginID:version
+structs:1.2
+junit:1.19
+bouncycastle-api:2.16.0
+windows-slaves:1.2
+antisamy-markup-formatter:1.5
+icon-shim:2.0.3
+script-security:1.25
+credentials:2.1.10
+cloudbees-folder:5.16
+matrix-auth:1.4
+matrix-project:1.8
+nodejs:0.2.2

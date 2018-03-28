@@ -1,0 +1,107 @@
+apply plugin: 'groovy'
+
+repositories {
+    jcenter()
+}
+
+dependencies {
+    compile 'org.slf4j:slf4j-api:1.7.14'
+
+    testCompile 'junit:junit:4.12'
+}
+
+project.ext{
+	projectDir="${System.getenv().HOME}/code/src" as File
+	rep01Dir="$projectDir/rep01" as File
+	githubDir="$projectDir/github" as File
+	gitlabDir="$projectDir/gitlab" as File
+}
+
+task updateSvnGitRepos(type: devops.UpdateSvnGitRepoTask){
+	addDir(rep01Dir)
+	addDir(githubDir)
+	addDir(gitlabDir)
+}
+
+task checkGitSSHKeys(type: devops.CheckGitSSHKeyTask){task->
+	destinationDir="$buildDir/$task.name" as File
+
+	addUrl('git@github.com:LaurentKrishnathas/utils.git')
+	addUrl('git@gitlab.com:Krishnathas/dockerfiles.git')
+}
+
+task cleanAllGradleProj(type: devops.CleanAllGradleProjTask){
+	addDir(rep01Dir)
+	addDir(githubDir)
+	addDir(gitlabDir)
+}
+
+task "install-tmuxinator"{task->
+	task.logging.level=LogLevel.LIFECYCLE
+	task.description="install tmuxinator files to user home"
+
+	doLast{
+		def sourceDir=System.properties.sourceDir as File
+		assert sourceDir:" sourceDir is missing"
+		assert sourceDir.exists():" $sourceDir must exists"
+
+		File dir=new File(sourceDir, '.tmuxinator')
+		logger.lifecycle "searching all yml files in $dir ..."
+
+		def list=dir.listFiles().findAll{it.name.endsWith(".yml")}
+		list.each{file->
+			logger.debug "installing $file ..."
+			File destFile="${System.getProperty("user.home")}/.tmuxinator/$file.name" as File
+				
+			if(destFile.exists()){
+				logger.info "deleting $destFile ..."
+				destFile.delete()
+			}
+			ant.delete(file: destFile)
+			exec{
+				commandLine "ln", "-s", file, destFile
+				logger.info "/> ${commandLine.join(' ')}"
+			}
+			logger.lifecycle "$file.name installed."
+		}
+	}	
+}
+
+task cleanAll(dependsOn: 'cleanAllGradleProj')
+
+check.dependsOn checkGitSSHKeys
+build.dependsOn updateSvnGitRepos
+
+
+private setLoggingLevel(def task){
+	def levelStr=System.properties.loggingLevel
+	logger.debug "given loggingLevel is $levelStr"
+	if(!levelStr){
+		levelStr="LIFECYCLE"
+	}
+	levelStr=levelStr.toUpperCase()
+	def level
+
+	switch(levelStr){
+		case "ERROR":
+			level = LogLevel.ERROR
+			break
+		case "WARN":
+			level = LogLevel.WARN
+			break
+		case "INFO":
+			level = LogLevel.INFO
+			break
+		case "LIFECYCLE":
+			level = LogLevel.LIFECYCLE
+			break
+		case "DEBUG":
+			level = LogLevel.DEBUG
+			break
+		default:
+			level = LogLevel.LIFECYCLE
+	}
+
+	logger.debug "logging level set to $levelStr, $level"
+	task.logging.level = level
+}

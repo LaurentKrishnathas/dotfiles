@@ -1,0 +1,62 @@
+version: "3"
+
+services:
+  
+  traefik:
+    image: traefik
+    command: --docker \
+      --docker.watch \
+      --web \
+      --loglevel=DEBUG
+    ports:
+      - 80:80
+      - 8080:8080
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    networks:
+      - net
+
+  whoami:
+    image: tutum/hello-world
+    networks:
+      - net
+    labels:
+        - "traefik.backend.loadbalancer.sticky=true"
+        - "traefik.port=80"
+        - "traefik.frontend.rule=PathPrefix:/hello"
+  tomcat:
+    image: tomcat:renamed-context-7
+    networks:
+      - net
+    labels:
+        - "traefik.backend.loadbalancer.sticky=true"
+        - "traefik.docker.network=test_net"
+        - "traefik.port=8080"
+        - "traefik.frontend.rule=PathPrefix:/"
+
+  tomcat7:
+    image: tomcat:renamed-context-7
+    environment:
+      - CONTEXT_NAME=tomcat7
+    networks:
+      - net
+    labels:
+        - "traefik.backend.loadbalancer.sticky=true"
+        - "traefik.docker.network=test_net"
+        - "traefik.port=8080"
+        - "traefik.frontend.rule=PathPrefix:/tomcat7"
+
+  tomcat8:
+    image: tomcat:renamed-context-8.0
+    environment:
+      - CONTEXT_NAME=tomcat8
+    networks:
+      - net
+    labels:
+        - "traefik.backend.loadbalancer.sticky=true"
+        - "traefik.docker.network=test_net"
+        - "traefik.port=8080"
+        - "traefik.frontend.rule=PathPrefix:/tomcat8"
+
+networks:
+  net:

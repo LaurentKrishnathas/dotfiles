@@ -1,0 +1,6 @@
+buildSrc/.gradle
+buildSrc/build
+**/DS_Store
+.gradle
+.idea
+.DS_Store

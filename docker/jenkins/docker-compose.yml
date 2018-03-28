@@ -1,0 +1,30 @@
+version: '3'
+services:
+  jenkins:
+    image: jenkins
+    # build:
+    #   context: master
+    #   dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    volumes:
+      - data-home:/var/jenkins_home
+      - /Users/lk/Projects:/Projects
+
+  slave:
+    image: openfrontier/jenkins-swarm-slave
+    volumes:
+      - /Users/lk/Projects:/Projects
+    command: ["-username", "admin", "-password", "admin", "-executors", "1", "-labels", "slave"]
+
+  slave-jhispter:
+    build:
+      context: slave-jhispter
+      dockerfile: Dockerfile
+    volumes:
+      - /Users/lk/Projects:/Projects
+    command: ["-username", "admin", "-password", "admin", "-executors", "1", "-labels", "jhipster"]
+
+volumes:
+  data-home:
+

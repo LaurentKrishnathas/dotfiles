@@ -1,0 +1,39 @@
+# WARNING: official image is not working, probably some config change
+
+version: '2'
+
+networks:
+  net:
+    
+services:
+  elasticsearch:
+    image: elasticsearch
+    # image: docker.elastic.co/elasticsearch/elasticsearch:5.6.2
+    environment:
+      ES_JAVA_OPTS: -Xms1g -Xmx2g
+    networks:
+        - net  
+        
+  logstash:
+    image: logstash
+    # image: docker.elastic.co/logstash/logstash:5.6.2
+    command: logstash -f /config-dir/logstash.conf
+    volumes:
+      - $PWD/config-dir:/config-dir
+      - $PWD/logs:/logs
+    depends_on:
+      - elasticsearch
+    networks:
+        - net  
+    ports:
+      - 5000:5000
+      
+  kibana:
+    image: kibana
+    # image: docker.elastic.co/kibana/kibana:5.6.2
+    ports:
+      - 5601:5601
+    depends_on:
+      - elasticsearch
+    networks:
+        - net  

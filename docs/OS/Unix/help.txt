@@ -1,0 +1,156 @@
+intellij
+	command+b open declaration
+	Control+`		:	quick switch scheme
+	Control+Shift+Space	:	smart type completion
+	Command+Shift+Enter	:	smart complete statement, format line, insert semi colons ...
+	Alt+Space		:	view quick defintion
+	Alt+Enter		:	quick fix	
+
+Help:
+	tldr pattern
+	cheat pattern
+	grep -r pattern /Users/lk/Projects/howto.git
+	howto pattern
+	man pattern
+
+Search:
+	ag pattern #fatest file searc
+	ack pattern
+  grep Exception logfile.txt | grep -v ERROR
+	find . -type d -d 1 -exec sh -c "cd {} && gradlew -v" \;
+	
+	mc find s3/bucketname/nas --name '*.pdf' #searching aws s3
+	mc cat s3/bucketnameReleaseNotes.txt
+	mc ls s3/bucketname/
+	
+  ack | extract |	k |fuck
+	fasd
+		a: any
+		s: show/search/select
+		d: directory
+		f: file
+		sd: directory interactive
+		sf: file interactive
+		z: cd
+		zz:cd interactive
+		st `zz vor`
+		vim `f rc lo` ->vim /etc/rc.local
+    vim ,alias tab
+		tab completion
+			st ,pro,dot,vor,bu,gr -> st /Users/lk/Projects/xxxx/build.gradle
+			,: all
+			f,: files
+			d,: direcotories
+			,,f
+			,,d
+	 zaw: control+x+; : help to find on command line
+	 fzf: fuzzy finder searching on command line
+
+CPU: glances | htop | top
+
+git
+	git open
+	git extras
+	git ignore
+	git bisect start | bad | good | reset
+	glola |	gitx |	github
+	git svn clone --stdlayout svn://url../name   name.git
+	
+
+curl| wget | http: colored
+
+email : lkbis2009@googlemail.com
+
+Docker:
+	docker run -e DISPLAY=$IP:0
+	jess/tor-browser
+	jess/chrome
+	jess/spotify
+	jess/firefox
+	jess/skype
+
+	fgrehm/eclipse:v4.4.1
+	batmat/docker-eclipse
+
+	docker run -e DISPLAY=$IP:0 --rm wine1.4 wine "C:\windows\system32\notepad.exe"
+
+	
+Json Parser:
+	jq
+
+Links:
+	https://raw.githubusercontent.com/LaurentKrishnathas/utils/master/scripts/
+	https://raw.githubusercontent.com/LaurentKrishnathas/utils/master/scripts/create_sample_gradle_project.bash
+
+
+Gradle:
+	gradle init --type groovy-library
+	gradlew --include-build ../projectName -DdevPlugin=true tasks
+
+Editors:
+	atom, atom, brackets, bracketsf, st, sub, vim
+
+Jhipster:
+	jh
+	jh<serviceName>up|down: docker-compose
+
+Linux:
+	lsof
+	Redirect: cmd >/tmp/output.txt 2>&1
+	less +F /tmp/output.txt
+	jobs, fg, bg, %n, Ctrl+Z, Ctrl+C
+	nohup command & 						# output in  nohup.out
+	nohup command > test.log &	
+	
+Monitoring and running a command when anything change
+	fswatch -o . | xargs -n1 -I{} bash /tmp/cpvor.bash
+
+Network:
+	dig @ns-283.awsdns-35.com example.com any
+	dig -x 209.132.183.81 +short
+	dig -f names.txt +noall +answer
+
+SpringBoot:
+	http://start.spring.io
+	spring init -d=web,actuator --build=gradle -l=kotlin my-app
+
+SSH
+	ssh-keygen
+	openssl rsa -in ./id_rsa -out ./id_rsa.new #remove phassprase
+	chmod 400 id_rsa #permission need to set after change
+
+
+
+Web Server:
+	python -m SimpleHTTPServer
+	http-server -a localhost -p 8000 app
+
+Web-search:	ddg, google, bing, image, yahoo, github, map,  youtube, wiki
+
+Vagrant:
+	https://app.vagrantup.com/boxes/search?utf8=✓&sort=downloads&provider=parallels&q=windows
+	vagrant init wholebits/ubuntu17.04-64;  vagrant up --provider virtualbox|parallels; vagrant ssh
+	vagrant init ubuntu/trusty64;  vagrant up --provider virtualbox|parallels; vagrant ssh
+
+
+	vagrant init centos/7; vagrant up --provider virtualbox; vagrant ssh
+
+	vagrant init jacqinthebox/windows10LTSB; vagrant up --provider virtualbox|parallels; vagrant rdp
+	vagrant init jacqinthebox/windowsserver2016;  vagrant up --provider virtualbox|parallels; vagrant rdp
+
+	vagrant up --provider virtualbox
+	vagrant global-status --prune
+	vagrant -> coreos-> clone https://github.com/coreos/coreos-vagrant.git
+
+Vim
+	:e file #switch to the file
+	:cd dir
+	:e . #show current files
+	:set number
+	:linenumber
+	/regexsearch
+Yo:
+	yo jhipster:upgrade
+	yo jhipster:entity Foo
+	./gradlew bootRepackage -Pprod buildDocker
+	docker-compose -f src/main/docker/app.yml up -d

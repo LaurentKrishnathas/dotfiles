@@ -1,0 +1,40 @@
+version: '3.3'
+services:
+  web:
+    image: dockercloud/hello-world
+    networks:
+      - frontend
+      - backend
+    environment:
+      - COOKIE=SRV insert indirect nocache 
+    depends_on:
+      - redis     
+
+  haproxy:
+    image: dockercloud/haproxy:1.6.5
+    ports:
+      - 80:80
+    networks:
+      - frontend
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro 
+
+  #not used
+  redis: 
+    image: redis
+    networks:
+      - backend
+    secrets:
+      - my_secret
+
+networks:
+  frontend:
+    driver: bridge
+  backend:
+    driver: bridge
+
+# not used, supported in 3.2
+secrets:
+  my_secret:
+    file: ./my_secret.txt
+ß

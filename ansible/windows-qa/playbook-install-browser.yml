@@ -1,0 +1,34 @@
+---
+- name: testing windows
+  hosts: qa
+  tasks:        
+    - name: install java
+      win_chocolatey:
+        name: java
+        state: present    
+        
+    - name: install tomcat
+      win_chocolatey:
+        name: tomcat
+        state: present    
+        
+    - name: install pscx powershell module needed by unzip
+      win_chocolatey:
+        name: pscx
+        state: present    
+        
+    - name: create directory structure
+      win_file:
+        path: C:\Temp\ansible
+        state: directory
+
+    - name: copy a single file keeping the filename
+      win_copy:
+        src: README.txt
+        dest: C:\Temp\ansible\
+        
+    - name: download install file
+      win_get_url:
+        url: http://
+        dest: C:\Temp\ansible\
+

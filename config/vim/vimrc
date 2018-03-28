@@ -1,0 +1,134 @@
+let mapleader = "\\"
+
+map <leader>n :NERDTreeToggle<CR>
+map <leader><leader> <Plug>(easymotion-prefix)
+nmap <Leader>f <Plug>(easymotion-overwin-f)
+
+syntax on
+
+set hidden
+set backspace=indent,eol,start
+set clipboard=unnamed
+set number
+set number            " Show line numbers
+set ruler             " Show line and column number
+syntax enable         " Turn on syntax highlighting allowing local overrides
+
+
+
+set nowrap                        " don't wrap lines
+set tabstop=2                     " a tab is two spaces
+set shiftwidth=2                  " an autoindent (with <<) is two spaces
+set expandtab                     " use spaces, not tabs
+" set list                          " Show invisible characters
+
+
+
+set hlsearch    " highlight matches
+set incsearch   " incremental searching
+set ignorecase  " searches are case insensitive...
+set smartcase   " ... unless they contain at least one capital letter
+
+set tags=.ctags
+
+iab task.  <ESC>otask _RRR_(dependsOn: [ ]){task-><CR><CR>}<ESC>?_RRR_<CR>ciw
+iab doLast. <ESC>odoLast{<CR>_RRR_<CR>}<ESC>v?do<CR>>><ESC>/_RRR_<CR>ciw
+
+
+
+" set t_Co=256
+" let g:airline_powerline_fonts = 1
+
+" let g:airline_theme='solarized light'
+
+
+
+
+" if has("statusline") && !&cp
+"   set laststatus=2  " always show the status bar
+"
+"   " Start the status line
+"   set statusline=%f\ %m\ %r
+"   set statusline+=Line:%l/%L[%p%%]
+"   set statusline+=Col:%v
+"   set statusline+=Buf:#%n
+"   set statusline+=[%b][0x%B]
+" endif
+
+
+call plug#begin('~/.vim/plugged')
+
+" automatically installing vim-plug if missing
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
+" //TODO Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
+
+
+
+Plug 'scrooloose/syntastic'
+
+Plug 'kien/ctrlp.vim'
+
+Plug 'airblade/vim-gitgutter'
+
+
+
+" Git support insdie vim
+Plug 'tpope/vim-fugitive'
+
+
+" Shorthand notation; fetches https://github.com/junegunn/vim-easy-align
+" Plug 'junegunn/vim-easy-align'
+
+" Any valid git URL is allowed
+" Plug 'https://github.com/junegunn/vim-github-dashboard.git'
+
+" Multiple Plug commands can be written in a single line using | separators
+" Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
+
+" On-demand loading
+
+" Navigation
+Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+
+" Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
+
+" Using a non-master branch
+" Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
+
+" Using a tagged release; wildcard allowed (requires git 1.9.2 or above)
+Plug 'fatih/vim-go', { 'tag': '*' }
+
+" Plugin options
+Plug 'nsf/gocode', { 'tag': 'v.20150303', 'rtp': 'vim' }
+
+" Plugin outside ~/.vim/plugged with post-update hook
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+
+" no idea why need this again after the previous version
+Plug 'junegunn/fzf.vim'
+
+
+
+Plug 'easymotion/vim-easymotion'
+
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+
+Plug 'craigemery/vim-autotag'
+
+call plug#end()
+
+" # Syntatic plugin settings, commented as it complain for java class "
+" # set statusline+=%#warningmsg#"
+" # set statusline+=%{SyntasticStatuslineFlag()}"
+" # set statusline+=%*"
+" #
+" # let g:syntastic_always_populate_loc_list = 1"
+" # let g:syntastic_auto_loc_list = 1"
+" # let g:syntastic_check_on_open = 1"
+" # let g:syntastic_check_on_wq = 0"

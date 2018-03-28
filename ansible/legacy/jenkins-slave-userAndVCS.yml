@@ -1,0 +1,33 @@
+---
+- name: Configure Jenkins Slave with ssh keys for git, svn access,
+  hosts: jenkins-slave
+  become: true
+  vars:
+    uusername: jenkins
+    upassword: jenkins
+    svn_user: jenkins
+    svn_password: j7WvsRafafafKAaga6r94s
+    svn_repo: 
+      - {name: "svn://....nk/gradle", index: 1}
+      - {name: "svn://...../trunk/gradle", index: 2}
+      - {name: "svn://....radle", index: 3}
+      - {name: "svn://....adle", index: 4}
+
+    sshdirs:
+      - .ssh
+      - .ssh/bitbucket
+      
+    files:
+      - {src: "config", dest: ".ssh/config"}
+      - {src: "~/.ssh/bitbucket/jenkinsci-read.id_rsa", dest: ".ssh/bitbucket/jenkinsci-read.id_rsa"}
+      - {src: "~/.ssh/bitbucket/jenkinsci-read.id_rsa.pub", dest: ".ssh/bitbucket/jenkinsci-read.id_rsa.pub"}
+      - {src: "~/.ssh/bitbucket/jenkinsci-write.id_rsa", dest: ".ssh/bitbucket/jenkinsci-write.id_rsa"}
+      - {src: "~/.ssh/bitbucket/jenkinsci-write.id_rsa.pub", dest: ".ssh/bitbucket/jenkinsci-write.id_rsa.pub"}
+
+  roles:
+    - { role: geerlingguy.git }
+    - { role: geerlingguy.java }
+    - { role: lk.jenkinsslave_ssh }
+
+
+

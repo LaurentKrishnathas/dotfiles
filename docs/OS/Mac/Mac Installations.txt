@@ -1,0 +1,124 @@
+##################################################
+# 
+#
+# @author Laurent Krishnathas
+# @version 0.1
+##################################################
+
+Mac installation of softwares
+
+Users:
+	normal user : non admin and non sudo user
+	Administration : admin user only for install and adminstration
+
+Package Managers:
+	/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+	brew install
+	#cask is part of brew now, 
+	pip install
+	go get
+	jdk6 https://support.apple.com/kb/DL1572?locale=en_US
+
+Help:
+	tldr pattern
+	cheat pattern
+	grep -r pattern $HOME/Projects/howto.git
+	howto pattern
+	man pattern
+
+Command Line Navigation:
+	z pattern 	#cd matching path
+	v pattern	#vim matching path
+	s pattern	#show matching path
+
+
+
+Brew List:
+	brew install antigen
+	brew install autoenv
+	brew install autojump
+	brew install cheat 		# shorter man pages
+	brew install colordiff
+	brew install fasd	# command line navigation utilities
+  brew install ctags
+	brew install gdbm
+	brew install git
+	brew install git-extras
+	brew install git-flow
+	brew install htop-osx
+	brew install httpie
+	brew install jq		# format json
+	brew install tmux   # terminal multiplexer
+	brew install tree
+	brew install wget
+	brew install zsh
+	brew install pwgen # generate password: genpasswd n
+	brew install pstree
+	brew install packer #http://www.parallels.com/download/pvsdk/ needed for build
+	brew install node
+	brew install ack
+  brew install fzf
+  brew install blueutil #commandline bluetooth control
+
+NPM:
+	sudo npm install -g tldr
+
+Brew cask List:
+	brew cask install google-chrome
+
+GEM:
+	gem install tmuxinator
+  gem install terjira
+
+PIP List:
+	sudo pip install --upgrade autopep8
+	sudo pip install thefuck 	#fuck will auto correct previous command
+	pip install glances 		# show cpu mem realtime report
+	pip install warchdog		#utility to watch filesystem for changes
+
+XQuartz 
+	only version 2.7.10_beta2 works with docker gui
+
+Cleanup:
+	brew update; brew cleanup; brew cask cleanup
+
+HTTP:
+	http PUT example.org X-API-Token:123 name=John
+	http -f POST example.org hello=World #post form
+	http -v example.org
+	http example.org < file.json #upload
+	http example.org/file > file #download
+	wget
+	curl
+
+Shell :
+	zsh with oh-my-zsh
+
+ZSH plugin:
+	k : nice replacement for ls or l
+		git clone https://github.com/rimraf/k $ZSH/custom/plugins/k
+
+Apps:
+	http://www.titanium.free.fr/ : some customisation of osx apps like finder...
+		Maintenance.app 
+		Deeper.app 
+		OnyX.app
+
+Fix
+	sudo networksetup -setdnsservers "Ethernet" 192.168.77.58  #fixing dns server
+
+Puppet
+	installed facter-2.4.6.dmg and puppet-3.8.6
+
+Javascript:
+	npm install -g yo grunt-cli bower
+	npm install -g generator-angular
+	npm install -g json2yaml
+	npm install -g serverless
+
+
+Wget:
+  wget -O grv https://github.com/rgburke/grv/releases/download/v0.1.0/grv_v0.1.0_linux64
+  chmod +x ./grv
+  ./grv -repoFilePath /path/to/repo 
+

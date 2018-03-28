@@ -1,0 +1,1 @@
+Adapted from https://github.com/oracle/docker-images/tree/master/OracleJava

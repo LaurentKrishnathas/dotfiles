@@ -1,0 +1,11 @@
+- name: Configure svnserve to serve svn repos
+  hosts: svnserve
+  tags:    
+    - svnserve  
+  become: true
+  vars:
+    listenPort: 3333
+    repoParentDir: "/home/jenkins/svnrepos"
+
+  roles:
+    - { role: ubuntu.svnserve }

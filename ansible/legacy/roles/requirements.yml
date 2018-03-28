@@ -1,0 +1,5 @@
+---
+- name: geerlingguy.svn
+- name: geerlingguy.git
+- name: geerlingguy.java
+- name: geerlingguy.jenkins

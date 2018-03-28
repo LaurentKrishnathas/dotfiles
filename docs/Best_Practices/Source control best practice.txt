@@ -1,0 +1,64 @@
+Source control best practice
+
+Trunk based developement only
+	- use a flag to hide or disable new features
+	- New code can be created in new classes to avoid minimising modification of core classes
+
+No commit just before going on holiday
+	- Always check that the build is at least passing compile test and basic unit testing on our CI server.
+
+
+Do not commit files which break other developers eclipse
+
+Always use  Team->synchronize to check file by file and line by line before commiting 
+	- Avoid overwriting other developers code accidently.
+	- Do not commit generated files or binary files.
+	- Do not commit any file hardcoded to your machine.
+	- Only commit specific files.
+
+
+Continous integration :
+	- if build fail, please try to fix immediately to avoid incovenience to other developers and users also while it is still fresh in your memory.
+
+	- Incremental builds are prefered.
+
+- Check if an utility classes exist before creating 
+
+
+Clean workspace : if possible try to keep a clean workspace end of the day.
+	- hard disk do breaks and you lose everything
+	- it is always safe to revert the local changes than commiting unknow code.
+
+
+
+Your project managers and team leaders may follow different strategies for coding style.
+
+
+Javadoc
+	- no jokes and unnecessary comments, only relevants comments
+	- only if it brings more clarity to the code
+
+Unit testing : 
+	- instead of creating main methods, please create unit tests in test/ folders
+	class myClassTest extends MyClass{
+		public void method1Test(){
+			boolean actual=super.dosomething()
+			assert true == actual
+		}
+	}
+
+	- avoid if possible to not run complex unit testing, the person who end up doing 
+	maintenance can not understand all the moving parts so end up turning off the unit testing when it fail. 
+
+
+
+
+
+
+
+
+
+
+
+
+
