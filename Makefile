@@ -4,13 +4,12 @@ install-tools: install-zsh install-fzf install-zaw
 
 
 WARNMSG=echo "check error, may need upgrade"
-GITHUB_DIR="$HOME/code/src/github"
+GITHUB_DIR=$$HOME/code/src/github
+DOTFILES_DIR=$(GITHUB_DIR)/dotfiles.git
 
 init:
-	#[ ! -z "$${GITHUB_DIR}" ]  || ( echo "!!! WARNING \\n!!! env not set, run the following command  \\n/> source $$(pwd)/bash/envs.bash " && fail)
-
 	mkdir -p $(GITHUB_DIR)
-	git clone https://github.com/LaurentKrishnathas/dotfiles.git $(GITHUB_DIR)/dotfiles.git
+	[ ! -d "$(DOTFILES_DIR)" ]  && git clone https://github.com/LaurentKrishnathas/dotfiles.git $(DOTFILES_DIR) || echo "skip cloning"
 
 install-brew:
 	brew doctor
@@ -19,27 +18,24 @@ install-brew:
 install-zsh: init
 	rm -rf $$HOME/.zshrc
 	rm -rf $(GITHUB_DIR)/oh-my-zsh.git
-	touch  $$HOME/.zshrc
-	echo "export DOTFILES_DIR=$$(pwd)">$$HOME/.zshrc
-	echo "source \$$DOTFILES_DIR/bash/zshrc.bash">>$$HOME/.zshrc
 
-	#ln -s $$(pwd)/bash/zshrc.bash $$HOME/.zshrc
+	ln -s $(DOTFILES_DIR)/bash/zshrc.bash $$HOME/.zshrc
 	git clone https://github.com/robbyrussell/oh-my-zsh.git $(GITHUB_DIR)/oh-my-zsh.git
-	ln -s $$(pwd)/bash/oh-my-zsh.bash $(GITHUB_DIR)/oh-my-zsh.git/oh-my-zsh.bash
+	ln -s  $(DOTFILES_DIR)/bash/oh-my-zsh.bash $(GITHUB_DIR)/oh-my-zsh.git/oh-my-zsh.bash
 
 install-fzf: init
 	rm -rf $(GITHUB_DIR)/fzf.git
 	rm -rf $$HOME/.fzf.bash
 	rm -rf $$HOME/.fzf.zsh
 	git clone --depth 1 https://github.com/junegunn/fzf.git $(GITHUB_DIR)/fzf.git
-	$(GITHUB_DIR)/fzf.git/install
+	$(GITHUB_DIR)/fzf.git/install --all
 
 install-jenkins: init
 	mkdir -p $$HOME/bin
 	rm -rf $$HOME/bin/jenkins
 	rm -rf $$HOME/bin/jenkins-cli.jar
 	wget -o $$HOME/bin/jenkins-cli.jar $JENKINS_URL/jnlpJars/jenkins-cli.jar
-	ln -s $$(pwd)/bash/jenkins.bash $$HOME/bin/jenkins
+	ln -s  $(DOTFILES_DIR)/bash/jenkins.bash $$HOME/bin/jenkins
 
 
 install-zaw: init
@@ -49,18 +45,18 @@ install-zaw: init
 install-vim-files:
 	rm -rf $$HOME/.vimrc
 	rm -rf $$HOME/.ideavimrc
-	ln -s $$(pwd)/config/vim/vimrc $$HOME/.vimrc
-	ln -s $$(pwd)/config/vim/ideavimrc $$HOME/.ideavimrc
+	ln -s $(DOTFILES_DIR)/config/vim/vimrc $$HOME/.vimrc
+	ln -s $(DOTFILES_DIR)/config/vim/ideavimrc $$HOME/.ideavimrc
 	vim  +PlugInstall +:qall
 
 install-tmux-files:
 	rm -rf $$HOME/.tmux.conf
-	ln -s $$(pwd)/config/tmux/tmux.conf $$HOME/.tmux.conf
+	ln -s $(DOTFILES_DIR)/config/tmux/tmux.conf $$HOME/.tmux.conf
 
 install-grv-files:
 	rm -rf $$HOME/.config/grv
 	mkdir -p $$HOME/.config/grv
-	ln -s $$(pwd)/config/grv/grvrc $$HOME/.config/grv/grvrc
+	ln -s $(DOTFILES_DIR)/config/grv/grvrc $$HOME/.config/grv/grvrc
 
 install-brew-list:
 	brew update
@@ -115,12 +111,12 @@ install-node-list:
 	sudo npm install -g serverless
 
 install-pip-list:
-	sudo easy_install pip
+	sudo easy_install pip || $(WARNMSG)
 	#sudo pip install glances 		# show cpu mem realtime report
-	sudo pip install warchdog		#utility to watch filesystem for changes
-	sudo pip install ansible --quiet
-	easy_install --user pip
-	pip install --user virtualenv
+	sudo pip install warchdog || $(WARNMSG)		#utility to watch filesystem for changes
+	sudo pip install ansible --quiet || $(WARNMSG)
+	easy_install --user pip || $(WARNMSG)
+	pip install --user virtualenv || $(WARNMSG)
 
 download-docker-images:
 	docker pull tomcat

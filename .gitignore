@@ -4,3 +4,4 @@ buildSrc/build
 .gradle
 .idea
 .DS_Store
+.idea/*
