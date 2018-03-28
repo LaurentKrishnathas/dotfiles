@@ -95,12 +95,6 @@ do
     fi
 done
 
-if [ -z "$TMUX" ]; then
-  c
-  mkdirtmp
-  ts tmp
-fi
-
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # tabtab source for serverless package
