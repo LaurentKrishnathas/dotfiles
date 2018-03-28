@@ -1,13 +1,16 @@
-install: install-zsh install-zaw install-brew-list install-node-list install-pip-list install-fzf install_files
-install_files:  install-vim-files install-tmux-files install-grv-files
+install: install-tools install-config install-brew-list install-node-list install-pip-list install-fzf
+install-config:  install-vim-files install-tmux-files install-grv-files
+install-tools: install-zsh install-fzf install-zaw
 
 
 WARNMSG=echo "check error, may need upgrade"
+GITHUB_DIR="$HOME/code/src/github"
 
 init:
-	[ ! -z "$${GITHUB_DIR}" ]  || ( echo "!!! WARNING \\n!!! env not set, run the following command  \\n/> source $$(pwd)/bash/envs.bash " && fail)
+	#[ ! -z "$${GITHUB_DIR}" ]  || ( echo "!!! WARNING \\n!!! env not set, run the following command  \\n/> source $$(pwd)/bash/envs.bash " && fail)
 
 	mkdir -p $(GITHUB_DIR)
+	git clone https://github.com/LaurentKrishnathas/dotfiles.git $(GITHUB_DIR)/dotfiles.git
 
 install-brew:
 	brew doctor
@@ -15,17 +18,21 @@ install-brew:
 
 install-zsh: init
 	rm -rf $$HOME/.zshrc
-	rm -rf $$GITHUB_DIR/oh-my-zsh.git
-	ln -s $$(pwd)/bash/zshrc.bash $$HOME/.zshrc
-	git clone https://github.com/robbyrussell/oh-my-zsh.git $$GITHUB_DIR/oh-my-zsh.git
-	ln -s $$(pwd)/bash/oh-my-zsh.bash $$GITHUB_DIR/oh-my-zsh.git/oh-my-zsh.bash
+	rm -rf $(GITHUB_DIR)/oh-my-zsh.git
+	touch  $$HOME/.zshrc
+	echo "export DOTFILES_DIR=$$(pwd)">$$HOME/.zshrc
+	echo "source \$$DOTFILES_DIR/bash/zshrc.bash">>$$HOME/.zshrc
+
+	#ln -s $$(pwd)/bash/zshrc.bash $$HOME/.zshrc
+	git clone https://github.com/robbyrussell/oh-my-zsh.git $(GITHUB_DIR)/oh-my-zsh.git
+	ln -s $$(pwd)/bash/oh-my-zsh.bash $(GITHUB_DIR)/oh-my-zsh.git/oh-my-zsh.bash
 
 install-fzf: init
-	rm -rf $$HOME/gits/fzf.git
+	rm -rf $(GITHUB_DIR)/fzf.git
 	rm -rf $$HOME/.fzf.bash
 	rm -rf $$HOME/.fzf.zsh
-	git clone --depth 1 https://github.com/junegunn/fzf.git $$HOME/gits/fzf.git
-	$$HOME/gits/fzf.git/install
+	git clone --depth 1 https://github.com/junegunn/fzf.git $(GITHUB_DIR)/fzf.git
+	$(GITHUB_DIR)/fzf.git/install
 
 install-jenkins: init
 	mkdir -p $$HOME/bin
@@ -36,17 +43,17 @@ install-jenkins: init
 
 
 install-zaw: init
-	rm -rf $$HOME/gits/zaw.git
-	git clone git://github.com/zsh-users/zaw.git $$HOME/gits/zaw.git
+	rm -rf $(GITHUB_DIR)/zaw.git
+	git clone git://github.com/zsh-users/zaw.git $(GITHUB_DIR)/zaw.git
 
-install-vimfiles:
+install-vim-files:
 	rm -rf $$HOME/.vimrc
 	rm -rf $$HOME/.ideavimrc
 	ln -s $$(pwd)/config/vim/vimrc $$HOME/.vimrc
 	ln -s $$(pwd)/config/vim/ideavimrc $$HOME/.ideavimrc
 	vim  +PlugInstall +:qall
 
-install-tmuxfiles:
+install-tmux-files:
 	rm -rf $$HOME/.tmux.conf
 	ln -s $$(pwd)/config/tmux/tmux.conf $$HOME/.tmux.conf
 

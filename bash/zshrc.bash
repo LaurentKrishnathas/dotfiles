@@ -7,12 +7,12 @@ print "loading `pwd`/zshrc.bash  `date` ..."
 # @version 0.1
 ##################################################
 
-source $HOME/code/src/gitlab/dotfiles.git/bash/envs.bash
+source $HOME/code/src/github/dotfiles.git/bash/envs.bash
 
 bashfile_array=()
-bashfile_array+="$SHELL_SCRIPT_BASEDIR/variables.bash"
-bashfile_array+="$SHELL_SCRIPT_BASEDIR/envs.bash"
-bashfile_array+="$SHELL_SCRIPT_BASEDIR/aliases.bash"
+bashfile_array+="$DOTFILES_DIR/bash/envs.bash"
+bashfile_array+="$DOTFILES_DIR/bash/variables.bash"
+bashfile_array+="$DOTFILES_DIR/bash/aliases.bash"
 
 
 # Weird bug: alias need to be loaded before the tmux if check to make alias works.
