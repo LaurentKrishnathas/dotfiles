@@ -2,7 +2,7 @@ install: install-zsh install-zaw install-brew-list install-node-list install-pip
 install_files:  install-vim-files install-tmux-files install-grv-files
 
 
-WARNMSG="echo "check error, may need upgrade""
+WARNMSG=echo "check error, may need upgrade"
 
 init:
 	[ ! -z "$${GITHUB_DIR}" ]  || ( echo "!!! WARNING \\n!!! env not set, run the following command  \\n/> source $$(pwd)/bash/envs.bash " && fail)
@@ -102,14 +102,14 @@ install-brew-list:
 
 install-node-list:
 	sudo npm install -g tldr
-	npm install -g yo grunt-cli bower
-	npm install -g generator-angular
-	npm install -g json2yaml
-	npm install -g serverless
+	sudo npm install -g yo grunt-cli bower
+	sudo npm install -g generator-angular
+	sudo npm install -g json2yaml
+	sudo npm install -g serverless
 
 install-pip-list:
 	sudo easy_install pip
-	sudo pip install glances 		# show cpu mem realtime report
+	#sudo pip install glances 		# show cpu mem realtime report
 	sudo pip install warchdog		#utility to watch filesystem for changes
 	sudo pip install ansible --quiet
 	easy_install --user pip
