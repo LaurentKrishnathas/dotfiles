@@ -92,7 +92,7 @@ install-brew-list:
 	brew install python3 pipenv || $(WARNMSG)
 	brew install reattach-to-user-namespace || $(WARNMSG)
 	brew install the_silver_searcher   || $(WARNMSG)
-
+	brew install terraform   || $(WARNMSG)
 	brew cask install spectacle || $(WARNMSG)
 	brew cask install dropbox	 || $(WARNMSG)
 	brew cask install iterm2 || $(WARNMSG)
@@ -117,6 +117,9 @@ install-pip-list:
 	sudo pip install ansible --quiet || $(WARNMSG)
 	easy_install --user pip || $(WARNMSG)
 	pip install --user virtualenv || $(WARNMSG)
+	cd /tmp/ && curl -O https://bootstrap.pypa.io/get-pip.py
+	cd python3 get-pip.py --user
+	pip3 install awscli --upgrade --user
 
 download-docker-images:
 	docker pull tomcat

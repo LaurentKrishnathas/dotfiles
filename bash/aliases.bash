@@ -148,7 +148,8 @@ alias mv='mv -iv'
 
 
 alias tld='tldr'
-alias tf='docker run -it -v $HOME/.aws:/root/.aws -v $(pwd):/code -w /code hashicorp/terraform:0.11.0 '
+alias tf='docker run -it -v $HOME/.aws:/root/.aws -v $(pwd):/code -w /code hashicorp/terraform:0.11.6 '
+alias tf_production='docker run -it -v $HOME/.aws_production:/root/.aws -v $(pwd):/code -w /code hashicorp/terraform:0.11.6 '
 
 alias ubuntu='docker run -it -v $HOME/Downloads:/Downloads -v $(pwd):/workspace -w /workspace laurent_krishnathas/ubuntu:latest '
 alias centos='docker run -it -v $HOME/Downloads:/Downloads -v $(pwd):/workspace -w /workspace laurent_krishnathas/centos:latest '
