@@ -53,7 +53,7 @@ RUN echo "set t_Co=256" >> ~/.vimrc.after &&\
     echo "let g:airline_powerline_fonts = 1" >> ~/.vimrc.after
 
 RUN apt-get install -y exuberant-ctags
-RUN wget –quiet -O /usr/local/bin/grv https://github.com/rgburke/grv/releases/download/v0.1.0/grv_v0.1.0_linux64 && \
+RUN wget -O /usr/local/bin/grv  https://github.com/rgburke/grv/releases/download/v0.1.3/grv_v0.1.3_linux64 && \
     chmod +x /usr/local/bin/grv  &&\
     mkdir -p $HOME/.config/grv  &&\
     echo "set theme classic">/$HOME/.config/grv/grvrc
