@@ -6,16 +6,21 @@ LABEL description="ubuntu dev setup"
 
 RUN apt-get update  && apt-get install -y \
     curl \
+    exuberant-ctags \
     git \
     git-core \
     httpie \
+    jq \
+    iputils-ping \
     make \
     python3 \
     rake \
     ruby \
     subversion \
     silversearcher-ag \
+    sudo \
     tree \
+    tmux \
     unzip \
     vim \
     wget \
@@ -52,11 +57,11 @@ RUN git clone https://github.com/vim-airline/vim-airline ~/.janus/vim-airline &&
 RUN echo "set t_Co=256" >> ~/.vimrc.after &&\
     echo "let g:airline_powerline_fonts = 1" >> ~/.vimrc.after
 
-RUN apt-get install -y exuberant-ctags
 RUN wget -O /usr/local/bin/grv  https://github.com/rgburke/grv/releases/download/v0.1.3/grv_v0.1.3_linux64 && \
     chmod +x /usr/local/bin/grv  &&\
     mkdir -p $HOME/.config/grv  &&\
-    echo "set theme classic">/$HOME/.config/grv/grvrc
+    echo "set theme classic">/$HOME/.config/grv/grvrc &&\
+    curl https://www.teleconsole.com/get.sh | sh
 
 
 ENTRYPOINT ["/bin/zsh", "-c"]

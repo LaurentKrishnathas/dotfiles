@@ -158,8 +158,8 @@ function build_docker_images_dir {
 function build_docker_images {
     docker_cleanup
 
-    build_docker_images_dir  $DOTFILES_DIR/docker/images/base
-    build_docker_images_dir  $DOTFILES_DIR/docker/images
+    build_docker_images_dir  $DOTFILES_DIR/docker/image/base
+    build_docker_images_dir  $DOTFILES_DIR/docker/image
 }
 
 function docker_login_aws {
