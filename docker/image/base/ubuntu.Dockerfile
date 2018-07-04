@@ -14,6 +14,7 @@ RUN apt-get update  && apt-get install -y \
     iputils-ping \
     make \
     python3 \
+    python \
     rake \
     ruby \
     subversion \
@@ -61,7 +62,9 @@ RUN wget -O /usr/local/bin/grv  https://github.com/rgburke/grv/releases/download
     chmod +x /usr/local/bin/grv  &&\
     mkdir -p $HOME/.config/grv  &&\
     echo "set theme classic">/$HOME/.config/grv/grvrc &&\
-    curl https://www.teleconsole.com/get.sh | sh
+    curl https://www.teleconsole.com/get.sh | sh  &&\
+    cd /tmp && curl "https://s3.amazonaws.com/aws-cli/awscli-bundle.zip" -o "awscli-bundle.zip" && unzip awscli-bundle.zip && ./awscli-bundle/install -i /usr/local/aws -b /usr/local/bin/aws
+
 
 
 ENTRYPOINT ["/bin/zsh", "-c"]

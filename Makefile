@@ -131,3 +131,14 @@ change2zsh:
 moveScreenshotDir2Downloads:
 	defaults write com.apple.screencapture location $$HOME/Downloads
 	killall SystemUIServer
+
+install-crontab:
+	crontab -l || true
+	crontab -r || true
+	crontab -l || true
+	crontab $$PWD/config/crontab/crontab.bash
+	crontab -l
+	mkdir -p /tmp/crontab
+	echo "hello">>/tmp/crontab/test.log
+	ls -la /tmp/crontab
+	tail -f /tmp/crontab/*

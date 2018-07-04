@@ -48,6 +48,7 @@ else
     PATH=$PATH:$HOME/.sdkman/candidates/gradle/current/bin
     PATH=$PATH:$HOME/.sdkman/candidates/maven/current/bin
     PATH=$PATH:$HOME/.sdkman/candidates/springboot/current/bin
+    PATH=$PATH:$HOME/.sdkman/candidates/infrastructor/current/bin/infrastructor
     PATH=$PATH:$HOME/Applications/packer
     PATH=$PATH:/usr/local/Cellar/node/7.8.0/bin
     PATH=$PATH:$HOME/.config/yarn/global/node_modules/.bin
