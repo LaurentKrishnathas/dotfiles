@@ -92,7 +92,7 @@ alias jen='jenkins'
 alias j6="export JAVA_HOME=$JDK6; java -version"
 alias j7="export JAVA_HOME=$JDK7; java -version"
 alias j8="export JAVA_HOME=$JDK8; java -version"
-alias j9="export JAVA_HOME=$JDK9; java -version"
+alias j10="export JAVA_HOME=$JDK10; java -version"
 
 alias ideaf='fasd -a -e idea'
 
