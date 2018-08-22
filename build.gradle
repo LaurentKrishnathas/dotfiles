@@ -15,12 +15,14 @@ project.ext{
 	rep01Dir="$projectDir/rep01" as File
 	githubDir="$projectDir/github" as File
 	gitlabDir="$projectDir/gitlab" as File
+	codecommitDir="$projectDir/codecommit" as File
 }
 
 task updateSvnGitRepos(type: devops.UpdateSvnGitRepoTask){
 	addDir(rep01Dir)
 	addDir(githubDir)
 	addDir(gitlabDir)
+	addDir(codecommitDir)
 }
 
 task checkGitSSHKeys(type: devops.CheckGitSSHKeyTask){task->
@@ -34,6 +36,7 @@ task cleanAllGradleProj(type: devops.CleanAllGradleProjTask){
 	addDir(rep01Dir)
 	addDir(githubDir)
 	addDir(gitlabDir)
+	addDir(codecommitDir)
 }
 
 task "install-tmuxinator"{task->

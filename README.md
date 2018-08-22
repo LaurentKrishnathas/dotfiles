@@ -32,3 +32,10 @@ docker swarm:
 
 	docker service create --name helloworld alpine:3.6 ping docker.com
 	docker service update --args "ping docker.com" helloworld
+
+
+
+installing jdk6 on mac:
+    https://support.apple.com/kb/dl1572?locale=en_GB
+    
+    

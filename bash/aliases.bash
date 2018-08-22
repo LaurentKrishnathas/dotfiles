@@ -26,6 +26,7 @@ alias chrome_incongnito='/Applications/Google\ Chrome.app/Contents/MacOS/Google\
 
 alias cloud9='docker run -d -p 999:80 -v $(pwd):/workspace  kdelfour/cloud9-docker:latest; open http://localhost:999'
 
+alias docker_daemon_restart='killall Docker && open /Applications/Docker.app'
 alias dk='docker'
 alias dkcompose='docker-compose'
 alias dkhub='dockerhub'
