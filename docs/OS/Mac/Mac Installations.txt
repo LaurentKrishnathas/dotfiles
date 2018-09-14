@@ -57,6 +57,7 @@ Brew List:
 	brew install packer #http://www.parallels.com/download/pvsdk/ needed for build
 	brew install node
 	brew install ack
+
   brew install fzf
   brew install blueutil #commandline bluetooth control
 

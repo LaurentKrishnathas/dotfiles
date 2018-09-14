@@ -6,6 +6,9 @@
 # @version 0.1
 ##################################################
 
+#missing in new mac
+export DISPLAY=:0
+
 
 # Used in functions
 export PROJECT_DIR="$HOME/code/src"

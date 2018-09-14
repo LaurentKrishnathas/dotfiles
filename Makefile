@@ -103,6 +103,13 @@ install-brew-list:
 	brew cask install vagrant  || $(WARNMSG)
 	brew cask install vagrant-manager  || $(WARNMSG)
 
+install-minikube:
+	brew install kubernetes-cli
+	curl -Lo minikube https://storage.googleapis.com/minikube/releases/v0.28.2/minikube-darwin-amd64 && chmod +x minikube && sudo mv minikube /usr/local/bin/
+	brew tap jenkins-x/jx
+	brew install jx
+	brew install kubernetes-helm
+
 install-node-list:
 	sudo npm install -g tldr
 	sudo npm install -g yo grunt-cli bower
@@ -142,3 +149,16 @@ install-crontab:
 	echo "hello">>/tmp/crontab/test.log
 	ls -la /tmp/crontab
 	tail -f /tmp/crontab/*
+
+
+	${"123eelam"=="123eelam"}
+	${"123eelam"=='123eelam'}
+	${"123Eelam"=='123Eelam'}
+
+
+${"123Eelam"=='123Eelam'}
+
+"123Eelam"==
+
+{"123Eelam" == '123Eelam'}
+${'123Eelam' == "123Eelam"}
