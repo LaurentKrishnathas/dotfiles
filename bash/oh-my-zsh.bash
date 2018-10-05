@@ -47,7 +47,13 @@ plugins+=web-search
 plugins+=wd
 plugins+=zsh-completions
 
-plugins+=globalias
+plugins+=colorize
+plugins+=colored-man-pages
+plugins+=gradle
+
+
+#expand aliases
+#plugins+=globalias
 
 echo "loading oh-my-zsh.sh ..."
 source $ZSH/oh-my-zsh.sh

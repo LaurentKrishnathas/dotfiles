@@ -7,3 +7,9 @@ function restartWifi {		#... .restartWifi
 function test_function {
     echo "test_function OK"
 }
+
+function volume {		#... .restartWifi
+  osascript -e "set volume output volume $1"	
+}
+
+

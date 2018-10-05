@@ -6,3 +6,4 @@ buildSrc/build
 .DS_Store
 .idea/*
 **/*.swp
+.gradletasknamecache

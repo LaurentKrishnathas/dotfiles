@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-print "loading `pwd`/zshrc.bash  `date` ..."
+print "loading `pwd`/zshrc.bash  `date` version 2018-09-26 ..."
 ##################################################
 #  
 #
@@ -31,31 +31,33 @@ do
     [[ -s "$file" ]] && source $file
 done
 
+PATH=$PATH:$HOME/.jenv/bin
+PATH=$PATH:$HOME/.jenv/candidates/javadoc/current
+PATH=$PATH:$HOME/.sdkman/candidates/java/current/bin
+PATH=$PATH:$HOME/.sdkman/candidates/groovy/current/bin
+PATH=$PATH:$HOME/.sdkman/candidates/grails/current/bin
+PATH=$PATH:$HOME/.sdkman/candidates/gradle/current/bin
+PATH=$PATH:$HOME/.sdkman/candidates/maven/current/bin
+PATH=$PATH:$HOME/.sdkman/candidates/springboot/current/bin
+PATH=$PATH:$HOME/.sdkman/candidates/infrastructor/current/bin
+PATH=$PATH:$HOME/Applications/packer
+PATH=$PATH:/usr/local/Cellar/node/7.8.0/bin
+PATH=$PATH:$HOME/.config/yarn/global/node_modules/.bin
+PATH=$PATH:$HOME/.vimpkg/bin
+PATH=$PATH:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:$HOME/bin:/bin:/bin:/bin
+
+export PATH
+
 if [ ! -z "$TMUX" ]; then
     echo "tmux detected."
     [[ -s "$ohmyzsh_file" ]] && echo "source $ohmyzsh_file" && source $ohmyzsh_file
+    echo "Warning: skipping loading other tools in tmux mode."
 else
     echo "no tmux detected"
 
     #no idea what this !!!
     test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
-    PATH=$PATH:$HOME/.jenv/bin
-    PATH=$PATH:$HOME/.jenv/candidates/javadoc/current
-    PATH=$PATH:$HOME/.sdkman/candidates/java/current/bin
-    PATH=$PATH:$HOME/.sdkman/candidates/groovy/current/bin
-    PATH=$PATH:$HOME/.sdkman/candidates/grails/current/bin
-    PATH=$PATH:$HOME/.sdkman/candidates/gradle/current/bin
-    PATH=$PATH:$HOME/.sdkman/candidates/maven/current/bin
-    PATH=$PATH:$HOME/.sdkman/candidates/springboot/current/bin
-    PATH=$PATH:$HOME/.sdkman/candidates/infrastructor/current/bin/infrastructor
-    PATH=$PATH:$HOME/Applications/packer
-    PATH=$PATH:/usr/local/Cellar/node/7.8.0/bin
-    PATH=$PATH:$HOME/.config/yarn/global/node_modules/.bin
-    PATH=$PATH:$HOME/.vimpkg/bin
-    PATH=$PATH:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:$HOME/bin:/bin:/bin:/bin
-
-    export PATH
 
     bashfile_array=()
     bashfile_array+="$SHELL_SCRIPT_BASEDIR/variables.bash"
@@ -107,3 +109,6 @@ done
 
 
 unalias grv
+#if [[ "$(ls -A ~/.dargs/completions/zsh)" ]];then
+#  for f in ~/.dargs/completions/zsh/*;do source "$f";done
+#fi

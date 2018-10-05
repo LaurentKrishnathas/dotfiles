@@ -151,14 +151,40 @@ install-crontab:
 	tail -f /tmp/crontab/*
 
 
-	${"123eelam"=="123eelam"}
-	${"123eelam"=='123eelam'}
-	${"123Eelam"=='123Eelam'}
+
+INSTALL_DIR=build
+install_aws_kubectl_aws_iam_authentication:
+	#mkdir -p $(INSTALL_DIR)
+	#curl -o $(INSTALL_DIR)/kubectl https://amazon-eks.s3-us-west-2.amazonaws.com/1.10.3/2018-07-26/bin/darwin/amd64/kubectl
+	#curl -o $(INSTALL_DIR)/kubectl.sha256 https://amazon-eks.s3-us-west-2.amazonaws.com/1.10.3/2018-07-26/bin/darwin/amd64/kubectl.sha256	
+	#openssl sha -sha256  $(INSTALL_DIR)/kubectl
+	chmod +x $(INSTALL_DIR)/kubectl
+	$(INSTALL_DIR)/kubectl version --short --client		
+	curl -o $(INSTALL_DIR)/aws-iam-authenticator https://amazon-eks.s3-us-west-2.amazonaws.com/1.10.3/2018-07-26/bin/darwin/amd64/aws-iam-authenticator
+	curl -o $(INSTALL_DIR)/aws-iam-authenticator.sha256 https://amazon-eks.s3-us-west-2.amazonaws.com/1.10.3/2018-07-26/bin/darwin/amd64/aws-iam-authenticator.sha256
+	openssl sha -sha256 $(INSTALL_DIR)/aws-iam-authenticator
+	chmod +x $(INSTALL_DIR)//aws-iam-authenticator
+	mv $(INSTALL_DIR)/kubectl $$HOME/bin/
+	mv $(INSTALL_DIR)/aws-iam-authenticator $$HOME/bin/
 
 
-${"123Eelam"=='123Eelam'}
+IAM_ROLE=arn:aws:iam::101999902141:role/dotmatics-devops-eks
+eks_create_cluster:
+	aws eks create-cluster --name devel --role-arn $(IAM_ROLE) --resources-vpc-config subnetIds=ubnet-0985ff0ff62d7b166,subnet-047725a76feb1618d,subnet-006c084e1ae3ee1a0,securityGroupIds=sg-05b45c8a464cfdf5b --region eu-west
 
-"123Eelam"==
+eks_endpoint:
+	aws eks describe-cluster --name devel  --query cluster.endpoint --output text
 
-{"123Eelam" == '123Eelam'}
-${'123Eelam' == "123Eelam"}
+eks_certificateAuthority:
+	aws eks describe-cluster --name devel  --query cluster.certificateAuthority.data --output text
+
+eks_create_kubeconfig:
+	mkdir -p $$HOME/.kube
+	
+dgoss_run:
+	cd docker/dgoss && dgoss run -e JENKINS_OPTS="--httpPort=8080 --httpsPort=-1" -e JAVA_OPTS="-Xmx1048m" jenkins:alpine
+
+
+dgoss_edit:
+	cd docker/dgoss && dgoss edit -p 8080:80 nginx:1.11.10
+

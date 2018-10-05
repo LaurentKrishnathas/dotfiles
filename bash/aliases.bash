@@ -94,6 +94,7 @@ alias j6="export JAVA_HOME=$JDK6; java -version"
 alias j7="export JAVA_HOME=$JDK7; java -version"
 alias j8="export JAVA_HOME=$JDK8; java -version"
 alias j10="export JAVA_HOME=$JDK10; java -version"
+alias j11="export JAVA_HOME=$JDK11; java -version"
 
 alias ideaf='fasd -a -e idea'
 
@@ -171,3 +172,6 @@ alias update_git_repo='find ~/code/src -type d -depth 2 -name "*.git" -exec sh -
 alias update_svn_repo='find ~/code/src -type d -depth 2 -not -name "*.git" -exec sh -c "echo ''; echo ''; cd {} && svn status -u && svn update {}" \;'
 
 alias update_repos="update_git_repo; update_svn_repo"
+
+
+

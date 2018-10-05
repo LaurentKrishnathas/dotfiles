@@ -28,9 +28,9 @@ export ZSH="$GITHUB_DIR/oh-my-zsh.git" #Needed for oh-my-zsh
 export JDK6=/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Home
 export JDK7=/Library/Java/JavaVirtualMachines/jdk1.7.0_80.jdk/Contents/Home
 export JDK8=/Library/Java/JavaVirtualMachines/jdk1.8.0_162.jdk/Contents/Home
-export JDK10=/Library/Java/JavaVirtualMachines/jdk-10.0.2.jdk/Contents/Home
+export JDK11=/Library/Java/JavaVirtualMachines/jdk-11.jdk/Contents/Home
 
-export JAVA_HOME=$JDK10
+export JAVA_HOME=$JDK11
 
 # Python
 export WORKON_HOME=$HOME/.virtualenvs
