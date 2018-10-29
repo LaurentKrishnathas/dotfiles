@@ -12,7 +12,7 @@ export DISPLAY=:0
 
 # Used in functions
 export PROJECT_DIR="$HOME/code/src"
-export GITHUB_DIR="$PROJECT_DIR/github"
+export GITHUB_DIR="$PROJECT_DIR/github.com"
 export GITLAB_DIR="$PROJECT_DIR/gitlab"
 
 export DOTFILES_DIR="$GITHUB_DIR/dotfiles.git"

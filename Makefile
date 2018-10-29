@@ -7,11 +7,14 @@ WARNMSG=echo "check error, may need upgrade"
 GITHUB_DIR=$$HOME/code/src/github.com
 DOTFILES_DIR=$(GITHUB_DIR)/dotfiles.git
 
-install-brew:
+change_remote_to_ssh:
+	git remote set-url origin git@github.com:LaurentKrishnathas/dotfiles.git
+
+install_brew:
 	brew doctor
 	/usr/bin/ruby -e "$$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
-install-zsh:
+install_zsh:
 	rm -rf $$HOME/.zshrc
 	rm -rf $(GITHUB_DIR)/oh-my-zsh.git
 
@@ -19,14 +22,14 @@ install-zsh:
 	git clone https://github.com/robbyrussell/oh-my-zsh.git $(GITHUB_DIR)/oh-my-zsh.git
 	ln -s  $(DOTFILES_DIR)/bash/oh-my-zsh.bash $(GITHUB_DIR)/oh-my-zsh.git/oh-my-zsh.bash
 
-install-fzf:
+install_fzf:
 	rm -rf $(GITHUB_DIR)/fzf.git
 	rm -rf $$HOME/.fzf.bash
 	rm -rf $$HOME/.fzf.zsh
 	git clone --depth 1 https://github.com/junegunn/fzf.git $(GITHUB_DIR)/fzf.git
 	$(GITHUB_DIR)/fzf.git/install --all
 
-install-jenkins:
+install_jenkins:
 	mkdir -p $$HOME/bin
 	rm -rf $$HOME/bin/jenkins
 	rm -rf $$HOME/bin/jenkins-cli.jar
@@ -34,27 +37,27 @@ install-jenkins:
 	ln -s  $(DOTFILES_DIR)/bash/jenkins.bash $$HOME/bin/jenkins
 
 
-install-zaw:
+install_zaw:
 	rm -rf $(GITHUB_DIR)/zaw.git
 	git clone git://github.com/zsh-users/zaw.git $(GITHUB_DIR)/zaw.git
 
-install-vim-files:
+install_vim-files:
 	rm -rf $$HOME/.vimrc
 	rm -rf $$HOME/.ideavimrc
 	ln -s $(DOTFILES_DIR)/config/vim/vimrc $$HOME/.vimrc
 	ln -s $(DOTFILES_DIR)/config/vim/ideavimrc $$HOME/.ideavimrc
 	vim  +PlugInstall +:qall
 
-install-tmux-files:
+install_tmux-files:
 	rm -rf $$HOME/.tmux.conf
 	ln -s $(DOTFILES_DIR)/config/tmux/tmux.conf $$HOME/.tmux.conf
 
-install-grv-files:
+install_grv_files:
 	rm -rf $$HOME/.config/grv
 	mkdir -p $$HOME/.config/grv
 	ln -s $(DOTFILES_DIR)/config/grv/grvrc $$HOME/.config/grv/grvrc
 
-install-brew-list:
+install_brew_list:
 	brew update
 	brew install grv || $(WARNMSG)
 	brew install cheat 	|| $(WARNMSG)	# shorter man pages
@@ -99,21 +102,21 @@ install-brew-list:
 	brew cask install vagrant  || $(WARNMSG)
 	brew cask install vagrant-manager  || $(WARNMSG)
 
-install-minikube:
+install_minikube:
 	brew install kubernetes-cli
 	curl -Lo minikube https://storage.googleapis.com/minikube/releases/v0.28.2/minikube-darwin-amd64 && chmod +x minikube && sudo mv minikube /usr/local/bin/
 	brew tap jenkins-x/jx
 	brew install jx
 	brew install kubernetes-helm
 
-install-node-list:
+install_node_list:
 	sudo npm install -g tldr
 	sudo npm install -g yo grunt-cli bower
 	sudo npm install -g generator-angular
 	sudo npm install -g json2yaml
 	sudo npm install -g serverless
 
-install-pip-list:
+install_pip_list:
 	sudo easy_install pip || $(WARNMSG)
 	#sudo pip install glances 		# show cpu mem realtime report
 	sudo pip install warchdog || $(WARNMSG)		#utility to watch filesystem for changes
