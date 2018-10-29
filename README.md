@@ -1,4 +1,12 @@
+
+
+installing locally:
+
+
+
+
 personal repo
+
 Laurent Krishnathas
 
 vimium: chrome vim like plugin 

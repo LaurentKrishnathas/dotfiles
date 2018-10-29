@@ -4,7 +4,7 @@ install-tools: install-zsh install-fzf install-zaw
 
 
 WARNMSG=echo "check error, may need upgrade"
-GITHUB_DIR=$$HOME/code/src/github
+GITHUB_DIR=$$HOME/code/src/github.com
 DOTFILES_DIR=$(GITHUB_DIR)/dotfiles.git
 
 init:

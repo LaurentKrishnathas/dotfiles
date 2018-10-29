@@ -6,4 +6,7 @@ buildSrc/build
 .DS_Store
 .idea/*
 **/*.swp
+**/*.bk
+**/.vagrant
+
 .gradletasknamecache

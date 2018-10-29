@@ -148,6 +148,8 @@ alias cp='cp -iv'
 alias mv='mv -iv'
 alias mv='mv -iv'
 
+alias m='make'
+
 
 alias tld='tldr'
 alias tf='docker run -it -v $HOME/.aws:/root/.aws -v $(pwd):/code -w /code hashicorp/terraform:0.11.6 '
