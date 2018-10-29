@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 export PROJECT_DIR=$HOME/code
-export GITHUB_DIR=$HOME/code/github
+export GITHUB_DIR=$HOME/code/github.com
 
 export DOTFILES_DIR="$(GITHUB_DIR)/dotfiles.git"
 

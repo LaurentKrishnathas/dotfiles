@@ -7,7 +7,9 @@ WARNMSG=echo "check error, may need upgrade"
 GITHUB_DIR=$$HOME/code/src/github.com
 DOTFILES_DIR=$(GITHUB_DIR)/dotfiles.git
 
-change_remote_to_ssh:
+all: install_zsh install_fzf install_vim_files install_tmux_files
+
+update_remote_url_to_ssh:
 	git remote set-url origin git@github.com:LaurentKrishnathas/dotfiles.git
 
 install_brew:
@@ -41,14 +43,14 @@ install_zaw:
 	rm -rf $(GITHUB_DIR)/zaw.git
 	git clone git://github.com/zsh-users/zaw.git $(GITHUB_DIR)/zaw.git
 
-install_vim-files:
+install_vim_files:
 	rm -rf $$HOME/.vimrc
 	rm -rf $$HOME/.ideavimrc
 	ln -s $(DOTFILES_DIR)/config/vim/vimrc $$HOME/.vimrc
 	ln -s $(DOTFILES_DIR)/config/vim/ideavimrc $$HOME/.ideavimrc
 	vim  +PlugInstall +:qall
 
-install_tmux-files:
+install_tmux_files:
 	rm -rf $$HOME/.tmux.conf
 	ln -s $(DOTFILES_DIR)/config/tmux/tmux.conf $$HOME/.tmux.conf
 
@@ -134,11 +136,11 @@ download-docker-images:
 change2zsh:
 	chsh -s /usr/bin/zsh
 
-moveScreenshotDir2Downloads:
+move_sreenshotdir2downloads:
 	defaults write com.apple.screencapture location $$HOME/Downloads
 	killall SystemUIServer
 
-install-crontab:
+install_crontab:
 	crontab -l || true
 	crontab -r || true
 	crontab -l || true

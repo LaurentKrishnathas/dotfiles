@@ -3,4 +3,4 @@
 #0 9-18 * * mon-fri open -a Terminal "$HOME/Projects/gitlab/dotfiles.git/crontab/update-scm-projects.bash"
 #
 0 9 * * * /usr/bin/docker system prune -f
-0 * * * * $HOME/code/github/dotfiles.git/config/crontab/update-scm-projects.bash
+0 * * * * $HOME/code/github.com/dotfiles.git/config/crontab/update-scm-projects.bash
