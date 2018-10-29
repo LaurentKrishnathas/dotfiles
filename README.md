@@ -1,7 +1,7 @@
 
 
 install:
-    curl 
+    /> curl -s https://raw.githubusercontent.com/LaurentKrishnathas/dotfiles/master/bash/install-dotfiles.bash | bash
 
 
 
