@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+set -x
+set -u
+set -e
 
 GITHUB_DIR=$$HOME/code/src/github.com
 DOTFILES_DIR=$(GITHUB_DIR)/dotfiles.git
