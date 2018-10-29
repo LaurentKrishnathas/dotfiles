@@ -7,15 +7,11 @@ WARNMSG=echo "check error, may need upgrade"
 GITHUB_DIR=$$HOME/code/src/github.com
 DOTFILES_DIR=$(GITHUB_DIR)/dotfiles.git
 
-init:
-	mkdir -p $(GITHUB_DIR)
-	[ ! -d "$(DOTFILES_DIR)" ]  && git clone https://github.com/LaurentKrishnathas/dotfiles.git $(DOTFILES_DIR) || echo "skip cloning"
-
 install-brew:
 	brew doctor
 	/usr/bin/ruby -e "$$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
-install-zsh: init
+install-zsh:
 	rm -rf $$HOME/.zshrc
 	rm -rf $(GITHUB_DIR)/oh-my-zsh.git
 
@@ -23,14 +19,14 @@ install-zsh: init
 	git clone https://github.com/robbyrussell/oh-my-zsh.git $(GITHUB_DIR)/oh-my-zsh.git
 	ln -s  $(DOTFILES_DIR)/bash/oh-my-zsh.bash $(GITHUB_DIR)/oh-my-zsh.git/oh-my-zsh.bash
 
-install-fzf: init
+install-fzf:
 	rm -rf $(GITHUB_DIR)/fzf.git
 	rm -rf $$HOME/.fzf.bash
 	rm -rf $$HOME/.fzf.zsh
 	git clone --depth 1 https://github.com/junegunn/fzf.git $(GITHUB_DIR)/fzf.git
 	$(GITHUB_DIR)/fzf.git/install --all
 
-install-jenkins: init
+install-jenkins:
 	mkdir -p $$HOME/bin
 	rm -rf $$HOME/bin/jenkins
 	rm -rf $$HOME/bin/jenkins-cli.jar
@@ -38,7 +34,7 @@ install-jenkins: init
 	ln -s  $(DOTFILES_DIR)/bash/jenkins.bash $$HOME/bin/jenkins
 
 
-install-zaw: init
+install-zaw:
 	rm -rf $(GITHUB_DIR)/zaw.git
 	git clone git://github.com/zsh-users/zaw.git $(GITHUB_DIR)/zaw.git
 

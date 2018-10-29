@@ -1,6 +1,7 @@
 
 
-installing locally:
+install:
+    curl 
 
 
 
