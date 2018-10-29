@@ -108,7 +108,4 @@ done
 [[ -f /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh ]] && . /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh
 
 
-unalias grv
-#if [[ "$(ls -A ~/.dargs/completions/zsh)" ]];then
-#  for f in ~/.dargs/completions/zsh/*;do source "$f";done
-#fi
+unalias grv #removed to support grv the commandline tools to browser git repository

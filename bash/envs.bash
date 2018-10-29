@@ -44,5 +44,3 @@ export PACKER_HOME="$HOME/Applications/packer"
 
 export PATH=$PATH:~/bin:$GOROOT/bin:$GOPATH/bin:$MVN_HOME/bin:$ACTIVATOR_HOME:$PACKER_HOME:$HOME/Library/Python/2.7/bin
 
-export ECR_REGISTRY_URI="101999902141.dkr.ecr.eu-west-1.amazonaws.com"
-
