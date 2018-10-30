@@ -10,3 +10,4 @@ buildSrc/build
 **/.vagrant
 
 .gradletasknamecache
+dotfiles.git.iml

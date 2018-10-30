@@ -7,7 +7,7 @@ WARNMSG=echo "check error, may need upgrade"
 GITHUB_DIR=$$HOME/code/src/github.com
 DOTFILES_DIR=$(GITHUB_DIR)/dotfiles.git
 
-all: install_zsh install_fzf install_vim_files install_tmux_files
+all: install_zsh install_fzf install_vim_files install_tmux_files install_vim_files install_grv_files install_sdkman
 
 update_remote_url_to_ssh:
 	git remote set-url origin git@github.com:LaurentKrishnathas/dotfiles.git
@@ -15,6 +15,16 @@ update_remote_url_to_ssh:
 install_brew:
 	brew doctor
 	/usr/bin/ruby -e "$$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+
+install_sdkman:
+	curl -s "https://get.sdkman.io" | bash
+	source ~/.sdkman/bin/sdkman-init.sh \
+	&& sdk install groovy \
+	&& sdk install gradle \
+	&& sdk install grails
+	&& sdk install infrastructor
+	&& sdk install springboot
+	&& sdk install VisualVM
 
 install_zsh:
 	rm -rf $$HOME/.zshrc
@@ -134,7 +144,7 @@ download-docker-images:
 
 
 change2zsh:
-	chsh -s /usr/bin/zsh
+	chsh -s /bin/zsh
 
 move_sreenshotdir2downloads:
 	defaults write com.apple.screencapture location $$HOME/Downloads
