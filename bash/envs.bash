@@ -25,10 +25,12 @@ export HOWTO_DIR="$GITLAB_DIR/howto.git"
 export ZSH="$GITHUB_DIR/oh-my-zsh.git" #Needed for oh-my-zsh
 
 # Java
-export JDK6=/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Home
-export JDK7=/Library/Java/JavaVirtualMachines/jdk1.7.0_80.jdk/Contents/Home
-export JDK8=/Library/Java/JavaVirtualMachines/jdk1.8.0_162.jdk/Contents/Home
-export JDK11=/Library/Java/JavaVirtualMachines/jdk-11.jdk/Contents/Home
+export JDK_DIRS=/Library/Java/JavaVirtualMachines
+
+export JDK6=$JDK_DIRS/1.6.0.jdk/Contents/Home
+export JDK7=$JDK_DIRS/jdk1.7.0_80.jdk/Contents/Home
+export JDK8=$JDK_DIRS/jdk1.8.0_191.jdk/Contents/Home
+export JDK11=$JDK_DIRS/jdk-11.0.1.jdk/Contents/Home
 
 export JAVA_HOME=$JDK11
 
