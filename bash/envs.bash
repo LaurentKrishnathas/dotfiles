@@ -42,5 +42,13 @@ export WORKON_HOME=$HOME/.virtualenvs
 
 export PACKER_HOME="$HOME/Applications/packer"
 
-export PATH=$PATH:~/bin:$GOROOT/bin:$GOPATH/bin:$MVN_HOME/bin:$ACTIVATOR_HOME:$PACKER_HOME:$HOME/Library/Python/2.7/bin
+
+export NPM_PACKAGES="${HOME}/.npm-packages" #npm was not using this env so hardcoded everywhere to make it user local and project local
+# Unset manpath so we can inherit from /etc/manpath via the `manpath` command
+unset MANPATH # delete if you already modified MANPATH elsewhere in your config
+export MANPATH="$NPM_PACKAGES/share/man:$(manpath)"
+
+
+
+export PATH=$NPM_PACKAGES/node_modules/.bin:$PATH:~/bin:$GOROOT/bin:$GOPATH/bin:$MVN_HOME/bin:$ACTIVATOR_HOME:$PACKER_HOME:$HOME/Library/Python/2.7/bin:$HOME/Library/Python/3.7/bin
 

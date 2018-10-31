@@ -1,17 +1,17 @@
-install: install-tools install-config install-brew-list install-node-list install-pip-list install-fzf
-install-config:  install-vim-files install-tmux-files install-grv-files
-install-tools: install-zsh install-fzf install-zaw
-
-
 WARNMSG=echo "check error, may need upgrade"
 GITHUB_DIR=$$HOME/code/src/github.com
 DOTFILES_DIR=$(GITHUB_DIR)/dotfiles.git
 
-all: install_zsh install_fzf install_vim_files install_tmux_files install_vim_files install_grv_files install_sdkman
+
+all:  install_tools  install_config
+install_files: install_zsh install_fzf install_vim_files install_tmux_files install_vim_files install_grv_files
+install_tools: install_zsh install_brew_list  install_pip_list  install_node_list install_sdkman
+
 
 update_remote_url_to_ssh:
 	git remote set-url origin git@github.com:LaurentKrishnathas/dotfiles.git
 
+#### tools ################################################################################################
 install_brew:
 	brew doctor
 	/usr/bin/ruby -e "$$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
@@ -21,10 +21,9 @@ install_sdkman:
 	source ~/.sdkman/bin/sdkman-init.sh \
 	&& sdk install groovy \
 	&& sdk install gradle \
-	&& sdk install grails
-	&& sdk install infrastructor
+	&& sdk install grails \
+	&& sdk install infrastructor \
 	&& sdk install springboot
-	&& sdk install VisualVM
 
 install_zsh:
 	rm -rf $$HOME/.zshrc
@@ -122,22 +121,26 @@ install_minikube:
 	brew install kubernetes-helm
 
 install_node_list:
-	sudo npm install -g tldr
-	sudo npm install -g yo grunt-cli bower
-	sudo npm install -g generator-angular
-	sudo npm install -g json2yaml
-	sudo npm install -g serverless
+#	rm -rf  $$NPM_PACKAGES
+	mkdir -p $$NPM_PACKAGES
+	cd $$NPM_PACKAGES && pwd && npm install  tldr
+	cd $$NPM_PACKAGES && npm install  yo
+	cd $$NPM_PACKAGES && npm install  grunt-cli
+	cd $$NPM_PACKAGES && npm install  bower
+	cd $$NPM_PACKAGES && npm install  generator-angular
+	cd $$NPM_PACKAGES && npm install  json2yaml
+	cd $$NPM_PACKAGES && npm install  serverless
+	tldr --version
 
 install_pip_list:
-	sudo easy_install pip || $(WARNMSG)
-	#sudo pip install glances 		# show cpu mem realtime report
-	sudo pip install warchdog || $(WARNMSG)		#utility to watch filesystem for changes
-	sudo pip install ansible --quiet || $(WARNMSG)
 	easy_install --user pip || $(WARNMSG)
+	pip install --user glances || $(WARNMSG)		# show cpu mem realtime report
+	pip install --user warchdog || $(WARNMSG)		#utility to watch filesystem for changes
+	pip install --user ansible --quiet || $(WARNMSG)
 	pip install --user virtualenv || $(WARNMSG)
-	cd /tmp/ && curl -O https://bootstrap.pypa.io/get-pip.py
-	cd python3 get-pip.py --user
+	cd /tmp/ && curl -O https://bootstrap.pypa.io/get-pip.py && python3 get-pip.py --user
 	pip3 install awscli --upgrade --user
+
 
 download-docker-images:
 	docker pull tomcat
@@ -161,7 +164,7 @@ install_crontab:
 	ls -la /tmp/crontab
 	tail -f /tmp/crontab/*
 
-
+####################################################################################################
 
 INSTALL_DIR=build
 install_aws_kubectl_aws_iam_authentication:
