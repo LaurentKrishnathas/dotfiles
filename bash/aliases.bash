@@ -166,6 +166,8 @@ alias vagrant_search_boxex='https://app.vagrantup.com/boxes/search?q='
 
 alias cddown='cd `find . -type d | fzf`'
 
+alias source_sdkman='source ~/.sdkman/bin/sdkman-init.sh'
+
 alias wify='networksetup -setairportpower en0'
 alias wify_on='networksetup -setairportpower en0 on'
 alias wify_off='networksetup -setairportpower en0 off'
@@ -174,6 +176,4 @@ alias update_git_repo='find ~/code/src -type d -depth 2 -name "*.git" -exec sh -
 alias update_svn_repo='find ~/code/src -type d -depth 2 -not -name "*.git" -exec sh -c "echo ''; echo ''; cd {} && svn status -u && svn update {}" \;'
 
 alias update_repos="update_git_repo; update_svn_repo"
-
-
 

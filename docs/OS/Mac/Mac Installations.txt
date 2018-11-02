@@ -123,3 +123,14 @@ Wget:
   chmod +x ./grv
   ./grv -repoFilePath /path/to/repo 
 
+
+----
+
+Debuging bash functions:
+	source file; echo $(set -x; functionName)
+
+
+installing jdk6 on mac:
+    https://support.apple.com/kb/dl1572?locale=en_GB
+
+
