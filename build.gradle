@@ -72,6 +72,12 @@ task "install-tmuxinator"{task->
 
 task cleanAll(dependsOn: 'cleanAllGradleProj')
 
+task testing{
+	doLast{
+		println "testing OK"
+	}
+}
+
 check.dependsOn checkGitSSHKeys
 build.dependsOn updateSvnGitRepos
 
