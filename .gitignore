@@ -1,13 +1,9 @@
-buildSrc/.gradle
-buildSrc/build
-**/DS_Store
+# Ignore Gradle project-specific cache directory
 .gradle
-.idea
-.DS_Store
-.idea/*
-**/*.swp
-**/*.bk
-**/.vagrant
 
-.gradletasknamecache
+# Ignore Gradle build output directory
+build
 dotfiles.git.iml
+**/.DS_Store
+idea
+.idea
