@@ -5,7 +5,7 @@ DOTFILES_DIR=$(GITHUB_DIR)/dotfiles.git
 
 all:  install_tools  install_config
 install_files: install_zsh install_fzf install_vim_files install_tmux_files install_vim_files install_grv_files
-install_tools: install_zsh install_brew_list  install_pip_list  install_node_list install_sdkman
+install_tools: install_zsh install_brew_list  install_pip_list  install_node_list install_sdkman install_aws_kubectl_aws_iam_authentication
 
 
 update_remote_url_to_ssh:
@@ -168,10 +168,10 @@ install_crontab:
 
 INSTALL_DIR=build
 install_aws_kubectl_aws_iam_authentication:
-	#mkdir -p $(INSTALL_DIR)
-	#curl -o $(INSTALL_DIR)/kubectl https://amazon-eks.s3-us-west-2.amazonaws.com/1.10.3/2018-07-26/bin/darwin/amd64/kubectl
-	#curl -o $(INSTALL_DIR)/kubectl.sha256 https://amazon-eks.s3-us-west-2.amazonaws.com/1.10.3/2018-07-26/bin/darwin/amd64/kubectl.sha256	
-	#openssl sha -sha256  $(INSTALL_DIR)/kubectl
+	mkdir -p $(INSTALL_DIR)
+	curl -o $(INSTALL_DIR)/kubectl https://amazon-eks.s3-us-west-2.amazonaws.com/1.10.3/2018-07-26/bin/darwin/amd64/kubectl
+	curl -o $(INSTALL_DIR)/kubectl.sha256 https://amazon-eks.s3-us-west-2.amazonaws.com/1.10.3/2018-07-26/bin/darwin/amd64/kubectl.sha256
+	openssl sha -sha256  $(INSTALL_DIR)/kubectl
 	chmod +x $(INSTALL_DIR)/kubectl
 	$(INSTALL_DIR)/kubectl version --short --client		
 	curl -o $(INSTALL_DIR)/aws-iam-authenticator https://amazon-eks.s3-us-west-2.amazonaws.com/1.10.3/2018-07-26/bin/darwin/amd64/aws-iam-authenticator
