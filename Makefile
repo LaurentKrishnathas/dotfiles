@@ -44,7 +44,7 @@ install_jenkins:
 	mkdir -p $$HOME/bin
 	rm -rf $$HOME/bin/jenkins
 	rm -rf $$HOME/bin/jenkins-cli.jar
-	wget -o $$HOME/bin/jenkins-cli.jar $JENKINS_URL/jnlpJars/jenkins-cli.jar
+	wget -o $$HOME/bin/jenkins-cli.jar $$JENKINS_URL/jnlpJars/jenkins-cli.jar
 	ln -s  $(DOTFILES_DIR)/bash/jenkins.bash $$HOME/bin/jenkins
 
 

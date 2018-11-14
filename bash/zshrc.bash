@@ -48,6 +48,10 @@ PATH=$PATH:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:$HOME/bin:/
 
 export PATH
 
+bashfile_array=()
+bashfile_array+="$HOME/.init.bash"
+bashfile_array+="$SHELL_SCRIPT_BASEDIR/variables.bash"
+
 if [ ! -z "$TMUX" ]; then
     echo "tmux detected."
     [[ -s "$ohmyzsh_file" ]] && echo "source $ohmyzsh_file" && source $ohmyzsh_file
@@ -59,28 +63,26 @@ else
     test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
 
-    bashfile_array=()
-    bashfile_array+="$SHELL_SCRIPT_BASEDIR/variables.bash"
-    bashfile_array+="$HOME/.init.bash"
     bashfile_array+="$ohmyzsh_file"
     bashfile_array+="$HOME/.sdkman/bin/sdkman-init.sh"
     bashfile_array+="$HOME/.jenv/bin/jenv-init.sh"
     bashfile_array+="$HOME/.jenv/commands/completion.sh"
     bashfile_array+="$HOME/gits/zaw.git/zaw.zsh"
 
-    for file in "${bashfile_array[@]}"
-    do
-        if [ -s "$file" ]; then
-            echo "source $file"
-            source $file
-        else
-            echo "WARNING $file missing"
-        fi
-    done
 
     # loading jenkins autocomplete
     [[ -s "$DOTFILES_DIR/bash/jenkins.bash" ]] && echo "source jenkins autocomplete ..." && source $DOTFILES_DIR/bash/jenkins.bash autocomplete || echo "check $HOME/bin/jenkins symlink missing"
 fi
+
+for file in "${bashfile_array[@]}"
+do
+    if [ -s "$file" ]; then
+        echo "source $file"
+        source $file
+    else
+        echo "WARNING $file missing"
+    fi
+done
 
 # something overwrite key binding, so this is placed just before fzf
 load_vi_mode
