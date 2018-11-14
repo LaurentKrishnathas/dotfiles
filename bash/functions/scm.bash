@@ -7,7 +7,9 @@ function commit_push_codecommit {
 }
 
 function commit {
-	if [ -d .git ]; then
+	if  [ -d .svn ]; then
+		commitsvn $*
+	elif  [ -d .git/svn ]; then
 		git svn info>/dev/null  2>&1
 		local status_=$?
 		if [ $status_ -ne 0 ]; then
@@ -15,8 +17,8 @@ function commit {
 		else
 			commitgitsvn  $*
 		fi
-	elif  [ -d .svn ]; then
-		commitsvn $*
+	elif  [ -d .git ]; then
+			commitgit  $*
 	else
 		echo "Warning: Hey! There is no .git or .svn folder here, get lost !!!"
 	fi

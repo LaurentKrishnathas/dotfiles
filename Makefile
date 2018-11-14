@@ -44,7 +44,9 @@ install_jenkins:
 	mkdir -p $$HOME/bin
 	rm -rf $$HOME/bin/jenkins
 	rm -rf $$HOME/bin/jenkins-cli.jar
-	wget -o $$HOME/bin/jenkins-cli.jar $$JENKINS_URL/jnlpJars/jenkins-cli.jar
+#	wget not working probably antivirus is fiddling with it
+#	wget -o $$HOME/bin/jenkins-cli.jar $$JENKINS_URL/jnlpJars/jenkins-cli.jar
+	ln -s  $(DOTFILES_DIR)/lib/jenkins-cli.jar $$HOME/bin/jenkins-cli.jar
 	ln -s  $(DOTFILES_DIR)/bash/jenkins.bash $$HOME/bin/jenkins
 
 

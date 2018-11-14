@@ -27,6 +27,9 @@
 #
 # $ jenkins -cc
 
+#set -x
+
+
 JENKINS_RC=~/.jenkinsrc
 JENKINS_CACHE=~/.jenkinsjobs
 
@@ -172,7 +175,8 @@ else
 	JAVA=$(which java)
 	# CLI=$(which jenkins-cli.jar)
 	CLI=~/bin/jenkins-cli.jar
-	CMD="$JAVA -jar $CLI -s $URL"
+#	CMD="$JAVA -jar $CLI -s $URL"
+	CMD="$JAVA -jar $CLI  $URL"
 
 	case "$1" in
 		restart|safe-restart|shutdown|safe-shutdown|delete-job|delete-node|delete-builds )
