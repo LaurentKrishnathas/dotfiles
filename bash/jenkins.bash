@@ -29,9 +29,9 @@
 
 #set -x
 
-
 JENKINS_RC=~/.jenkinsrc
 JENKINS_CACHE=~/.jenkinsjobs
+
 
 if [ ! -f $JENKINS_RC ]
 then
@@ -45,7 +45,7 @@ then
 	# read -se TOKEN
 
 	cat << CFG > "$JENKINS_RC"
-#created by jenkins.bash script for jenkins cli 
+#created by jenkins.bash script for jenkins cli
 #USERNAME=$USERNAME
 USERNAME=lk
 TOKEN=$TOKEN
@@ -65,11 +65,16 @@ elif [ "$1" = "autocomplete" ]
 then
 	_jenkins_bash() {
 		local CURRENT WORDS
+		echo "DEBUG - 1"
 
 		COMPREPLY=()
+		echo "DEBUG - 2"
 		CURRENT=${COMP_WORDS[COMP_CWORD]}
+		echo "DEBUG - 3"
 		WORDS=$(jenkins list-jobs)
+		echo "DEBUG - 4"
 		COMPREPLY=($(compgen -W "$WORDS" -- $CURRENT 2>/dev/null))
+		echo "DEBUG - 5"
 
 		return 0
 	}
@@ -178,6 +183,8 @@ else
 #	CMD="$JAVA -jar $CLI -s $URL"
 	CMD="$JAVA -jar $CLI  $URL"
 
+
+echo "DEBUG - CMD=$CMD"
 	case "$1" in
 		restart|safe-restart|shutdown|safe-shutdown|delete-job|delete-node|delete-builds )
 			echo -ne "\033[0;31mAre you sure you want to run the $1 command ? [y/N] \033[0m"
@@ -207,6 +214,7 @@ else
 		shift
 		jenkins groovy $DOTFILES_DIR/src/main/groovy/jenkins/report.groovy $*
 	else
+	    echo "DEBUG - $CMD $*"
 		$CMD $*
 	fi
 fi

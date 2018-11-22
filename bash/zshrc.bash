@@ -70,8 +70,6 @@ else
     bashfile_array+="$HOME/gits/zaw.git/zaw.zsh"
 
 
-    # loading jenkins autocomplete
-    [[ -s "$DOTFILES_DIR/bash/jenkins.bash" ]] && echo "source jenkins autocomplete ..." && source $DOTFILES_DIR/bash/jenkins.bash autocomplete || echo "check $HOME/bin/jenkins symlink missing"
 fi
 
 for file in "${bashfile_array[@]}"
@@ -83,6 +81,9 @@ do
         echo "WARNING $file missing"
     fi
 done
+
+# loading jenkins autocomplete
+[[ -s "$HOME/bin/jenkins" ]] && echo "source jenkins autocomplete ..." && source $DOTFILES_DIR/bash/jenkins.bash autocomplete || echo "check $HOME/bin/jenkins symlink missing"
 
 # something overwrite key binding, so this is placed just before fzf
 load_vi_mode

@@ -1,8 +1,109 @@
-let mapleader = "\\"
+"let mapleader = "\\"
+let mapleader = "\<Space>"
+
+imap <leader>q <Esc>
+
+nnoremap tn :tabnew<cr>
+nnoremap tk :tabnext<cr>
+nnoremap tj :tabprev<cr>
+nnoremap th :tabfirst<cr>
+nnoremap tl :tablast<cr>
+
+  
+nnoremap <leader>s :w<cr>
+nnoremap <leader>q :q!<cr>
+
+" following is not working 
+imap <leader>' ''<Esc>i
+imap <leader>" ""<Esc>i
+imap <leader>( ()<Esc>i
+imap <leader>[ []<Esc>i
+imap <leader>{ {}<E>i
+
+nnoremap <leader>rv :source<Space>~/.vimrc<cr>
+
+
+" moving visual block
+vnoremap J :m'>+1<CR>gv=gv
+vnoremap K :m'<-2<CR>gv=gv''
+
+
 
 map <leader>n :NERDTreeToggle<CR>
 map <leader><leader> <Plug>(easymotion-prefix)
 nmap <Leader>f <Plug>(easymotion-overwin-f)
+
+
+
+
+" split
+noremap <Leader>h :<C-u>split<CR>
+noremap <Leader>v :<C-u>vsplit<CR>
+
+"" Git
+" noremap <Leader>ga :Gwrite<CR>
+" noremap <Leader>gc :Gcommit<CR>
+" noremap <Leader>gsh :Gpush<CR>
+" noremap <Leader>gll :Gpull<CR>
+noremap <Leader>gs :Gstatus<CR>
+" noremap <Leader>gb :Gblame<CR>
+" noremap <Leader>gd :Gvdiff<CR>
+" noremap <Leader>gr :Gremove<CR>
+
+
+if executable('ag')
+let $FZF_DEFAULT_COMMAND ='ag --hidden --ignore .git -g""'
+  set grepprg=ag\ --nogroup\ --nocolor
+endif"'
+
+"" Switching windows
+noremap <C-j> <C-w>j
+noremap <C-k> <C-w>k
+noremap <C-l> <C-w>l
+noremap <C-h> <C-w>h
+
+"" Vmap for maintain Visual Mode after shifting > and <
+vmap < <gv
+vmap > >gv
+
+"" Directories for swp files
+set nobackup
+set noswapfile"
+
+" Search mappings: These will make it so that going to the next one in a
+" search will center on the line it's found in.
+nnoremap n nzzzv
+nnoremap N Nzzzv""
+
+" Toggle Relative Number
+nnoremap <silent> <leader>nb :set relativenumber!<CR>
+
+function! GoogleSearch()
+     let searchterm = getreg("g")
+     exec "silent! !chrome \"http://google.com/search?q=" . searchterm . "\" &"
+endfunction
+vnoremap <F6> "gy<Esc>:call GoogleSearch()<CR>
+
+
+
+
+
+
+
+
+
+
+
+function! NumberToggle()
+  if(&relativenumber == 1)
+    set number
+  else
+    set relativenumber
+  endif
+endfunc
+
+nnoremap <c-n> :call NumberToggle()<cr> 
+
 
 syntax on
 
@@ -13,6 +114,11 @@ set backspace=indent,eol,start
 set relativenumber
 set number            " Show line numbers
 set ruler             " Show line and column number
+
+
+
+
+
 syntax enable         " Turn on syntax highlighting allowing local overrides
 
 
@@ -119,6 +225,15 @@ Plug 'easymotion/vim-easymotion'
 
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-repeat'
+Plug 'wellle/tmux-complete.vim' "didn't work
+
+
+
+
+
 
 "Plug 'craigemery/vim-autotag'
 
