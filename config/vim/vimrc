@@ -133,7 +133,8 @@ set relativenumber
 set number            " Show line numbers
 set ruler             " Show line and column number
 
-
+" removing dash in vertical separatory
+set fillchars+=vert:\ 
 
 
 
@@ -161,10 +162,10 @@ iab doLast. <ESC>odoLast{<CR>_RRR_<CR>}<ESC>v?do<CR>>><ESC>/_RRR_<CR>ciw
 
 
 
-" set t_Co=256
-" let g:airline_powerline_fonts = 1
+"set t_Co=256
+"let g:airline_powerline_fonts = 6
 
-" let g:airline_theme='solarized light'
+let g:airline_theme='solarized light'
 
 
 
