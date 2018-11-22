@@ -1,44 +1,44 @@
 "let mapleader = "\\"
 let mapleader = "\<Space>"
 
+" leaving insert mode 
 imap <leader>q <Esc>
-
-nnoremap tn :tabnew<cr>
-nnoremap tk :tabnext<cr>
-nnoremap tj :tabprev<cr>
-nnoremap th :tabfirst<cr>
-nnoremap tl :tablast<cr>
-
-  
-nnoremap <leader>s :w<cr>
-nnoremap <leader>q :q!<cr>
-
-" following is not working 
 imap <leader>' ''<Esc>i
 imap <leader>" ""<Esc>i
 imap <leader>( ()<Esc>i
 imap <leader>[ []<Esc>i
 imap <leader>{ {}<E>i
 
-nnoremap <leader>rv :source<Space>~/.vimrc<cr>
 
+
+" save, quit
+nnoremap <leader>s :w<cr>
+nnoremap <leader>q :q!<cr>
+
+" sourcing and editing vimrc
+nnoremap <leader>rv :source<Space>~/.vimrc<cr>
+nnoremap <leader>ev :tabedit ~/.vimrc<CR>
 
 " moving visual block
 vnoremap J :m'>+1<CR>gv=gv
 vnoremap K :m'<-2<CR>gv=gv''
+  
 
-
-
+" Plugin mapping
 map <leader>n :NERDTreeToggle<CR>
 map <leader><leader> <Plug>(easymotion-prefix)
 nmap <Leader>f <Plug>(easymotion-overwin-f)
 
 
-
-
-" split
+" split windows
 noremap <Leader>h :<C-u>split<CR>
 noremap <Leader>v :<C-u>vsplit<CR>
+
+"" Switching windows
+noremap <C-j> <C-w>j
+noremap <C-k> <C-w>k
+noremap <C-l> <C-w>l
+noremap <C-h> <C-w>h
 
 "" Git
 " noremap <Leader>ga :Gwrite<CR>
@@ -50,17 +50,12 @@ noremap <Leader>gs :Gstatus<CR>
 " noremap <Leader>gd :Gvdiff<CR>
 " noremap <Leader>gr :Gremove<CR>
 
-
+    
 if executable('ag')
 let $FZF_DEFAULT_COMMAND ='ag --hidden --ignore .git -g""'
   set grepprg=ag\ --nogroup\ --nocolor
 endif"'
 
-"" Switching windows
-noremap <C-j> <C-w>j
-noremap <C-k> <C-w>k
-noremap <C-l> <C-w>l
-noremap <C-h> <C-w>h
 
 "" Vmap for maintain Visual Mode after shifting > and <
 vmap < <gv
@@ -73,7 +68,14 @@ set noswapfile"
 " Search mappings: These will make it so that going to the next one in a
 " search will center on the line it's found in.
 nnoremap n nzzzv
-nnoremap N Nzzzv""
+nnoremap N Nzzzv
+nnoremap * *zzzv
+nnoremap # #zzzv
+nnoremap g* g*zzzv
+nnoremap g# g#zzzv
+
+" remove  hightlight after searching
+noremap <silent> <leader><cr> :noh<cr>
 
 " Toggle Relative Number
 nnoremap <silent> <leader>nb :set relativenumber!<CR>
@@ -85,13 +87,29 @@ endfunction
 vnoremap <F6> "gy<Esc>:call GoogleSearch()<CR>
 
 
+" Shift to the next round tab stop. 
+set shiftround  
+" " Set auto indent spacing.
+set shiftwidth=2
 
 
+" Switch between tabs
+nnoremap <Leader>1 1gt
+nnoremap <Leader>2 2gt
+nnoremap <Leader>3 3gt
+nnoremap <Leader>4 4gt
+nnoremap <Leader>5 5gt
+nnoremap <Leader>6 6gt
+nnoremap <Leader>7 7gt
+nnoremap <Leader>8 8gt
+nnoremap <Leader>9 9gt
 
-
-
-
-
+nnoremap tn :tabnew<cr>
+nnoremap tk :tabnext<cr>
+nnoremap tj :tabprev<cr>
+nnoremap th :tabfirst<cr>
+nnoremap tl :tablast<cr>
+" nnoremap tc :tabclose<cr> "closing unsaved without warning
 
 
 function! NumberToggle()
