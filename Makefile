@@ -198,9 +198,9 @@ eks_create_kubeconfig:
 	mkdir -p $$HOME/.kube
 	
 dgoss_run:
-	cd docker/dgoss && dgoss run -e JENKINS_OPTS="--httpPort=8080 --httpsPort=-1" -e JAVA_OPTS="-Xmx1048m" jenkins:alpine
+	cd infra/docker/dgoss && dgoss run -e JENKINS_OPTS="--httpPort=8080 --httpsPort=-1" -e JAVA_OPTS="-Xmx1048m" jenkins:alpine
 
 
 dgoss_edit:
-	cd docker/dgoss && dgoss edit -p 8080:80 nginx:1.11.10
+	cd infra/docker/dgoss && dgoss edit -p 8080:80 nginx:1.11.10
 
