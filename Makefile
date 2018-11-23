@@ -7,6 +7,8 @@ all:  install_tools  install_config
 install_files: install_zsh install_fzf install_vim_files install_tmux_files install_vim_files install_grv_files
 install_tools: install_zsh install_brew_list  install_pip_list  install_node_list install_sdkman install_aws_kubectl_aws_iam_authentication
 
+clean:
+	rm -rf build
 
 update_remote_url_to_ssh:
 	git remote set-url origin git@github.com:LaurentKrishnathas/dotfiles.git
@@ -204,3 +206,66 @@ dgoss_run:
 dgoss_edit:
 	cd infra/docker/dgoss && dgoss edit -p 8080:80 nginx:1.11.10
 
+####################################################################################################
+IMG_DIR=IMG_DIR_not_defined
+DOCKERFILE=infra/docker/image/$(IMG_DIR)/Dockerfile
+TAG=laurentkrishnathas/$(IMG_DIR):latest
+
+build_docker_image:
+	docker build --tag=$(TAG) --rm=false -f $(DOCKERFILE)  .
+
+
+FILE=FILE_not_defined
+GOOS=windows
+GOARCH=386
+build_golang_file_to_binary:
+	mkdir -p $$PWD/build/bin
+	ls -la $$PWD/build/bin
+	docker run -it \
+			-v $$PWD/$(FILE):/code/$(FILE) \
+			-v $$PWD/build/bin:/workspace \
+			-w /workspace golang:1.9.2-alpine3.7 sh -c  "GOOS=$(GOOS) GOARCH=$(GOARCH) go build /code/$(FILE)"
+
+	ls -la $$PWD/build/bin
+
+
+####################################################################################################
+STACK_ENV=dev
+
+STACK ?= stack_not_defined
+
+STACK_NAME=$(STACK)-$(STACK_ENV)
+
+GRAILS_ENV=rc
+
+ALL_ENVS=STACK_NAME=$(STACK_NAME) \
+		 GRAILS_ENV=$(GRAILS_ENV) \
+		 STACK_ENV=$(STACK_ENV)
+
+stack_deploy:
+	$(ALL_ENVS) docker stack deploy --with-registry-auth  -c infra/docker/stack/$(STACK)/$(STACK).yml -c infra/docker/stack/$(STACK)/$(STACK)-$(ENV).yml $(STACK_NAME)
+
+stack_rm:
+	docker stack rm $(STACK_NAME)
+
+stack_logs:
+	docker service logs $(STACK_NAME)
+
+stack_debug:
+	date
+	@echo ""
+	docker stack ls
+	@echo ""
+	docker ps
+	@echo ""
+	docker stats --no-stream
+	@echo ""
+	docker service ls
+	@echo ""
+	docker stack ps $(STACK_NAME)
+	@echo ""
+
+
+stack_watch:
+	echo "running watch ..."
+	watch -n 2 make stack_debug
