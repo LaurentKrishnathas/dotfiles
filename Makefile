@@ -213,6 +213,7 @@ TAG=laurentkrishnathas/$(IMG_DIR):latest
 
 build_docker_image:
 	docker build --tag=$(TAG) --rm=false -f $(DOCKERFILE)  .
+	@echo "testing aws: /> docker run -it -v ~/.aws:/root/.aws -e AWS_PROFILE=devops-dev -e AWS_REGION=eu-west-1 $(TAG)"
 
 
 FILE=FILE_not_defined

@@ -18,6 +18,7 @@ nnoremap <leader>q :q!<cr>
 " sourcing and editing vimrc
 nnoremap <leader>rv :source<Space>~/.vimrc<cr>
 nnoremap <leader>ev :tabedit ~/.vimrc<CR>
+nnoremap <leader>et :tabedit ~/.tmux.conf<CR>
 
 " moving visual block
 vnoremap J :m'>+1<CR>gv=gv
@@ -132,6 +133,7 @@ set backspace=indent,eol,start
 set relativenumber
 set number            " Show line numbers
 set ruler             " Show line and column number
+set mouse=a
 
 " removing dash in vertical separatory
 set fillchars+=vert:\ 
@@ -165,7 +167,7 @@ iab doLast. <ESC>odoLast{<CR>_RRR_<CR>}<ESC>v?do<CR>>><ESC>/_RRR_<CR>ciw
 "set t_Co=256
 "let g:airline_powerline_fonts = 6
 
-let g:airline_theme='solarized light'
+"let g:airline_theme='solarized light'
 
 
 
