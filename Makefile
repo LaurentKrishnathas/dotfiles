@@ -212,9 +212,34 @@ DOCKERFILE=infra/docker/image/$(IMG_DIR)/Dockerfile
 TAG=laurentkrishnathas/$(IMG_DIR):latest
 
 build_docker_image:
+	@echo "usage : "
+	@echo "/> make build_docker_image IMG_DIR=golang-tmp"
+	@echo "/> make build_docker_image IMG_DIR=golang-tmp DOCKERFILE=~/infra/docker/image/golang-tmp/sample.Dockerfile"
+	@echo "..."
 	docker build --tag=$(TAG) --rm=false -f $(DOCKERFILE)  .
-	@echo "testing aws: /> docker run -it -v ~/.aws:/root/.aws -e AWS_PROFILE=devops-dev -e AWS_REGION=eu-west-1 $(TAG)"
 
+test_docker_image: build_docker_image
+	docker run \
+		-it \
+		-v ~/Downloads:/downloads \
+		$(TAG)
+
+test_docker_image_awsconfig: build_docker_image
+	docker run \
+		-it \
+		-v ~/.aws:/root/.aws \
+		-v ~/Downloads:/downloads \
+		-e AWS_PROFILE=devops-dev \
+		-e AWS_REGION=eu-west-1 \
+		$(TAG)
+
+GOSS_PATH=infra/docker/image/$(IMG_DIR)/goss.yaml
+test_docker_image_dgoss: build_docker_image
+	GOSS_PATH=$(GOSS_PATH) \
+	dgoss run \
+		-it \
+		-v ~/Downloads:/downloads \
+		$(TAG)
 
 FILE=FILE_not_defined
 GOOS=windows
