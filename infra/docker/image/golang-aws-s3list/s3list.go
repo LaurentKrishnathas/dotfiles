@@ -12,7 +12,13 @@ import (
 )
 
 func main() {
-	s3svc := s3.New(session.New())
+	newSession, err := session.NewSession()
+	if err != nil {
+		fmt.Println("failed to create new session")
+		return
+	}
+
+	s3svc := s3.New(newSession)
 	result, err := s3svc.ListBuckets(&s3.ListBucketsInput{})
 	if err != nil {
 		fmt.Println("Failed to list buckets", err)
