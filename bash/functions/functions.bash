@@ -59,6 +59,14 @@ function help {		#... display help page
 
 function howto {		#... show the matching howto file
    find "$HOWTO_DIR" -iname  "*$1*" | awk '{print t,$0; t+=1}'
+   sleep 1 
+   num=$(($num+1))
+   find "$HOWTO_DIR" -iname  "*$1*" | head -$num| tail -1
+   $EDITOR "$(find $HOWTO_DIR -iname  "*$1*" | head -$num| tail -1)"
+}
+
+function howtoi {		#... show the matching howto file
+   find "$HOWTO_DIR" -iname  "*$1*" | awk '{print t,$0; t+=1}'
    read num
    num=$(($num+1))
    find "$HOWTO_DIR" -iname  "*$1*" | head -$num| tail -1

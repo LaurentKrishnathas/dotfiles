@@ -34,7 +34,7 @@ function commitgit {
 
 	echo -e "\e[1;31m/> git commit -am\"$*\" ?\e[0m"
 	read press_key_to_continue
-	git commit -am"$*"
+	git commit -m"$*"
 	git status
 	echo -e "\e[1;31m/> git push ?\e[0m"
 	read press_key_to_continue

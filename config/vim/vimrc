@@ -1,5 +1,8 @@
 "let mapleader = "\\"
 let mapleader = "\<Space>"
+let maplocalleader ="<D-"
+
+
 
 " leaving insert mode 
 imap <leader>q <Esc>
@@ -12,6 +15,7 @@ imap <leader>{ {}<E>i
 "exiting insert mode
 "inoremap jk <esc>   "not working as it jumps to next line
 
+nnoremap <leader>ag :!ag<SPACE>
 
 " save, quit
 nnoremap <leader>s :w<cr>
@@ -22,6 +26,7 @@ nnoremap <leader>rv :source<Space>~/.vimrc<cr>
 nnoremap <leader>ev :tabedit ~/.vimrc<CR>
 nnoremap <leader>ec :tabedit ~/.ssh/config<CR>
 nnoremap <leader>et :tabedit ~/.tmux.conf<CR>
+nnoremap <leader>ek :tabedit ~/.ssh/known_hosts<CR>
 
 " moving visual block
 vnoremap J :m'>+1<CR>gv=gv
@@ -33,6 +38,12 @@ map <leader>n :NERDTreeToggle<CR>
 map <leader><leader> <Plug>(easymotion-prefix)
 nmap <Leader>f <Plug>(easymotion-overwin-f)
 
+" Autocommands
+augroup testgroup
+  autocmd FileType javascript nnoremap <buffer> <localleader>/ I//<esc>
+  autocmd FileType python     nnoremap <buffer> <localleader>/ I#<esc>
+  autocmd FileType vim     nnoremap <buffer> <localleader>/ I"<esc>
+augroup END
 
 " split windows
 noremap <Leader>h :<C-u>split<CR>
