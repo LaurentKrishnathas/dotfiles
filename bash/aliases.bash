@@ -82,6 +82,8 @@ alias gconsole='groovyConsole'
 alias gitsvn='git svn'
 alias gsvn='git svn'
 alias git='/usr/local/bin/git'
+alias gdiff='git diff'
+unalias gst
 alias gst='git status --short || (echo "/>svn status" && svn status)'
 alias githubdestop='/usr/local/bin/github'
 
@@ -176,4 +178,11 @@ alias update_git_repo='find ~/code/src -type d -depth 2 -name "*.git" -exec sh -
 alias update_svn_repo='find ~/code/src -type d -depth 2 -not -name "*.git" -exec sh -c "echo ''; echo ''; cd {} && svn status -u && svn update {}" \;'
 
 alias update_repos="update_git_repo; update_svn_repo"
+
+
+
+alias showHiddenFiles='defaults write com.apple.finder AppleShowAllFiles YES; killall Finder /System/Library/CoreServices/Finder.app'
+alias hideHiddenFiles='defaults write com.apple.finder AppleShowAllFiles NO; killall Finder /System/Library/CoreServices/Finder.app'
+
+
 

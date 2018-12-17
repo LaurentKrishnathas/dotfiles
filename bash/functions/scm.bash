@@ -30,7 +30,7 @@ function commitgit {
 	git branch -a
 	git branch -v
 	git status
-	git diff
+	git diff --staged
 
 	echo -e "\e[1;31m/> git commit -am\"$*\" ?\e[0m"
 	read press_key_to_continue
@@ -46,7 +46,7 @@ function commitgitsvn {
 	echo "git svn fetch, git svn rebase ..."
 	git svn fetch
 	git svn rebase
-	git diff
+	git diff --staged
 	git branch -a
 	git branch -v
 	git svn info
