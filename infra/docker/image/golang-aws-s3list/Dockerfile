@@ -17,12 +17,4 @@ FROM alpine:3.7 as runner
 RUN apk --no-cache add curl
 COPY --from=builder /app /app
 
-ENV APP_ENV prod
-
-CMD if [ ${APP_ENV} = prod ]; \
-	then \
-	/app; \
-	else \
-	go get github.com/pilu/fresh && \
-	fresh; \
-	fi
+CMD /app
