@@ -146,6 +146,29 @@ install_pip_list:
 	pip3 install awscli --upgrade --user
 
 
+install_fonts:
+	brew tap caskroom/fonts
+	brew cask install font-fira-code
+	pip install --user powerline-status
+
+
+install_zsh_autosuggestion:
+	git clone https://github.com/zsh-users/zsh-autosuggestions "$(GITHUB_DIR)/zsh-autosuggestions"
+
+install_powerline:
+    git clone https://github.com/powerline/fonts.git --depth=1 /tmp/fonts
+	cd /tmp/fonts && ./install.sh
+
+install_spaceship:
+	if [ -d "$$ZSH/custom/themes/spaceship-prompt" ]; then echo "Warning deleting, Continue ?";read; fi
+	echo "ZSH_CUSTOM=$$ZSH/custom"
+	mkdir -p "$$ZSH/custom/themes/spaceship-prompt"
+	rm -rf "$$ZSH/custom/themes/spaceship-prompt"
+	git clone https://github.com/denysdovhan/spaceship-prompt.git "$$ZSH/custom/themes/spaceship-prompt"
+	if [ -f "$$ZSH/custom/themes/spaceship.zsh-theme" ]; then echo "Warning deleting, Continue ?";read; fi
+	rm -rf "$$ZSH/custom/themes/spaceship.zsh-theme"
+	ln -s "$$ZSH/custom/themes/spaceship-prompt/spaceship.zsh-theme" "$$ZSH/custom/themes/spaceship.zsh-theme"
+
 download-docker-images:
 	docker pull tomcat
 
@@ -224,6 +247,13 @@ test_docker_image: build_docker_image
 		-v ~/Downloads:/downloads \
 		$(TAG)
 
+test_docker_image_dockerdaemon: build_docker_image
+	docker run \
+		-it \
+		-v ~/Downloads:/downloads \
+		-v /var/run/docker.sock:/var/run/docker.sock:ro \
+		$(TAG)
+
 test_docker_image_awsconfig: build_docker_image
 	docker run \
 		-it \
@@ -295,3 +325,11 @@ stack_debug:
 stack_watch:
 	echo "running watch ..."
 	watch -n 2 make stack_debug
+
+
+
+install_awscli_sessionmanager_plugin:
+#	mkdir -p build/ssm
+#	curl "https://s3.amazonaws.com/session-manager-downloads/plugin/latest/mac/sessionmanager-bundle.zip" -o "build/ssm/sessionmanager-bundle.zip"
+#	unzip build/ssm/sessionmanager-bundle.zip -d build/ssm
+	sudo build/ssm/sessionmanager-bundle/install -i /usr/local/sessionmanagerplugin -b /usr/local/bin/session-manager-plugin

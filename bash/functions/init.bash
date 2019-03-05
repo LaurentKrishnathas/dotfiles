@@ -8,7 +8,7 @@ function make_init {
 	for file in "${file_array[@]}"
 	do
 		if [ ! -f $file ]; then
-			cp $DOTFILES_DIR/docker/init/$file ./${file}.rename_me
+			cp $DOTFILES_DIR/infra/docker/init/$file ./${file}.rename_me
 			echo "$file created"
 		else
 			echo "Ignored: $file aldready exists"

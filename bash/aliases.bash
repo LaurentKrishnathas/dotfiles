@@ -106,6 +106,7 @@ alias load_emac_mode='bindkey -e'
 alias load_zsh_theme_default='echo "loading ..."; export ZSH_THEME="robbyrussell"; resource; echo "$RANDOM_THEME LOADED."'
 alias load_zsh_theme_random='echo "loading ..."; export ZSH_THEME="random"; resource; echo "$RANDOM_THEME LOADED."'
 alias load_zsh_theme_agnoster='echo "loading ..."; export ZSH_THEME="agnoster"; resource; echo "$ZSH_THEME LOADED."'
+alias load_zsh_theme_spaceship='echo "loading ..."; export ZSH_THEME="spaceship"; resource; echo "$ZSH_THEME LOADED."'
 
 alias p=pwd
 
@@ -175,7 +176,7 @@ alias wify_on='networksetup -setairportpower en0 on'
 alias wify_off='networksetup -setairportpower en0 off'
 
 alias update_git_repo='find ~/code/src -type d -depth 2 -name "*.git" -exec sh -c "echo ''; echo ''; cd {} && pwd && git status --short -b && git fetch {}" \;'
-alias update_svn_repo='find ~/code/src -type d -depth 2 -not -name "*.git" -exec sh -c "echo ''; echo ''; cd {} && svn status -u && svn update {}" \;'
+alias update_svn_repo='find ~/code/src -type d -depth 2 -not -name "*.git" -exec sh -c "echo ''; echo ''; cd {} && pwd && svn status -u && svn update {}" \;'
 
 alias update_repos="update_git_repo; update_svn_repo"
 

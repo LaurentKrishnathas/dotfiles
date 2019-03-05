@@ -59,7 +59,7 @@ function help {		#... display help page
 
 function howto {		#... show the matching howto file
    find "$HOWTO_DIR" -iname  "*$1*" | awk '{print t,$0; t+=1}'
-   sleep 1 
+   sleep 2 
    num=$(($num+1))
    find "$HOWTO_DIR" -iname  "*$1*" | head -$num| tail -1
    $EDITOR "$(find $HOWTO_DIR -iname  "*$1*" | head -$num| tail -1)"

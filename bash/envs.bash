@@ -32,7 +32,7 @@ export JDK7=$JDK_DIRS/jdk1.7.0_80.jdk/Contents/Home
 export JDK8=$JDK_DIRS/jdk1.8.0_191.jdk/Contents/Home
 export JDK11=$JDK_DIRS/jdk-11.0.1.jdk/Contents/Home
 
-export JAVA_HOME=$JDK11
+export JAVA_HOME=$JDK8
 
 # Python
 export WORKON_HOME=$HOME/.virtualenvs

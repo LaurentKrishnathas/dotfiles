@@ -24,6 +24,26 @@ function commit {
 	fi
 }
 
+function pull {
+	if  [ -d .svn ]; then
+	    svn update
+	elif  [ -d .git/svn ]; then
+		git svn info>/dev/null  2>&1
+		local status_=$?
+		if [ $status_ -ne 0 ]; then
+		    git pull
+		else
+            git svn fetch
+            git svn rebase
+            git status
+		fi
+	elif  [ -d .git ]; then
+		    git pull
+	else
+		echo "Warning: Hey! There is no .git or .svn folder here, get lost !!!"
+	fi
+}
+
 function commitgit {
 	echo "/> git pull ..."
 	git pull
