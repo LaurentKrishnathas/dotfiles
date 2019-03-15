@@ -23,10 +23,12 @@ nnoremap <leader>q :q!<cr>
 
 " sourcing and editing vimrc
 nnoremap <leader>rv :source<Space>~/.vimrc<cr>
-nnoremap <leader>ev :tabedit ~/.vimrc<CR>
-nnoremap <leader>ec :tabedit ~/.ssh/config<CR>
-nnoremap <leader>et :tabedit ~/.tmux.conf<CR>
-nnoremap <leader>ek :tabedit ~/.ssh/known_hosts<CR>
+nnoremap <leader>vim :tabedit ~/.vimrc<CR>
+nnoremap <leader>aws :tabedit ~/.aws/credentials<CR>
+nnoremap <leader>awsc :tabedit ~/.aws/config<CR>
+nnoremap <leader>ssh :tabedit ~/.ssh/config<CR>
+nnoremap <leader>tmux :tabedit ~/.tmux.conf<CR>
+nnoremap <leader>known :tabedit ~/.ssh/known_hosts<CR>
 
 " moving visual block
 vnoremap J :m'>+1<CR>gv=gv

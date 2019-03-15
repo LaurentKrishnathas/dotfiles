@@ -179,6 +179,7 @@ alias update_git_repo='find ~/code/src -type d -depth 2 -name "*.git" -exec sh -
 alias update_svn_repo='find ~/code/src -type d -depth 2 -not -name "*.git" -exec sh -c "echo ''; echo ''; cd {} && pwd && svn status -u && svn update {}" \;'
 
 alias update_repos="update_git_repo; update_svn_repo"
+alias pullall="update_git_repo; update_svn_repo"
 
 
 
