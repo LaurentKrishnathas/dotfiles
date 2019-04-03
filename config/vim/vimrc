@@ -29,6 +29,10 @@ nnoremap <leader>awsc :tabedit ~/.aws/config<CR>
 nnoremap <leader>ssh :tabedit ~/.ssh/config<CR>
 nnoremap <leader>tmux :tabedit ~/.tmux.conf<CR>
 nnoremap <leader>known :tabedit ~/.ssh/known_hosts<CR>
+nnoremap <leader>run V:'<,'>w !sh
+nnoremap <leader>runline V:'<,'>w !sh<CR>
+nnoremap <leader>runi V:'<,'> !sh
+nnoremap <leader>runall :'<,'> !sh
 
 " moving visual block
 vnoremap J :m'>+1<CR>gv=gv
@@ -79,8 +83,17 @@ vmap < <gv
 vmap > >gv
 
 "" Directories for swp files
-set nobackup
-set noswapfile"
+"set nobackup
+"set noswapfile"
+set backupdir=/tmp//
+set directory=/tmp//
+set undodir=/tmp//
+set backup
+autocmd BufWritePre * let &backupext = substitute(expand('%:p:h'),'/','%','g')
+
+
+
+
 
 " Search mappings: These will make it so that going to the next one in a
 " search will center on the line it's found in.

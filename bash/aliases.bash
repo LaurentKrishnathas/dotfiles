@@ -85,6 +85,8 @@ alias git='/usr/local/bin/git'
 alias gdiff='git diff'
 unalias gst
 alias gst='git status --short || (echo "/>svn status" && svn status)'
+alias gstv='git status -vv || (echo "/>svn status" && svn status)'
+
 alias githubdestop='/usr/local/bin/github'
 
 alias grv='docker run -it -v $(pwd)/.git:/code/.git -w /code laurent_krishnathas/ubuntu /usr/local/bin/grv' 

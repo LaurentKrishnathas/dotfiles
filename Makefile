@@ -118,6 +118,7 @@ install_brew_list:
 	brew cask install vagrant-manager  || $(WARNMSG)
 	brew cask install aws-vault || $(WARNMSG)
 	brew install unrar || $(WARNMSG)
+	brew install Graphviz || $(WARNMSG)
 
 install_minikube:
 	brew install kubernetes-cli
