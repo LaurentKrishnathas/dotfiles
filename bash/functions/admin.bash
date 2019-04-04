@@ -1,3 +1,6 @@
+#
+# @author Laurent Krishnathas
+# @year 2019
 
 function restartWifi {		#... .restartWifi
 	echo "enter admin password"

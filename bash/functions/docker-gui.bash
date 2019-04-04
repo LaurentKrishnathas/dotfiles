@@ -1,3 +1,6 @@
+#
+# @author Laurent Krishnathas
+# @year 2019
 function docker_gui {
 	image=$1
 	args=""

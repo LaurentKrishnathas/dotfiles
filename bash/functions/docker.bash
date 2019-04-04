@@ -1,4 +1,7 @@
 #!/usr/bin/env bash
+#
+# @author Laurent Krishnathas
+# @year 2019
 
 function docker_init {
 	file_array=()

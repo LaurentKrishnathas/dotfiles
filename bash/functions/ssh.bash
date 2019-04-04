@@ -1,3 +1,7 @@
+#
+# @author Laurent Krishnathas
+# @year 2019
+
 # shortcut for ssh
 function ssh-add-loadall {		#... shortcut for ssh  test19"|rbuild02|
 	ssh-add $HOME/.ssh/id_rsa

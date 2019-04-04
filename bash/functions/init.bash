@@ -1,4 +1,7 @@
 #!/usr/bin/env bash
+#
+# @author Laurent Krishnathas
+# @year 2019
 
 function tmuxinator_init {
     # This function initialize tmuxinator sample file

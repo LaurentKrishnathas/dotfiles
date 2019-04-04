@@ -1,3 +1,7 @@
+#
+# @author Laurent Krishnathas
+# @year 2019
+
 function commit_push_codecommit {
 	commit $*
 
@@ -116,7 +120,7 @@ function git_clone_tmpdir {	# clone full or partial
 	else
 		mkdirtmp
 		git clone $1
-		vim *
+		idea *
 	fi
 }
 
@@ -127,7 +131,7 @@ function git_clone_tmpdir_sparse {
 	git config core.sparseCheckout true
 	echo "$2">>.git/info/sparse-checkout
 	git pull origin master
-	vim *
+	idea *
 }
 
 

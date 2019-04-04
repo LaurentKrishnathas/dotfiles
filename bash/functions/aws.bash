@@ -1,3 +1,6 @@
+#
+# @author Laurent Krishnathas
+# @year 2019
 
 function ssm {		#... .restartWifi
     INSTANCE_NAME=$1
