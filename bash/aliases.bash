@@ -41,7 +41,7 @@ alias dkimage='docker image'
 alias dkstack='docker stack'
 alias dksystem='docker system'
 alias dkcontainer='docker container'
-
+alias dkservicelogs='docker service logs '
 alias dkrun_it='docker run -it '
 alias dkrun_workspace='docker run -it -v $HOME/Downloads:/Downloads -v $(pwd):/workspace -w /workspace '
 

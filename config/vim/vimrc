@@ -33,6 +33,7 @@ nnoremap <leader>run V:'<,'>w !sh
 nnoremap <leader>runline V:'<,'>w !sh<CR>
 nnoremap <leader>runi V:'<,'> !sh
 nnoremap <leader>runall :'<,'> !sh
+nnoremap <leader>cd :cd ~/code/src/codecommit/
 
 " moving visual block
 vnoremap J :m'>+1<CR>gv=gv
