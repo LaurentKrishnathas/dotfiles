@@ -20,7 +20,7 @@ install_brew:
 
 install_sdkman:
 	curl -s "https://get.sdkman.io" | bash
-	source ~/.sdkman/bin/sdkman-init.sh
+	source ~/.sdkman/bin/sdkman-init.sh \
 	&& sdk install groovy \
 	&& sdk install gradle \
 	&& sdk install grails \
