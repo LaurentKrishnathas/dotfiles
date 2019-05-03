@@ -5,7 +5,7 @@ DOTFILES_DIR=$(GITHUB_DIR)/dotfiles.git
 
 all:  install_tools  install_config
 install_files: install_zsh install_fzf install_vim_files install_tmux_files install_vim_files install_grv_files
-install_tools: install_zsh install_brew_list  install_pip_list  install_node_list install_sdkman install_aws_kubectl_aws_iam_authentication
+install_tools: install_zsh install_brew_list  install_pip_list  install_sdkman install_aws_kubectl_aws_iam_authentication
 
 clean:
 	rm -rf build
@@ -20,7 +20,7 @@ install_brew:
 
 install_sdkman:
 	curl -s "https://get.sdkman.io" | bash
-	source ~/.sdkman/bin/sdkman-init.sh \
+	source ~/.sdkman/bin/sdkman-init.sh
 	&& sdk install groovy \
 	&& sdk install gradle \
 	&& sdk install grails \
