@@ -3,7 +3,7 @@ GITHUB_DIR=$$HOME/code/src/github.com
 DOTFILES_DIR=$(GITHUB_DIR)/dotfiles.git
 
 
-all:  install_tools  install_config
+all:  install_tools install_files
 install_files: install_zsh install_fzf install_vim_files install_tmux_files install_vim_files install_grv_files
 install_tools: install_zsh install_brew_list  install_pip_list  install_sdkman install_aws_kubectl_aws_iam_authentication
 
@@ -21,11 +21,17 @@ install_brew:
 install_sdkman:
 	curl -s "https://get.sdkman.io" | bash
 	source ~/.sdkman/bin/sdkman-init.sh \
-	&& sdk install groovy \
-	&& sdk install gradle \
-	&& sdk install grails \
-	&& sdk install infrastructor \
-	&& sdk install springboot
+	&& echo yes | sdk install gradle
+
+
+install_sdkman_all:
+	curl -s "https://get.sdkman.io" | bash
+	source ~/.sdkman/bin/sdkman-init.sh \
+	&& echo yes | sdk install groovy \
+	&& echo yes | sdk install gradle \
+	&& echo yes | sdk install grails \
+	&& echo yes | sdk install infrastructor \
+	&& echo yes | sdk install springboot
 
 install_zsh:
 	rm -rf $$HOME/.zshrc
