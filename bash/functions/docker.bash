@@ -161,8 +161,8 @@ function build_docker_images_dir {
 function build_docker_images {
     docker_cleanup
 
-    build_docker_images_dir  $DOTFILES_DIR/docker/image/base
-    build_docker_images_dir  $DOTFILES_DIR/docker/image
+    build_docker_images_dir  $DOTFILES_DIR/infra/docker/image/base
+    build_docker_images_dir  $DOTFILES_DIR/infra/docker/image
 }
 
 function docker_login_aws {
@@ -236,3 +236,12 @@ function docker_report {		#... dockerreport
 	docker ps
 }
 
+
+function docker_project_init {
+	for file in ~/code/src/github.com/dotfiles.git/infra/docker/image/reference-project/*
+	do
+            name=${file##*/}
+			echo "copying file $file  to ${name}.TODO"
+			cp -r $file ./${name}.TODO
+	done
+}
