@@ -3,6 +3,9 @@
 # @author Laurent Krishnathas
 # @year 2019
 
+AWS_PATH=~/Library/Python/3.7/bin/aws
+TERRAFORM_PATH=/usr/local/bin/terraform
+MAKE_PATH=/usr/bin/make
 
 function aws-vault-helper {
     AWS_VAULT=${AWS_VAULT:-""}
@@ -22,16 +25,17 @@ function aws-vault-helper {
         shift
         $CMD_ "$@"
     fi
+    set +x
 }
 
 function aws {
-    aws-vault-helper ~/Python/3.7/bin/aws $@
+    aws-vault-helper $AWS_PATH $@
 }
 
 function terraform {
-    aws-vault-helper /usr/local/bin/terraform $@
+    aws-vault-helper $TERRAFORM_PATH $@
 }
 
 function make {
-    aws-vault-helper /usr/bin/make $@
+    aws-vault-helper $MAKE_PATH $@
 }
