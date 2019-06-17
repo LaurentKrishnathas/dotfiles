@@ -5,7 +5,6 @@
 
 
 function aws-vault-helper {
-set -x
     AWS_VAULT=${AWS_VAULT:-""}
     CMD_=$1
 
