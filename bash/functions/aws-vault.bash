@@ -5,6 +5,7 @@
 
 
 function aws-vault-helper {
+set -x
     AWS_VAULT=${AWS_VAULT:-""}
     CMD_=$1
 
@@ -17,7 +18,7 @@ function aws-vault-helper {
     if [ -z "$AWS_VAULT" ]
     then
         shift
-        exec aws-vault exec "${AWS_DEFAULT_PROFILE:-work}" -- $CMD_ "$@"
+        aws-vault exec "${AWS_DEFAULT_PROFILE:-work}"  -- $CMD_ "$@"
     else
         shift
         $CMD_ "$@"
