@@ -25,7 +25,7 @@ function aws-vault-helper {
 }
 
 function aws {
-    aws-vault-helper /Users/lk/Library/Python/3.7/bin/aws $@
+    aws-vault-helper ~/Python/3.7/bin/aws $@
 }
 
 function terraform {
