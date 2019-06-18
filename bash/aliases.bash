@@ -66,7 +66,7 @@ alias sts='open $HOME/eclipse/sts-bundle/STS.app'
 alias ggts='open $HOME/eclipse/ggts-bundle/ggts-3.6.4.RELEASE/GGTS.app'
 
 alias golang='docker run -it -v $HOME/Downloads:/Downloads -v $(pwd):/workspace -w /workspace  golang:1.9.2 '
-alias gradlew='./gradlew'
+#alias gradlew='./gradlew'
 alias grailsw='./grailsw'
 
 alias gradle_7='docker run -it -v $(pwd):/code -w /code -v $HOME/.gradle:/home/gradle/.gradle gradle:jdk7'

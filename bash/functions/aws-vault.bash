@@ -8,24 +8,28 @@ TERRAFORM_PATH=/usr/local/bin/terraform
 MAKE_PATH=/usr/bin/make
 
 function aws-vault-helper {
+#    set -x
     AWS_VAULT=${AWS_VAULT:-""}
     CMD_=$1
 
-    if [ -z "$AWS_DEFAULT_PROFILE" ]
-    then
-        echo "Warning AWS_DEFAULT_PROFILE is not set "
-        return
-    fi
+
 
     if [ -z "$AWS_VAULT" ]
     then
-        shift
-        aws-vault exec "${AWS_DEFAULT_PROFILE:-work}"  -- $CMD_ "$@"
+        if [ -z "$AWS_DEFAULT_PROFILE" ]
+        then
+            echo "Warning AWS_DEFAULT_PROFILE is not set "
+            set +x
+            return
+        else
+            shift
+            aws-vault exec "${AWS_DEFAULT_PROFILE:-work}"  -- $CMD_ "$@"
+        fi
     else
         shift
         $CMD_ "$@"
     fi
-    set +x
+#    set +x
 }
 
 function aws {
@@ -38,4 +42,8 @@ function terraform {
 
 function make {
     aws-vault-helper $MAKE_PATH $@
+}
+
+function gradlew {
+    aws-vault-helper ./gradlew $@
 }
