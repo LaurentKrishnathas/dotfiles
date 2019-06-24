@@ -160,8 +160,8 @@ alias tld='tldr'
 alias tf='docker run -it -v $HOME/.aws:/root/.aws -v $(pwd):/code -w /code hashicorp/terraform:0.11.6 '
 alias tf_production='docker run -it -v $HOME/.aws_production:/root/.aws -v $(pwd):/code -w /code hashicorp/terraform:0.11.6 '
 
-alias ubuntu='docker run -it -v $HOME/Downloads:/Downloads -v $(pwd):/workspace -w /workspace laurent_krishnathas/ubuntu:latest '
-alias centos='docker run -it -v $HOME/Downloads:/Downloads -v $(pwd):/workspace -w /workspace laurent_krishnathas/centos:latest '
+alias ubuntu='aws-vault exec $AWS_DEFAULT_PROFILE -- docker run -it -e AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID  -e AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY -v $HOME/Downloads:/Downloads -v $(pwd):/workspace -w /workspace laurent_krishnathas/ubuntu:latest '
+alias centos='aws-vault exec $AWS_DEFAULT_PROFILE -- docker run -it -e AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID  -e AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY -v $HOME/Downloads:/Downloads -v $(pwd):/workspace -w /workspace laurent_krishnathas/centos:latest '
 
 alias dk_golang='docker run -it -v $HOME/Downloads:/Downloads -v $(pwd):/workspace -w /workspace laurent_krishnathas/golang:latest '
 
@@ -189,4 +189,6 @@ alias showHiddenFiles='defaults write com.apple.finder AppleShowAllFiles YES; ki
 alias hideHiddenFiles='defaults write com.apple.finder AppleShowAllFiles NO; killall Finder /System/Library/CoreServices/Finder.app'
 
 
-
+alias av='aws-vault'
+alias av_exec=' aws-vault exec $AWS_DEFAULT_PROFILE --'
+alias av-exec=' aws-vault exec $AWS_DEFAULT_PROFILE --'

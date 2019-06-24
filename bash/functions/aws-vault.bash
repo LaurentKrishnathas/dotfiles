@@ -19,7 +19,7 @@ function aws-vault-helper {
             return
         else
             shift
-            aws-vault exec "${AWS_DEFAULT_PROFILE:-work}"  -- $CMD_ "$@"
+            aws-vault exec "${AWS_DEFAULT_PROFILE:-NOT_SET}"  -- $CMD_ "$@"
         fi
     else
         shift
@@ -36,7 +36,7 @@ function terraform {
     aws-vault-helper terraform $@
 }
 
-function make {
+function make-av {
     aws-vault-helper make $@
 }
 

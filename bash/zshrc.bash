@@ -84,8 +84,9 @@ done
 
 # loading jenkins autocomplete
 [[ -s "$HOME/bin/jenkins" ]] && echo "source jenkins autocomplete ..." && source $DOTFILES_DIR/bash/jenkins.bash autocomplete || echo "check $HOME/bin/jenkins symlink missing"
-FILE="$GITHUB_DIR/zsh-autosuggestions/zsh-autosuggestions.zsh"
-[[ -s "$FILE" ]] && echo "source autosug autocomplete ..." && source "$FILE"  || echo "check "$FILE"  symlink missing"
+
+#FILE="$GITHUB_DIR/zsh-autosuggestions/zsh-autosuggestions.zsh"
+#[[ -s "$FILE" ]] && echo "source autosug autocomplete ..." && source "$FILE"  || echo "check "$FILE"  symlink missing"
 
 
 # something overwrite key binding, so this is placed just before fzf
