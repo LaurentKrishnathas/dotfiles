@@ -190,5 +190,5 @@ alias hideHiddenFiles='defaults write com.apple.finder AppleShowAllFiles NO; kil
 
 
 alias av='aws-vault'
-alias av_exec=' aws-vault exec $AWS_DEFAULT_PROFILE --'
-alias av-exec=' aws-vault exec $AWS_DEFAULT_PROFILE --'
+alias av_exec=' aws-vault exec $AWS_DEFAULT_PROFILE '
+alias av-exec=' aws-vault exec $AWS_DEFAULT_PROFILE '
