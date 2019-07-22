@@ -206,7 +206,7 @@ install_aws_kubectl_aws_iam_authentication:
 	mkdir -p $(INSTALL_DIR)
 	curl -o $(INSTALL_DIR)/kubectl https://amazon-eks.s3-us-west-2.amazonaws.com/1.10.3/2018-07-26/bin/darwin/amd64/kubectl
 	curl -o $(INSTALL_DIR)/kubectl.sha256 https://amazon-eks.s3-us-west-2.amazonaws.com/1.10.3/2018-07-26/bin/darwin/amd64/kubectl.sha256
-	openssl sha -sha256  $(INSTALL_DIR)/kubectl
+#	openssl sha -sha256  $(INSTALL_DIR)/kubectl
 	chmod +x $(INSTALL_DIR)/kubectl
 	$(INSTALL_DIR)/kubectl version --short --client		
 	curl -o $(INSTALL_DIR)/aws-iam-authenticator https://amazon-eks.s3-us-west-2.amazonaws.com/1.10.3/2018-07-26/bin/darwin/amd64/aws-iam-authenticator
