@@ -203,9 +203,9 @@ function docker_tag_push {
 }
 
 function docker_cleanup {		#... docker-cleanup
-	docker rm $(docker ps -a -q) 
-	docker rmi $(docker images -q -f dangling=true) 
-	docker volume prune -f
+	docker rm $(docker ps -a -q) || true
+	docker rmi $(docker images -q -f dangling=true) || true
+	docker volume prune -f || true
 }
 
 function docker_cleanup_all {		#... docker-cleanup
