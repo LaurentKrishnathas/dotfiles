@@ -114,5 +114,6 @@ done
 # uninstall by removing these lines or running `tabtab uninstall sls`
 [[ -f /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh ]] && . /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh
 
+source <(/usr/local/bin/kubectl completion zsh)
 
 unalias grv #removed to support grv the commandline tools to browser git repository
