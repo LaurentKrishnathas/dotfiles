@@ -124,6 +124,8 @@ install_brew_list:
 	brew cask install aws-vault || $(WARNMSG)
 	brew install unrar || $(WARNMSG)
 	brew install Graphviz || $(WARNMSG)
+	brew install warrensbox/tap/tfswitch || true #choosing different terraform versions
+	brew install kubectx
 
 install_minikube:
 	brew install kubernetes-cli

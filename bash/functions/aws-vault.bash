@@ -47,3 +47,7 @@ function gradlew {
 function kubectl {
     aws-vault-helper kubectl $@
 }
+
+function kubens {
+    aws-vault-helper kubens $@
+}
