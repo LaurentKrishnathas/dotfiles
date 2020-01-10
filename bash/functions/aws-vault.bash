@@ -36,11 +36,19 @@ function terraform {
     aws-vault-helper terraform $@
 }
 
+function av-make {
+    aws-vault-helper make $@
+}
+
 function make-av {
     aws-vault-helper make $@
 }
 
 function gradlew {
+    aws-vault-helper ./gradlew $@
+}
+
+function av-gradle {
     aws-vault-helper ./gradlew $@
 }
 

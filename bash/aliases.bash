@@ -168,6 +168,7 @@ alias dk_golang='docker run -it -v $HOME/Downloads:/Downloads -v $(pwd):/workspa
 alias va='vagrant'
 alias vagrant_search_boxex='https://app.vagrantup.com/boxes/search?q='
 
+alias ctop='docker run --rm -ti --name=ctop -v /var/run/docker.sock:/var/run/docker.sock quay.io/vektorlab/ctop:latest'
 
 alias cddown='cd `find . -type d | fzf`'
 

@@ -125,7 +125,8 @@ install_brew_list:
 	brew install unrar || $(WARNMSG)
 	brew install Graphviz || $(WARNMSG)
 	brew install warrensbox/tap/tfswitch || true #choosing different terraform versions
-	brew install kubectx
+	brew install kubectx || $(WARNMSG)
+#	brew install ctop || $(WARNMSG)
 
 install_minikube:
 	brew install kubernetes-cli
@@ -343,3 +344,14 @@ install_awscli_sessionmanager_plugin:
 #	curl "https://s3.amazonaws.com/session-manager-downloads/plugin/latest/mac/sessionmanager-bundle.zip" -o "build/ssm/sessionmanager-bundle.zip"
 #	unzip build/ssm/sessionmanager-bundle.zip -d build/ssm
 	sudo build/ssm/sessionmanager-bundle/install -i /usr/local/sessionmanagerplugin -b /usr/local/bin/session-manager-plugin
+
+BUILDER_IMAGE=dotfiles-builder:lastest
+TARGET=make build
+build/docker/image:
+	docker build -t $(BUILDER_IMAGE) --rm=false -f infra/docker/image/builder/Dockerfile .
+
+build:
+	echo "RAS"
+
+build/in/docker: build/docker/image
+	docker run -v $$HOME/.gradle:/home/gradle/.gradle -v $$PWD:/code -w /code $(BUILDER_IMAGE) $(TARGET)
