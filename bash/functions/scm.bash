@@ -22,6 +22,8 @@ function commit {
 			commitgitsvn  $*
 		fi
 	elif  [ -d .git ]; then
+	        echo "checking if git repot ..."
+	        git -C ./ rev-parse
 			commitgit  $*
 	else
 		echo "Warning: Hey! There is no .git or .svn folder here, get lost !!!"

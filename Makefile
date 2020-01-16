@@ -211,7 +211,7 @@ install_aws_kubectl_aws_iam_authentication:
 	curl -o $(INSTALL_DIR)/kubectl.sha256 https://amazon-eks.s3-us-west-2.amazonaws.com/1.10.3/2018-07-26/bin/darwin/amd64/kubectl.sha256
 #	openssl sha -sha256  $(INSTALL_DIR)/kubectl
 	chmod +x $(INSTALL_DIR)/kubectl
-	$(INSTALL_DIR)/kubectl version --short --client		
+	$(INSTALL_DIR)/kubectl version --short --client
 	curl -o $(INSTALL_DIR)/aws-iam-authenticator https://amazon-eks.s3-us-west-2.amazonaws.com/1.10.3/2018-07-26/bin/darwin/amd64/aws-iam-authenticator
 	curl -o $(INSTALL_DIR)/aws-iam-authenticator.sha256 https://amazon-eks.s3-us-west-2.amazonaws.com/1.10.3/2018-07-26/bin/darwin/amd64/aws-iam-authenticator.sha256
 	openssl sha -sha256 $(INSTALL_DIR)/aws-iam-authenticator
@@ -232,7 +232,7 @@ eks_certificateAuthority:
 
 eks_create_kubeconfig:
 	mkdir -p $$HOME/.kube
-	
+
 dgoss_run:
 	cd infra/docker/dgoss && dgoss run -e JENKINS_OPTS="--httpPort=8080 --httpsPort=-1" -e JAVA_OPTS="-Xmx1048m" jenkins:alpine
 
@@ -355,3 +355,15 @@ build:
 
 build/in/docker: build/docker/image
 	docker run -v $$HOME/.gradle:/home/gradle/.gradle -v $$PWD:/code -w /code $(BUILDER_IMAGE) $(TARGET)
+
+GO_FILE=sample.go
+GO_DIR=
+run/golang/script:
+	docker build -t devops-golang:1.0 --rm=false -f infra/docker/image/golang/Dockerfile .
+	 docker run -it \
+		-e "AWS_SECURITY_TOKEN=${AWS_SECURITY_TOKEN}"\
+	 	-e "AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}" \
+	 	-e "AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}" \
+	 	-v $$PWD:/code \
+	 	-w /code/src/main/golang/$(GO_DIR) \
+	 	devops-golang:1.0 go run ${GO_FILE}
