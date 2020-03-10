@@ -41,10 +41,8 @@ function pull {
             git svn rebase
             git status
 		fi
-	elif  [ -d .git ]; then
-		    git pull
 	else
-		echo "Warning: Hey! There is no .git or .svn folder here, get lost !!!"
+         git pull
 	fi
 }
 
