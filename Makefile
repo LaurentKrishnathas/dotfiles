@@ -126,6 +126,7 @@ install_brew_list:
 	brew install Graphviz || $(WARNMSG)
 	brew install warrensbox/tap/tfswitch || true #choosing different terraform versions
 	brew install kubectx || $(WARNMSG)
+	brew install subversion@1.8 || $(WARNMSG)
 #	brew install ctop || $(WARNMSG)
 
 install_minikube:
