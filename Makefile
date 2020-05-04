@@ -368,3 +368,21 @@ run/golang/script:
 	 	-v $$PWD:/code \
 	 	-w /code/src/main/golang/$(GO_DIR) \
 	 	devops-golang:1.0 go run ${GO_FILE}
+
+idea:
+	rm -rf .idea
+	rm -rf dotfiles.iml
+	rm -rf dotfiles.ipr
+	rm -rf dotfiles.iws
+#	./gradlew clean cleanidea idea
+
+
+debug:
+	go run src/main/golang/hello.go
+	echo "after"
+
+
+debug2:
+	go build src/main/golang/hello.go
+	./hello
+	echo "after"

@@ -2,7 +2,7 @@ package devops
 /*
  *  @author Laurent Krishnathas
  */
- 
+
 import groovy.transform.CompileStatic
 import groovy.transform.TypeChecked
 import groovy.transform.TypeCheckingMode
@@ -16,6 +16,8 @@ import org.gradle.api.tasks.incremental.IncrementalTaskInputs
 @CompileStatic
 class CleanAllGradleProjTask extends DefaultTask {
 	final List<File>projectList=[]
+
+
 
 	@TaskAction
 	@CompileStatic(TypeCheckingMode.SKIP)
@@ -54,8 +56,8 @@ class CleanAllGradleProjTask extends DefaultTask {
 			execute(dir, executable_)
 		}catch(e){
 			project.logger.error e.message
-		}		
-	}	
+		}
+	}
 
 	@CompileStatic(TypeCheckingMode.SKIP)
 	execute(File dir, String executable_){
@@ -64,8 +66,8 @@ class CleanAllGradleProjTask extends DefaultTask {
 			executable executable_
 			args 'clean'
 			project.logger.lifecycle "/> $executable ${args.join(' ')}"
-		}		
-	}	
+		}
+	}
 
 	void addDir(String dir){
 		File tmpDir=dir as File

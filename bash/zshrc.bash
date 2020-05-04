@@ -1,19 +1,21 @@
 #!/usr/bin/env bash
 print "loading `pwd`/zshrc.bash  `date` version 2018-09-26 ..."
 ##################################################
-#  
+#
 #
 # @author Laurent Krishnathas
 # @version 0.1
 ##################################################
 
 source $HOME/code/src/github.com/dotfiles.git/bash/envs.bash
-
+echo LLLLLL 1
+#set -x
 bashfile_array=()
 bashfile_array+="$DOTFILES_DIR/bash/envs.bash"
 bashfile_array+="$DOTFILES_DIR/bash/variables.bash"
 bashfile_array+="$DOTFILES_DIR/bash/aliases.bash"
 
+echo LLLLLL 2
 
 # Weird bug: alias need to be loaded before the tmux if check to make alias works.
 for file in "${bashfile_array[@]}"
@@ -25,12 +27,11 @@ do
         return 0
     fi
 done
-
 for file in `ls $SHELL_SCRIPT_BASEDIR/functions/*.bash`
 do
     [[ -s "$file" ]] && source $file
 done
-
+#set +x
 PATH=$PATH:$HOME/.jenv/bin
 PATH=$PATH:$HOME/.jenv/candidates/javadoc/current
 PATH=$PATH:$HOME/.sdkman/candidates/java/current/bin
@@ -117,3 +118,7 @@ done
 source <(/usr/local/bin/kubectl completion zsh)
 
 unalias grv #removed to support grv the commandline tools to browser git repository
+
+#fpath=($fpath ~/.zsh/completion)
+#autoload -U compinit
+#compinit

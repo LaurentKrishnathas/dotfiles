@@ -36,7 +36,15 @@ function terraform {
     aws-vault-helper terraform $@
 }
 
+function avmake {
+    aws-vault-helper make $@
+}
+
 function av-make {
+    aws-vault-helper make $@
+}
+
+function makeav {
     aws-vault-helper make $@
 }
 
@@ -56,6 +64,12 @@ function kubectl {
     aws-vault-helper kubectl $@
 }
 
+
+function helm {
+    aws-vault-helper helm $@
+}
+
 function kubens {
     aws-vault-helper kubens $@
 }
+

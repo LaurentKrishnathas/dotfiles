@@ -1,9 +1,7 @@
-# Ignore Gradle project-specific cache directory
 .gradle
-
-# Ignore Gradle build output directory
 build
-dotfiles.git.iml
 **/.DS_Store
-idea
 .idea
+dotfiles.git.iml
+dotfiles.ipr
+dotfiles.iws
