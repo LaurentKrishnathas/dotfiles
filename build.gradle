@@ -29,24 +29,30 @@ project.ext{
 }
 
 task updateSvnGitRepos(type: devops.UpdateSvnGitRepoTask){
-    addDir(rep01Dir)
-    addDir(githubDir)
-    addDir(gitlabDir)
-    addDir(codecommitDir)
+   doLast{
+     addDir(rep01Dir)
+     addDir(githubDir)
+     addDir(gitlabDir)
+     addDir(codecommitDir)
+  }
 }
 
 task checkGitSSHKeys(type: devops.CheckGitSSHKeyTask){task->
-    destinationDir="$buildDir/$task.name" as File
+    doLast{
+      destinationDir="$buildDir/$task.name" as File
 
-    addUrl('git@github.com:LaurentKrishnathas/utils.git')
-    addUrl('git@gitlab.com:Krishnathas/dockerfiles.git')
+      addUrl('git@github.com:LaurentKrishnathas/utils.git')
+      addUrl('git@gitlab.com:Krishnathas/dockerfiles.git')
+    }
 }
 
 task cleanAllGradleProj(type: devops.CleanAllGradleProjTask){
-    addDir(rep01Dir)
-    addDir(githubDir)
-    addDir(gitlabDir)
-    addDir(codecommitDir)
+    doLast{
+     addDir(rep01Dir)
+     addDir(githubDir)
+     addDir(gitlabDir)
+     addDir(codecommitDir)
+    }
 }
 
 task "install-tmuxinator"{task->
