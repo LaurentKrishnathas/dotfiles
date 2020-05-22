@@ -8,14 +8,11 @@ print "loading `pwd`/zshrc.bash  `date` version 2018-09-26 ..."
 ##################################################
 
 source $HOME/code/src/github.com/dotfiles.git/bash/envs.bash
-echo LLLLLL 1
 #set -x
 bashfile_array=()
 bashfile_array+="$DOTFILES_DIR/bash/envs.bash"
 bashfile_array+="$DOTFILES_DIR/bash/variables.bash"
 bashfile_array+="$DOTFILES_DIR/bash/aliases.bash"
-
-echo LLLLLL 2
 
 # Weird bug: alias need to be loaded before the tmux if check to make alias works.
 for file in "${bashfile_array[@]}"
