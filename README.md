@@ -20,9 +20,7 @@ zsh, oh-my-zsh, fzf, sdkman, brew ,tmux, shell alias and functions etc ....
 
 
 
-//test
-
-
+//TEST
 
 
 
