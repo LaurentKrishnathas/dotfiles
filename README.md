@@ -20,10 +20,7 @@ zsh, oh-my-zsh, fzf, sdkman, brew ,tmux, shell alias and functions etc ....
 
 
 
-2/3 of 6= ?
-
-the divider is 3 so we create 3 boxes
-
+//test
 
 
 
