@@ -18,7 +18,7 @@ function docker_init {
 			echo "$file created"
 		else
 			echo "Ignored: $file aldready exists"
-		fi		
+		fi
 	done
 }
 
@@ -53,7 +53,7 @@ function docker_build { # build dockerfile by parsing to get name and version
 		echo "Usage: docker-build dockefilepath"
 		return 1
 	fi
-	
+
 	dockerfileDir=$(dirname $dockerfile)
 
 	version=$(cat $dockerfile | grep "^LABEL image_version"|cut -d'"' -f2)
@@ -80,9 +80,9 @@ function docker_build { # build dockerfile by parsing to get name and version
 		return 1
 	fi
 
-	# no idea what was this version_suffix 
+	# no idea what was this version_suffix
 	# if [ ! "$version_suffix" = "" ];then
-	# 	version="$version-$version_suffix"	
+	# 	version="$version-$version_suffix"
 	# fi
 
 	echo "Options:"
@@ -92,7 +92,7 @@ function docker_build { # build dockerfile by parsing to get name and version
 	echo "..."
 
 	echo "/> docker build -t "$name:$version" --rm=false -f $dockerfile $args $dockerfileDir ..."
-	docker build -t "$name:$version" --rm=false -f $dockerfile $args $dockerfileDir 
+	docker build -t "$name:$version" --rm=false -f $dockerfile $args $dockerfileDir
 	echo "/>  docker tag $name:$version $name\:latest ..."
 	# warning: ':' is needed as somehow :l is disapearing
 	docker tag $name:$version $name':'latest
@@ -109,7 +109,7 @@ function docker_push { # build dockerfile by parsing to get name and version
 		echo "Usage: docker-build dockefilepath"
 		return 1
 	fi
-	
+
 	dockerfileDir=$(dirname $dockerfile)
 
 	version=$(cat $dockerfile | grep "^ENV VERSION " | cut -d' ' -f3)
@@ -130,14 +130,14 @@ function docker_push { # build dockerfile by parsing to get name and version
 		return 1
 	fi
 
-	# no idea what was this version_suffix 
+	# no idea what was this version_suffix
 	# if [ ! "$version_suffix" = "" ];then
-		# version="$version-$version_suffix"	
+		# version="$version-$version_suffix"
 	# fi
 
 	echo "/> docker tag $name:$version $ECR_REGISTRY_URI/$name:$version ???"
 	echo "/> docker push $ECR_REGISTRY_URI/$name:$version ???"
-	echo "continue ? press any key."	
+	echo "continue ? press any key."
 	read press_key
 	docker tag $name:$version $ECR_REGISTRY_URI/$name:$version
 	docker push $ECR_REGISTRY_URI/$name:$version
@@ -166,10 +166,10 @@ function build_docker_images {
 }
 
 function docker_login_aws {
-	echo "login to ecr ..."
-	loginStr=$(aws ecr get-login --region eu-west-1 --no-include-email)
-	# echo $loginStr
-	echo $loginStr| bash
+	aws ecr get-login --region eu-west-1 --no-include-email >/dev/null  2>&1 | bash && exit 0
+	echo "WARNING continuing with next version of aws ..."
+    result=$(aws ecr get-login-password --region eu-west-1)
+    docker login --username "AWS" 101999902141.dkr.ecr.eu-west-1.amazonaws.com --password $result
 }
 
 function docker_tag_push {
@@ -192,12 +192,12 @@ function docker_tag_push {
 	fi
 
 	echo "/> docker tag $src_container $ECR_REGISTRY_URI/$dest_container ???"
-	echo "continue ? press any key."	
+	echo "continue ? press any key."
 	read press_key
 	docker tag $src_container $ECR_REGISTRY_URI/$dest_container
 
 	echo "/> docker push $ECR_REGISTRY_URI/$dest_container ???"
-	echo "continue ? press any key."	
+	echo "continue ? press any key."
 	read press_key
 	docker push $ECR_REGISTRY_URI/$dest_container
 }
@@ -212,8 +212,8 @@ function docker_cleanup_all {		#... docker-cleanup
 	echo "WARNING: completely destroy all images"
 	read press_any_key
 	# docker kill $(docker ps -q)
-	docker rm $(docker ps -a -q) 
-	docker rmi $(docker images -q -f dangling=true) 
+	docker rm $(docker ps -a -q)
+	docker rmi $(docker images -q -f dangling=true)
 	docker rmi $(docker images -q)
 	docker volume prune -f
 	docker volume rm $(docker volume ls -q)
