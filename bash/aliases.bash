@@ -89,8 +89,8 @@ alias gstv='git status -vv || (echo "/>svn status" && svn status)'
 
 alias githubdestop='/usr/local/bin/github'
 
-alias grv='docker run -it -v $(pwd)/.git:/code/.git -w /code laurent_krishnathas/ubuntu /usr/local/bin/grv' 
-alias gitgrv='docker run -it -v $(pwd)/.git:/code/.git -w /code laurent_krishnathas/ubuntu /usr/local/bin/grv' 
+alias grv='docker run -it -v $(pwd)/.git:/code/.git -w /code laurent_krishnathas/ubuntu /usr/local/bin/grv'
+alias gitgrv='docker run -it -v $(pwd)/.git:/code/.git -w /code laurent_krishnathas/ubuntu /usr/local/bin/grv'
 
 alias jen='jenkins'
 
@@ -99,6 +99,7 @@ alias j7="export JAVA_HOME=$JDK7; java -version"
 alias j8="export JAVA_HOME=$JDK8; java -version"
 alias j10="export JAVA_HOME=$JDK10; java -version"
 alias j11="export JAVA_HOME=$JDK11; java -version"
+alias j11corretto="export JAVA_HOME=$JDK11_CORRETTO; java -version"
 
 alias ideaf='fasd -a -e idea'
 
@@ -131,9 +132,9 @@ alias opentestreport='open build/reports/tests/index.html'
 
 alias open_docs='open "$(find ~/Google\ Drive ~/Public ~/Pictures ~/Dropbox ~/Downloads ~/Documents ~/Desktop -type f|fzf)"'
 
-alias resource_zshrc="echo 'source $HOME/.zshrc ...'; source $HOME/.zshrc"	
-alias resource_bashrc='source $HOME/.bashrc'	
-alias resource='resource_zshrc'	
+alias resource_zshrc="echo 'source $HOME/.zshrc ...'; source $HOME/.zshrc"
+alias resource_bashrc='source $HOME/.bashrc'
+alias resource='resource_zshrc'
 
 
 alias safari="open /Applications/Safari.app"
@@ -193,3 +194,5 @@ alias hideHiddenFiles='defaults write com.apple.finder AppleShowAllFiles NO; kil
 alias av='aws-vault'
 alias av_exec=' aws-vault exec $AWS_DEFAULT_PROFILE '
 alias av-exec=' aws-vault exec $AWS_DEFAULT_PROFILE '
+
+

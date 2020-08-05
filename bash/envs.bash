@@ -32,6 +32,7 @@ export JDK6=$JDK_DIRS/1.6.0.jdk/Contents/Home
 export JDK7=$JDK_DIRS/jdk1.7.0_80.jdk/Contents/Home
 export JDK8=$JDK_DIRS/jdk1.8.0_191.jdk/Contents/Home
 export JDK11=$JDK_DIRS/jdk-11.0.1.jdk/Contents/Home
+export JDK11_CORRETTO=$JDK_DIRS/amazon-corretto-11.jdk/Contents/Home
 
 export JAVA_HOME=$JDK8
 

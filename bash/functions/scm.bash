@@ -133,3 +133,43 @@ function git_clone_tmpdir_sparse {
 }
 
 
+function pullrequest() {
+  file=/tmp/pullrequest.sh
+  rm -rf $file
+  touch $file
+  chmod +x $file
+
+  title=`git rev-parse --abbrev-ref HEAD`
+  description=`git rev-parse --abbrev-ref HEAD`
+  target=`git info|grep remote.origin.url|cut -d"/" -f6`
+  sourceReference=`git rev-parse --abbrev-ref HEAD`
+  destinationReference=`git show-branch | sed "s/].*//" | grep "\*" | grep -v "$(git rev-parse --abbrev-ref HEAD)"  | head -n1  | sed "s/^.*\[//" | cut -d"^" -f1`
+
+cat > $file<<- EOM
+  set -e
+  set -u
+  set -x
+
+  title=$title
+  description=$description
+  target=$target
+  sourceReference=$sourceReference
+  destinationReference=$destinationReference
+
+  aws-vault exec $AWS_DEFAULT_PROFILE -- \
+    aws codecommit \
+      create-pull-request \
+      --title "\$title" \
+      --description "\$description" \
+      --targets repositoryName=\$target,sourceReference=\$sourceReference,destinationReference=\$destinationReference
+
+EOM
+
+  vim $file
+  echo "Press key to  execute"
+  read
+  $file>${file}_result
+  jq < ${file}_result || cat ${file}_result
+  id=$(jq -r ".pullRequest.pullRequestId"< ${file}_result)
+  echo "https://eu-west-1.console.aws.amazon.com/codesuite/codecommit/repositories/$target/pull-requests/$id/details?region=eu-west-1"
+}
