@@ -1,3 +1,8 @@
+MAKE_FILE_DIR=infra/makefiles
+include $(MAKE_FILE_DIR)/atlantis.mk
+include $(MAKE_FILE_DIR)/minecraft.mk
+
+
 WARNMSG=echo "check error, may need upgrade"
 GITHUB_DIR=$$HOME/code/src/github.com
 DOTFILES_DIR=$(GITHUB_DIR)/dotfiles.git

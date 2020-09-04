@@ -156,13 +156,15 @@ alias mv='mv -iv'
 
 alias m='make'
 
-
 alias tld='tldr'
-alias tf='docker run -it -v $HOME/.aws:/root/.aws -v $(pwd):/code -w /code hashicorp/terraform:0.11.6 '
-alias tf_production='docker run -it -v $HOME/.aws_production:/root/.aws -v $(pwd):/code -w /code hashicorp/terraform:0.11.6 '
 
-alias ubuntu='aws-vault exec $AWS_DEFAULT_PROFILE -- docker run -it -e AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID  -e AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY -v $HOME/Downloads:/Downloads -v $(pwd):/workspace -w /workspace laurent_krishnathas/ubuntu:latest '
-alias centos='aws-vault exec $AWS_DEFAULT_PROFILE -- docker run -it -e AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID  -e AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY -v $HOME/Downloads:/Downloads -v $(pwd):/workspace -w /workspace laurent_krishnathas/centos:latest '
+alias tf12='docker run -it --env-file <(aws-vault exec $AWS_DEFAULT_PROFILE -- env | grep AWS_)  -v $HOME/.aws:/root/.aws -v $(pwd):/code -w /code hashicorp/terraform:0.12.28 '
+alias tf13='docker run -it --env-file <(aws-vault exec $AWS_DEFAULT_PROFILE -- env | grep AWS_)  -v $HOME/.aws:/root/.aws -v $(pwd):/code -w /code hashicorp/terraform:0.13.0 '
+alias tf='docker run -it --env-file <(aws-vault exec $AWS_DEFAULT_PROFILE -- env | grep AWS_)   -v $(pwd):/code -w /code hashicorp/terraform:0.13.0'
+
+
+alias ubuntu='docker run -it --env-file <(aws-vault exec $AWS_DEFAULT_PROFILE -- env | grep AWS_)  -v $HOME/Downloads:/Downloads -v $(pwd):/workspace -w /workspace laurent_krishnathas/ubuntu:latest '
+alias centos='docker run -it --env-file <(aws-vault exec $AWS_DEFAULT_PROFILE -- env | grep AWS_)  -v $HOME/Downloads:/Downloads -v $(pwd):/workspace -w /workspace laurent_krishnathas/centos:latest '
 
 alias dk_golang='docker run -it -v $HOME/Downloads:/Downloads -v $(pwd):/workspace -w /workspace laurent_krishnathas/golang:latest '
 
@@ -185,14 +187,9 @@ alias update_svn_repo='find ~/code/src -type d -depth 2 -not -name "*.git" -exec
 alias update_repos="update_git_repo; update_svn_repo"
 alias pullall="update_git_repo; update_svn_repo"
 
-
-
 alias showHiddenFiles='defaults write com.apple.finder AppleShowAllFiles YES; killall Finder /System/Library/CoreServices/Finder.app'
 alias hideHiddenFiles='defaults write com.apple.finder AppleShowAllFiles NO; killall Finder /System/Library/CoreServices/Finder.app'
 
-
-alias av='aws-vault'
-alias av_exec=' aws-vault exec $AWS_DEFAULT_PROFILE '
-alias av-exec=' aws-vault exec $AWS_DEFAULT_PROFILE '
+alias av=' aws-vault exec $AWS_DEFAULT_PROFILE -- '
 
 
