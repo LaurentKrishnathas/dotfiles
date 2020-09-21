@@ -134,6 +134,9 @@ function git_clone_tmpdir_sparse {
 
 
 function pullrequest() {
+  echo $AWS_DEFAULT_PROFILE
+  aws sts get-caller-identity|cat
+
   file=/tmp/pullrequest.sh
   rm -rf $file
   touch $file
@@ -156,20 +159,23 @@ cat > $file<<- EOM
   sourceReference=$sourceReference
   destinationReference=$destinationReference
 
-  aws-vault exec $AWS_DEFAULT_PROFILE -- \
-    aws codecommit \
-      create-pull-request \
-      --title "\$title" \
-      --description "\$description" \
-      --targets repositoryName=\$target,sourceReference=\$sourceReference,destinationReference=\$destinationReference
+  aws codecommit \
+    create-pull-request \
+    --title "\$title" \
+    --description "\$description" \
+    --targets repositoryName=\$target,sourceReference=\$sourceReference,destinationReference=\$destinationReference
 
 EOM
 
   vim $file
+  cat $file
   echo "Press key to  execute"
   read
   $file>${file}_result
   jq < ${file}_result || cat ${file}_result
   id=$(jq -r ".pullRequest.pullRequestId"< ${file}_result)
   echo "https://eu-west-1.console.aws.amazon.com/codesuite/codecommit/repositories/$target/pull-requests/$id/details?region=eu-west-1"
+  open "https://eu-west-1.console.aws.amazon.com/codesuite/codecommit/repositories/$target/pull-requests/$id/details?region=eu-west-1"
+  git fetch
+  git pull
 }

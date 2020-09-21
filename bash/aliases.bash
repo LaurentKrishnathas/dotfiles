@@ -191,5 +191,5 @@ alias showHiddenFiles='defaults write com.apple.finder AppleShowAllFiles YES; ki
 alias hideHiddenFiles='defaults write com.apple.finder AppleShowAllFiles NO; killall Finder /System/Library/CoreServices/Finder.app'
 
 alias av=' aws-vault exec $AWS_DEFAULT_PROFILE -- '
-
+alias av-login='open -na "Google Chrome" --args   $(aws-vault login $AWS_DEFAULT_PROFILE --stdout) --profile-directory=$AWS_DEFAULT_PROFILE'
 
