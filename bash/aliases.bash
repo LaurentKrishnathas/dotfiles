@@ -158,13 +158,14 @@ alias m='make'
 
 alias tld='tldr'
 
-alias tf12='docker run -it --env-file <(aws-vault exec $AWS_DEFAULT_PROFILE -- env | grep AWS_)  -v $HOME/.aws:/root/.aws -v $(pwd):/code -w /code hashicorp/terraform:0.12.28 '
-alias tf13='docker run -it --env-file <(aws-vault exec $AWS_DEFAULT_PROFILE -- env | grep AWS_)  -v $HOME/.aws:/root/.aws -v $(pwd):/code -w /code hashicorp/terraform:0.13.0 '
-alias tf='docker run -it --env-file <(aws-vault exec $AWS_DEFAULT_PROFILE -- env | grep AWS_)   -v $(pwd):/code -w /code hashicorp/terraform:0.13.0'
+alias tf12='aws sts get-caller-identity | cat && docker run -it --env-file <(aws-vault exec $AWS_DEFAULT_PROFILE -- env | grep AWS_)  -v $HOME/.aws:/root/.aws -v $(pwd):/code -w /code hashicorp/terraform:0.12.28 '
+alias tf13='aws sts get-caller-identity | cat && docker run -it --env-file <(aws-vault exec $AWS_DEFAULT_PROFILE -- env | grep AWS_)  -v $HOME/.aws:/root/.aws -v $(pwd):/code -w /code hashicorp/terraform:0.13.0 '
+alias tf='aws sts get-caller-identity | cat && docker run -it --env-file <(aws-vault exec $AWS_DEFAULT_PROFILE -- env | grep AWS_)   -v $(pwd):/code -w /code hashicorp/terraform:0.13.0'
 
 
-alias ubuntu='docker run -it --env-file <(aws-vault exec $AWS_DEFAULT_PROFILE -- env | grep AWS_)  -v $HOME/Downloads:/Downloads -v $(pwd):/workspace -w /workspace laurent_krishnathas/ubuntu:latest '
-alias centos='docker run -it --env-file <(aws-vault exec $AWS_DEFAULT_PROFILE -- env | grep AWS_)  -v $HOME/Downloads:/Downloads -v $(pwd):/workspace -w /workspace laurent_krishnathas/centos:latest '
+alias ubuntu='aws sts get-caller-identity | cat && docker run -it --env-file <(aws-vault exec $AWS_DEFAULT_PROFILE -- env | grep AWS_)  -v $HOME/Downloads:/Downloads -v $(pwd):/workspace -w /workspace laurent_krishnathas/ubuntu:latest '
+alias centos='aws sts get-caller-identity | cat && docker run -it --env-file <(aws-vault exec $AWS_DEFAULT_PROFILE -- env | grep AWS_)  -v $HOME/Downloads:/Downloads -v $(pwd):/workspace -w /workspace laurent_krishnathas/centos:latest '
+alias devops='aws sts get-caller-identity | cat && docker run -it --env-file <(aws-vault exec $AWS_DEFAULT_PROFILE -- env | grep AWS_) -v $HOME/.ssh:/home/devops/.ssh -v $HOME/.ssh/config_linux:/home/devops/.ssh/config -v $HOME/Downloads:/Downloads -v $HOME/code/src/codecommit/devops-eks.git/infra/terraform/live/devopsprod-eks/prod/config/kubeconfig_eks-prod-v3:/home/devops/.kube/config  -v $(pwd):/workspace -w /workspace dotmatics-devops/amzlnx2_builder:latest '
 
 alias dk_golang='docker run -it -v $HOME/Downloads:/Downloads -v $(pwd):/workspace -w /workspace laurent_krishnathas/golang:latest '
 

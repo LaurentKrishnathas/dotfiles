@@ -383,11 +383,10 @@ idea:
 
 
 debug:
-	go run src/main/golang/hello.go
-	echo "after"
-
-
-debug2:
-	go build src/main/golang/hello.go
-	./hello
-	echo "after"
+	docker build -t tmp --rm=false -f infra/docker/image/builder/Dockerfile .
+	#docker run -it tmp pwd
+	#docker run -it tmp ls -la /home/gradle/bin
+	#docker run -it -u gradle tmp env
+	#docker run -it -u gradle tmp tfswitch -v
+	#docker run -it -u gradle tmp terraform -v
+	docker run -it -u gradle tmp bash
