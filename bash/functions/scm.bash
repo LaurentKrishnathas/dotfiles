@@ -11,6 +11,10 @@ function commit_push_codecommit() {
 }
 
 function commit() {
+  if [ "$DEBUG" = "true" ];then
+    set -x
+  fi
+
   if [ -d .svn ]; then
     commitsvn $*
   elif [ -d .git/svn ]; then
@@ -48,11 +52,12 @@ function pull() {
 
 function commitgit() {
   echo "/> git pull ..."
+  git fetch
   git pull
-  git branch -a
-  git branch -v
+  git branch -a|cat
+  git branch -v|cat
   git status
-  git diff --staged
+  git diff --staged|cat
 
   echo -e "\e[1;31m/> git commit -am\"$*\" ?\e[0m"
   read press_key_to_continue
@@ -60,6 +65,7 @@ function commitgit() {
   git status
   echo -e "\e[1;31m/> git push ?\e[0m"
   read press_key_to_continue
+  git push --set-upstream origin $(git rev-parse --abbrev-ref HEAD)
   git push
   git status
 }
