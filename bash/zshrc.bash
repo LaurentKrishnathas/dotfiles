@@ -119,3 +119,6 @@ unalias grv #removed to support grv the commandline tools to browser git reposit
 #fpath=($fpath ~/.zsh/completion)
 #autoload -U compinit
 #compinit
+
+# overiding LSCOLORS to avoid blue for folders
+export LSCOLORS=exfxcxdxbxegedabagacad

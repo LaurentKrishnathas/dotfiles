@@ -84,7 +84,8 @@ alias gsvn='git svn'
 alias git='/usr/local/bin/git'
 alias gdiff='git diff'
 unalias gst
-alias gst='git status --short || (echo "/>svn status" && svn status)'
+alias gst='pwd;ls -la .;git status --short || (echo "/>svn status" && svn status)'
+alias gst1='pwd;ls -la .;git status --short || (echo "/>svn status" && svn status)'
 alias gstv='git status -vv || (echo "/>svn status" && svn status)'
 
 alias githubdestop='/usr/local/bin/github'

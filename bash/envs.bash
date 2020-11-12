@@ -56,3 +56,4 @@ export MANPATH="$NPM_PACKAGES/share/man:$(manpath)"
 
 export PATH=/usr/local/Cellar/subversion@1.8/1.8.19_1/bin/:$NPM_PACKAGES/node_modules/.bin:$PATH:~/bin:$GOROOT/bin:$GOPATH/bin:$MVN_HOME/bin:$ACTIVATOR_HOME:$PACKER_HOME:$HOME/Library/Python/2.7/bin:$HOME/Library/Python/3.7/bin
 
+

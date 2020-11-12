@@ -4,7 +4,7 @@ let maplocalleader ="<D-"
 
 
 
-" leaving insert mode 
+" leaving insert mode
 imap <leader>q <Esc>
 imap <leader>' ''<Esc>i
 imap <leader>" ""<Esc>i
@@ -38,7 +38,7 @@ nnoremap <leader>cd :cd ~/code/src/codecommit/
 " moving visual block
 vnoremap J :m'>+1<CR>gv=gv
 vnoremap K :m'<-2<CR>gv=gv''
-  
+
 
 " Plugin mapping
 map <leader>n :NERDTreeToggle<CR>
@@ -72,7 +72,7 @@ noremap <Leader>gs :Gstatus<CR>
 " noremap <Leader>gd :Gvdiff<CR>
 " noremap <Leader>gr :Gremove<CR>
 
-    
+
 if executable('ag')
 let $FZF_DEFAULT_COMMAND ='ag --hidden --ignore .git -g""'
   set grepprg=ag\ --nogroup\ --nocolor
@@ -118,8 +118,8 @@ endfunction
 vnoremap <F6> "gy<Esc>:call GoogleSearch()<CR>
 
 
-" Shift to the next round tab stop. 
-set shiftround  
+" Shift to the next round tab stop.
+set shiftround
 " " Set auto indent spacing.
 set shiftwidth=2
 
@@ -153,7 +153,7 @@ function! NumberToggle()
   endif
 endfunc
 
-nnoremap <c-n> :call NumberToggle()<cr> 
+nnoremap <c-n> :call NumberToggle()<cr>
 "Abbreviation to correct typo
 iabbrev adn and
 iabbrev @@    Laurent Krishnathas
@@ -165,13 +165,13 @@ set hidden
 set backspace=indent,eol,start
 "set clipboard=unnamed
 "set number
-set relativenumber
+"set relativenumber
 set number            " Show line numbers
 set ruler             " Show line and column number
 set mouse=a
 
 " removing dash in vertical separatory
-set fillchars+=vert:\ 
+set fillchars+=vert:\
 
 
 
