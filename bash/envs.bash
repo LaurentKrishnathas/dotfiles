@@ -30,9 +30,8 @@ export JDK_DIRS=/Library/Java/JavaVirtualMachines
 
 export JDK6=$JDK_DIRS/1.6.0.jdk/Contents/Home
 export JDK7=$JDK_DIRS/jdk1.7.0_80.jdk/Contents/Home
-export JDK8=$JDK_DIRS/jdk1.8.0_271.jdk/Contents/Home
-export JDK11=$JDK_DIRS/jdk-11.0.9.jdk/Contents/Home
-export JDK11_CORRETTO=$JDK_DIRS/amazon-corretto-11.jdk/Contents/Home
+export JDK8=~/.sdkman/candidates/java/8.0.282.fx-zulu
+export JDK11=$JDK_DIRS/amazon-corretto-11.jdk/Contents/Home
 
 export JAVA_HOME=$JDK8
 
@@ -54,6 +53,6 @@ export MANPATH="$NPM_PACKAGES/share/man:$(manpath)"
 
 
 
-export PATH=/usr/local/Cellar/subversion@1.8/1.8.19_1/bin/:$NPM_PACKAGES/node_modules/.bin:$PATH:~/bin:$GOROOT/bin:$GOPATH/bin:$MVN_HOME/bin:$ACTIVATOR_HOME:$PACKER_HOME:$HOME/Library/Python/2.7/bin:$HOME/Library/Python/3.7/bin
+export PATH=/usr/local/opt/helm@2/bin:/usr/local/Cellar/subversion@1.8/1.8.19_1/bin/:$NPM_PACKAGES/node_modules/.bin:$PATH:~/bin:$GOROOT/bin:$GOPATH/bin:$MVN_HOME/bin:$ACTIVATOR_HOME:$PACKER_HOME:$HOME/Library/Python/2.7/bin:$HOME/Library/Python/3.7/bin
 
 

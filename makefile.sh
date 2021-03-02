@@ -85,6 +85,7 @@ function install_brew_list(){
 	brew install subversion@1.8 || $(WARNMSG)
 	brew install ctop || $(WARNMSG)
   brew install git-secret || $(WARNMSG)
+  brew install helm@2 || $(WARNMSG)
 }
 
 
