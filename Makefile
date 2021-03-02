@@ -39,8 +39,10 @@ install_sdkman_all:
 	&& echo yes | sdk install springboot \
 	&& echo yes | sdk install maven \
 	&& echo yes | sdk install gradleprofiler \
-	&& echo yes | sdk install java 8.0.275-amzn \
-	&& echo yes | sdk install java java 11.0.9-amzn
+#	&& echo yes | sdk install java 8.0.275-amzn \
+#	&& echo yes | sdk install java java 11.0.9-amzn \
+	&& echo yes | sdk install java 8.0.282.fx-zulu \
+	&& echo yes | sdk install 11.0.10.fx-zulu
 
 install_zsh:
 	rm -rf $$HOME/.zshrc
