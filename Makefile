@@ -9,8 +9,8 @@ DOTFILES_DIR=$(GITHUB_DIR)/dotfiles.git
 
 
 all:  install_tools install_files
-install_files: install_zsh install_fzf install_vim_files install_tmux_files install_vim_files install_grv_files
 install_tools: install_zsh install_brew_list  install_pip_list  install_sdkman install_aws_kubectl_aws_iam_authentication
+install_files: install_zsh install_fzf install_vim_files install_tmux_files install_vim_files
 
 clean:
 	rm -rf build
@@ -35,14 +35,14 @@ install_sdkman_all:
 	&& echo yes | sdk install groovy \
 	&& echo yes | sdk install gradle \
 	&& echo yes | sdk install grails \
-	&& echo yes | sdk install infrastructor \
-	&& echo yes | sdk install springboot \
-	&& echo yes | sdk install maven \
-	&& echo yes | sdk install gradleprofiler \
+#	&& echo yes | sdk install infrastructor \
+#	&& echo yes | sdk install springboot \
+#	&& echo yes | sdk install maven \
+#	&& echo yes | sdk install gradleprofiler \
 #	&& echo yes | sdk install java 8.0.275-amzn \
 #	&& echo yes | sdk install java java 11.0.9-amzn \
-	&& echo yes | sdk install java 8.0.282.fx-zulu \
-	&& echo yes | sdk install 11.0.10.fx-zulu
+	&& echo yes | sdk install java 8.0.282.fx-zulu
+#	&& echo yes | sdk install 11.0.10.fx-zulu
 
 install_zsh:
 	rm -rf $$HOME/.zshrc

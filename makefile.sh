@@ -36,7 +36,7 @@ function push_docker_image_to_ecr(){
 
 function install_brew_list(){
 	brew update
-	brew install grv || $(WARNMSG)
+#	brew install grv || $(WARNMSG)
 # 	brew install cheat 	|| $(WARNMSG)	# shorter man pages
 	brew install colordiff || $(WARNMSG)
 	brew install fasd	|| $(WARNMSG) # command line navigation utilities
@@ -45,7 +45,7 @@ function install_brew_list(){
 	brew install git-extras || $(WARNMSG)
 	brew install git-flow || $(WARNMSG)
 	brew install htop-osx || $(WARNMSG)
-	brew install httpie || $(WARNMSG)
+#	brew install httpie || $(WARNMSG)
 	brew install jq		|| $(WARNMSG) # format json
 	brew install tmux  || $(WARNMSG)  # terminal multiplexer
 	brew install tree || $(WARNMSG)
@@ -53,8 +53,8 @@ function install_brew_list(){
 	brew install zsh || $(WARNMSG)
 	brew install zsh-completions || $(WARNMSG)
 # 	brew install pwgen  || $(WARNMSG)# generate password: genpasswd n
-	brew install pstree || $(WARNMSG)
-	brew install packer || $(WARNMSG) #http://www.parallels.com/download/pvsdk/ needed for build
+#	brew install pstree || $(WARNMSG)
+#	brew install packer || $(WARNMSG) #http://www.parallels.com/download/pvsdk/ needed for build
 	brew install node || $(WARNMSG)
 	brew install ack || $(WARNMSG)
 	brew install fzf || $(WARNMSG)
@@ -69,17 +69,17 @@ function install_brew_list(){
 	brew install reattach-to-user-namespace || $(WARNMSG)
 	brew install the_silver_searcher   || $(WARNMSG)
 	brew cask install spectacle || $(WARNMSG)
-	brew cask install dropbox	 || $(WARNMSG)
+#	brew cask install dropbox	 || $(WARNMSG)
 	brew cask install iterm2 || $(WARNMSG)
-	brew cask install visual-studio-code || $(WARNMSG)
+#	brew cask install visual-studio-code || $(WARNMSG)
 # 	brew cask install sourcetree  || $(WARNMSG)
-	brew cask install postman   || $(WARNMSG)
+#	brew cask install postman   || $(WARNMSG)
 # 	brew cask install virtualbox  || $(WARNMSG)
 # 	brew cask install vagrant  || $(WARNMSG)
 # 	brew cask install vagrant-manager  || $(WARNMSG)
 	brew cask install aws-vault || $(WARNMSG)
 	brew install unrar || $(WARNMSG)
-	brew install Graphviz || $(WARNMSG)
+#	brew install Graphviz || $(WARNMSG)
 	brew install warrensbox/tap/tfswitch || true #choosing different terraform versions
 	brew install kubectx || $(WARNMSG)
 	brew install subversion@1.8 || $(WARNMSG)
