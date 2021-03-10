@@ -2,6 +2,6 @@
 build
 **/.DS_Store
 .idea
-dotfiles.git.iml
+dotfiles.iml
 dotfiles.ipr
 dotfiles.iws

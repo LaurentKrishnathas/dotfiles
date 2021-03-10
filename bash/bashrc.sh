@@ -2,7 +2,7 @@
 export PROJECT_DIR=$HOME/code
 export GITHUB_DIR=$HOME/code/github.com
 
-export DOTFILES_DIR="$(GITHUB_DIR)/dotfiles.git"
+export DOTFILES_DIR="$(GITHUB_DIR)/dotfiles"
 
 export SHELL_SCRIPT_BASEDIR="$DOTFILES_DIR/bash"
 

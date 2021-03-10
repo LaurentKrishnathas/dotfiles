@@ -11,7 +11,7 @@ zsh, oh-my-zsh, fzf, sdkman, brew ,tmux, shell alias and functions etc ....
 
 ## install:
     /> curl -s https://raw.githubusercontent.com/LaurentKrishnathas/dotfiles/master/bash/install-dotfiles.bash | bash
-    This will checkout this repository to $HOME/code/src/github.com/dotfiles.git
+    This will checkout this repository to $HOME/code/src/github.com/dotfiles
 
 
     /> make all

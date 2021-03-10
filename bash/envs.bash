@@ -16,7 +16,7 @@ export PROJECT_DIR="$HOME/code/src"
 export GITHUB_DIR="$PROJECT_DIR/github.com"
 export GITLAB_DIR="$PROJECT_DIR/gitlab"
 
-export DOTFILES_DIR="$GITHUB_DIR/dotfiles.git"
+export DOTFILES_DIR="$GITHUB_DIR/dotfiles"
 
 export SHELL_SCRIPT_BASEDIR="$DOTFILES_DIR/bash"
 export TMUXINATOR_CONFIG=".tmuxinator" #making project specfic and local

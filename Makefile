@@ -5,7 +5,7 @@ include $(MAKE_FILE_DIR)/minecraft.mk
 
 WARNMSG=echo "check error, may need upgrade"
 GITHUB_DIR=$$HOME/code/src/github.com
-DOTFILES_DIR=$(GITHUB_DIR)/dotfiles.git
+DOTFILES_DIR=$(GITHUB_DIR)/dotfiles
 
 
 all:  install_tools install_files
@@ -16,7 +16,7 @@ clean:
 	rm -rf build
 
 update_remote_url_to_ssh:
-	git remote set-url origin git@github.com:LaurentKrishnathas/dotfiles.git
+	git remote set-url origin git@github.com:LaurentKrishnathas/dotfiles
 
 #### tools ################################################################################################
 install_brew:

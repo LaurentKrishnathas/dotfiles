@@ -238,7 +238,7 @@ function docker_report {		#... dockerreport
 
 
 function docker_project_init {
-	for file in ~/code/src/github.com/dotfiles.git/infra/docker/image/reference-project/*
+	for file in ~/code/src/github.com/dotfiles/infra/docker/image/reference-project/*
 	do
             name=${file##*/}
 			echo "copying file $file  to ${name}.TODO"

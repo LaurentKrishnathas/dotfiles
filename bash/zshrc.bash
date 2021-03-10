@@ -7,7 +7,7 @@ print "loading `pwd`/zshrc.bash  `date` version 2018-09-26 ..."
 # @version 0.1
 ##################################################
 
-source $HOME/code/src/github.com/dotfiles.git/bash/envs.bash
+source $HOME/code/src/github.com/dotfiles/bash/envs.bash
 #set -x
 bashfile_array=()
 bashfile_array+="$DOTFILES_DIR/bash/envs.bash"
