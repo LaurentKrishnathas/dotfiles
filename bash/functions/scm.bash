@@ -192,5 +192,6 @@ EOM
   open "https://eu-west-1.console.aws.amazon.com/codesuite/codecommit/repositories/$target/pull-requests/$id/details?region=eu-west-1"
   git fetch
   git pull
+  git remote prune origin --dry-run
 )}
 
