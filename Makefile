@@ -180,6 +180,7 @@ install_aws_kubectl_aws_iam_authentication:
 	curl -o $(INSTALL_DIR)/aws-iam-authenticator.sha256 https://amazon-eks.s3-us-west-2.amazonaws.com/1.10.3/2018-07-26/bin/darwin/amd64/aws-iam-authenticator.sha256
 	openssl sha -sha256 $(INSTALL_DIR)/aws-iam-authenticator
 	chmod +x $(INSTALL_DIR)//aws-iam-authenticator
+	mkdir -p $$HOME/bin
 	mv $(INSTALL_DIR)/kubectl $$HOME/bin/
 	mv $(INSTALL_DIR)/aws-iam-authenticator $$HOME/bin/
 
