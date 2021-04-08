@@ -3,9 +3,9 @@ include $(MAKE_FILE_DIR)/atlantis.mk
 include $(MAKE_FILE_DIR)/minecraft.mk
 
 
-WARNMSG=echo "check error, may need upgrade"
-GITHUB_DIR=$$HOME/code/src/github.com
-DOTFILES_DIR=$(GITHUB_DIR)/dotfiles
+export WARNMSG=echo "check error, may need upgrade"
+export GITHUB_DIR=$$HOME/code/src/github.com
+export DOTFILES_DIR=$(GITHUB_DIR)/dotfiles
 
 
 all:  install_tools install_files
