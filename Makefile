@@ -8,7 +8,7 @@ export GITHUB_DIR=$$HOME/code/src/github.com
 export DOTFILES_DIR=$(GITHUB_DIR)/dotfiles
 
 
-all:  install_tools install_files
+all:  install_tools install_files done
 install_tools: install_zsh install_brew_list  install_pip_list  install_sdkman install_aws_kubectl_aws_iam_authentication
 install_files: install_zsh install_fzf install_vim_files install_tmux_files install_vim_files
 
@@ -19,7 +19,7 @@ update_remote_url_to_ssh:
 	git remote set-url origin git@github.com:LaurentKrishnathas/dotfiles
 
 #### tools ################################################################################################
-install_brew_init:
+init:
 	brew doctor || true
 	/bin/bash -c "$$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
@@ -326,7 +326,8 @@ idea:
 	rm -rf dotfiles.iws
 #	./gradlew clean cleanidea idea
 
-
+done:
+	@echo "successfully all installed"
 debug:
 	docker build -t tmp --rm=false -f infra/docker/image/builder/Dockerfile .
 	#docker run -it tmp pwd
