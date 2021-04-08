@@ -109,7 +109,7 @@ nnoremap g# g#zzzv
 noremap <silent> <leader><cr> :noh<cr>
 
 " Toggle Relative Number
-nnoremap <silent> <leader>nb :set relativenumber!<CR>
+" nnoremap <silent> <leader>nb :set relativenumber!<CR>
 
 function! GoogleSearch()
      let searchterm = getreg("g")

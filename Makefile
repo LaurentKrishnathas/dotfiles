@@ -1,4 +1,4 @@
-MAKE_FILE_DIR=infra/makefiles
+export MAKE_FILE_DIR=infra/makefiles
 include $(MAKE_FILE_DIR)/atlantis.mk
 include $(MAKE_FILE_DIR)/minecraft.mk
 
@@ -9,7 +9,7 @@ DOTFILES_DIR=$(GITHUB_DIR)/dotfiles
 
 
 all:  install_tools install_files
-install_tools: install_zsh install_brew_list  install_pip_list  install_sdkman install_aws_kubectl_aws_iam_authentication
+install_tools: install_zsh install_brew_init install_brew_list  install_pip_list  install_sdkman install_aws_kubectl_aws_iam_authentication
 install_files: install_zsh install_fzf install_vim_files install_tmux_files install_vim_files
 
 clean:
@@ -19,9 +19,9 @@ update_remote_url_to_ssh:
 	git remote set-url origin git@github.com:LaurentKrishnathas/dotfiles
 
 #### tools ################################################################################################
-install_brew:
+install_brew_init:
 	brew doctor
-	/usr/bin/ruby -e "$$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+	/bin/bash -c "$$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
 install_sdkman:
 	curl -s "https://get.sdkman.io" | bash
@@ -90,7 +90,7 @@ install_grv_files:
 	ln -s $(DOTFILES_DIR)/config/grv/grvrc $$HOME/.config/grv/grvrc
 
 install_brew_list:
-	./makefile install_brew_list
+	./makefile.sh install_brew_list
 
 install_minikube:
 	brew install kubernetes-cli

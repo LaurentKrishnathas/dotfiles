@@ -5,7 +5,6 @@ set -e
 set -u
 set -x
 
-
 function hello_script(){
     echo "hello" $1
 
@@ -44,7 +43,7 @@ function install_brew_list(){
 	brew install git || $(WARNMSG)
 	brew install git-extras || $(WARNMSG)
 	brew install git-flow || $(WARNMSG)
-	brew install htop-osx || $(WARNMSG)
+#	brew install htop-osx || $(WARNMSG)
 #	brew install httpie || $(WARNMSG)
 	brew install jq		|| $(WARNMSG) # format json
 	brew install tmux  || $(WARNMSG)  # terminal multiplexer
@@ -55,7 +54,7 @@ function install_brew_list(){
 # 	brew install pwgen  || $(WARNMSG)# generate password: genpasswd n
 #	brew install pstree || $(WARNMSG)
 #	brew install packer || $(WARNMSG) #http://www.parallels.com/download/pvsdk/ needed for build
-	brew install node || $(WARNMSG)
+#	brew install node || $(WARNMSG)
 	brew install ack || $(WARNMSG)
 	brew install fzf || $(WARNMSG)
 # 	brew install blueutil || $(WARNMSG) #commandline bluetooth control
@@ -64,8 +63,8 @@ function install_brew_list(){
 	brew install watch || $(WARNMSG)
 	brew install node@8 || $(WARNMSG)
 	brew install yarn || $(WARNMSG)
-	brew install golang dep || $(WARNMSG)
-	brew install python3 pipenv || $(WARNMSG)
+#	brew install golang dep || $(WARNMSG)
+#	brew install python3 pipenv || $(WARNMSG)
 	brew install reattach-to-user-namespace || $(WARNMSG)
 	brew install the_silver_searcher   || $(WARNMSG)
 	brew cask install spectacle || $(WARNMSG)
@@ -81,9 +80,9 @@ function install_brew_list(){
 	brew install unrar || $(WARNMSG)
 #	brew install Graphviz || $(WARNMSG)
 	brew install warrensbox/tap/tfswitch || true #choosing different terraform versions
-	brew install kubectx || $(WARNMSG)
+#	brew install kubectx || $(WARNMSG)
 	brew install subversion@1.8 || $(WARNMSG)
-	brew install ctop || $(WARNMSG)
+#	brew install ctop || $(WARNMSG)
   brew install git-secret || $(WARNMSG)
   brew install helm@2 || $(WARNMSG)
 }
