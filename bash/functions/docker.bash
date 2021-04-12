@@ -203,20 +203,22 @@ function docker_tag_push {
 }
 
 function docker_cleanup {		#... docker-cleanup
+  docker system prune -f
+  docker volume prune -f --filter='label!=delete_protection=true'
 	docker rm $(docker ps -a -q) || true
 	docker rmi $(docker images -q -f dangling=true) || true
-	docker volume prune -f || true
 }
 
 function docker_cleanup_all {		#... docker-cleanup
 	echo "WARNING: completely destroy all images"
 	read press_any_key
 	# docker kill $(docker ps -q)
+	docker system prune -f
 	docker rm $(docker ps -a -q)
 	docker rmi $(docker images -q -f dangling=true)
 	docker rmi $(docker images -q)
-	docker volume prune -f
-	docker volume rm $(docker volume ls -q)
+  docker volume prune -f --filter='label!=delete_protection=true'
+
 	rm -rf ~/Library/Containers/com.docker.docker/Data/*
 }
 
