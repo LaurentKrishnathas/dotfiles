@@ -122,3 +122,4 @@ unalias grv #removed to support grv the commandline tools to browser git reposit
 
 # overiding LSCOLORS to avoid blue for folders
 export LSCOLORS=exfxcxdxbxegedabagacad
+source ~/.config/up/up.sh

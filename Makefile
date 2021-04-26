@@ -51,6 +51,8 @@ install_zsh:
 	ln -s $(DOTFILES_DIR)/bash/zshrc.bash $$HOME/.zshrc
 	git clone https://github.com/robbyrussell/oh-my-zsh.git $(GITHUB_DIR)/oh-my-zsh.git
 	ln -s  $(DOTFILES_DIR)/bash/oh-my-zsh.bash $(GITHUB_DIR)/oh-my-zsh.git/oh-my-zsh.bash
+	# Installing 'up' for folder navigation
+	curl --create-dirs -o ~/.config/up/up.sh https://raw.githubusercontent.com/shannonmoeller/up/master/up.sh
 
 install_fzf:
 	rm -rf $(GITHUB_DIR)/fzf.git
