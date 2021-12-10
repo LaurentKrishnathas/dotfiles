@@ -7,14 +7,6 @@
 # @version 0.1
 ##################################################
 
-# alias atom='$HOME/Applications/Atom.app/Contents/Resources/app/atom.sh'
-alias apl=ansible-playbook
-alias atomf='fasd -a -e atom'
-
-alias brackets='/Applications/Brackets.app/Contents/Resources/brackets.sh'
-alias bracketsf='/Applications/Brackets.app/Contents/Resources/brackets.sh'
-alias brackf='fasd -a -e/Applications/Brackets.app/Contents/Resources/brackets.sh'
-
 alias bluetooth_on='blueutil power 1'
 alias bluetooth_off='blueutil power 0'
 
@@ -62,8 +54,6 @@ alias dk_eclipse='docker container run   \
 alias eclipse="$HOME/eclipse/jee-oxygen/Eclipse.app/Contents/MacOS/eclipse >/tmp/.eclipse_jee_out 2>&1  &"
 alias eclipse_java="$HOME/eclipse/java-oxygen/Eclipse.app/Contents/MacOS/eclipse >/tmp/.eclipse_java_out 2>&1  &"
 
-alias sts='open $HOME/eclipse/sts-bundle/STS.app'
-alias ggts='open $HOME/eclipse/ggts-bundle/ggts-3.6.4.RELEASE/GGTS.app'
 
 alias golang='docker run -it -v $HOME/Downloads:/Downloads -v $(pwd):/workspace -w /workspace  golang:1.9.2 '
 #alias gradlew='./gradlew'
@@ -83,7 +73,7 @@ alias gitsvn='git svn'
 alias gsvn='git svn'
 alias git='/usr/local/bin/git'
 alias gdiff='git diff'
-unalias gst
+#unalias gst
 alias gst='pwd;ls -la .;git status --short || (echo "/>svn status" && svn status)'
 alias gst1='pwd;ls -la .;git status --short || (echo "/>svn status" && svn status)'
 alias gstv='git status -vv || (echo "/>svn status" && svn status)'
@@ -168,16 +158,12 @@ alias ubuntu='aws sts get-caller-identity | cat && docker run -it --env-file <(a
 alias centos='aws sts get-caller-identity | cat && docker run -it --env-file <(aws-vault exec $AWS_DEFAULT_PROFILE -- env | grep AWS_)  -v $HOME/Downloads:/Downloads -v $(pwd):/workspace -w /workspace laurent_krishnathas/centos:latest '
 alias devops='aws sts get-caller-identity | cat && docker run -it --env-file <(aws-vault exec $AWS_DEFAULT_PROFILE -- env | grep AWS_) -v $HOME/.ssh:/home/devops/.ssh -v $HOME/.ssh/config_linux:/home/devops/.ssh/config -v $HOME/Downloads:/Downloads -v $HOME/code/src/codecommit/devops-eks.git/infra/terraform/live/devopsprod-eks/prod/config/kubeconfig_eks-prod-v3:/home/devops/.kube/config  -v $(pwd):/workspace -w /workspace dotmatics-devops/amzlnx2_builder:latest '
 
-alias dk_golang='docker run -it -v $HOME/Downloads:/Downloads -v $(pwd):/workspace -w /workspace laurent_krishnathas/golang:latest '
-
-alias va='vagrant'
-alias vagrant_search_boxex='https://app.vagrantup.com/boxes/search?q='
-
 alias ctop='docker run --rm -ti --name=ctop -v /var/run/docker.sock:/var/run/docker.sock quay.io/vektorlab/ctop:latest'
 
 alias cddown='cd `find . -type d | fzf`'
 
 alias source_sdkman='source ~/.sdkman/bin/sdkman-init.sh'
+alias sqldeveloper='/Applications/SQLDeveloper.app/Contents/Resources/sqldeveloper/sqldeveloper/bin/sqldeveloper'
 
 alias wify='networksetup -setairportpower en0'
 alias wify_on='networksetup -setairportpower en0 on'
@@ -192,6 +178,6 @@ alias pullall="update_git_repo; update_svn_repo"
 alias showHiddenFiles='defaults write com.apple.finder AppleShowAllFiles YES; killall Finder /System/Library/CoreServices/Finder.app'
 alias hideHiddenFiles='defaults write com.apple.finder AppleShowAllFiles NO; killall Finder /System/Library/CoreServices/Finder.app'
 
-alias av=' aws-vault exec $AWS_DEFAULT_PROFILE -- '
+alias av='aws-vault exec $AWS_DEFAULT_PROFILE -- '
 alias av-login='open -na "Google Chrome" --args   $(aws-vault login $AWS_DEFAULT_PROFILE --stdout) --profile-directory=$AWS_DEFAULT_PROFILE'
 

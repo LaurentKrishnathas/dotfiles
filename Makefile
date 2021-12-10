@@ -113,6 +113,11 @@ install_node_list:
 	cd $$NPM_PACKAGES && npm install  serverless
 	tldr --version
 
+install/nvm:
+	curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash
+	nvm install node
+	npm install -g @bchatard/alfred-jetbrains
+
 install_pip_list:
 	easy_install --user pip || $(WARNMSG)
 	pip install --user glances || $(WARNMSG)		# show cpu mem realtime report

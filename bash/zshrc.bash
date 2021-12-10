@@ -28,7 +28,6 @@ for file in `ls $SHELL_SCRIPT_BASEDIR/functions/*.bash`
 do
     [[ -s "$file" ]] && source $file
 done
-#set +x
 PATH=$PATH:$HOME/.jenv/bin
 PATH=$PATH:$HOME/.jenv/candidates/javadoc/current
 PATH=$PATH:$HOME/.sdkman/candidates/java/current/bin
@@ -79,6 +78,7 @@ do
         echo "WARNING $file missing"
     fi
 done
+#set +x
 
 # loading jenkins autocomplete
 [[ -s "$HOME/bin/jenkins" ]] && echo "source jenkins autocomplete ..." && source $DOTFILES_DIR/bash/jenkins.bash autocomplete || echo "check $HOME/bin/jenkins symlink missing"
@@ -123,3 +123,7 @@ unalias grv #removed to support grv the commandline tools to browser git reposit
 # overiding LSCOLORS to avoid blue for folders
 export LSCOLORS=exfxcxdxbxegedabagacad
 source ~/.config/up/up.sh
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
