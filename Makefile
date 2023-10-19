@@ -4,7 +4,7 @@ include $(MAKE_FILE_DIR)/minecraft.mk
 
 
 export WARNMSG=echo "check error, may need upgrade"
-export GITHUB_DIR=$$HOME/code/src/github.com
+export GITHUB_DIR=$$HOME/code/github
 export DOTFILES_DIR=$(GITHUB_DIR)/dotfiles
 
 
@@ -182,7 +182,7 @@ install_aws_kubectl_aws_iam_authentication:
 	curl -o $(INSTALL_DIR)/kubectl.sha256 https://amazon-eks.s3-us-west-2.amazonaws.com/1.10.3/2018-07-26/bin/darwin/amd64/kubectl.sha256
 #	openssl sha -sha256  $(INSTALL_DIR)/kubectl
 	chmod +x $(INSTALL_DIR)/kubectl
-	$(INSTALL_DIR)/kubectl version --short --client
+	$(INSTALL_DIR)/kubectl version --short --client || true
 	curl -o $(INSTALL_DIR)/aws-iam-authenticator https://amazon-eks.s3-us-west-2.amazonaws.com/1.10.3/2018-07-26/bin/darwin/amd64/aws-iam-authenticator
 	curl -o $(INSTALL_DIR)/aws-iam-authenticator.sha256 https://amazon-eks.s3-us-west-2.amazonaws.com/1.10.3/2018-07-26/bin/darwin/amd64/aws-iam-authenticator.sha256
 	openssl sha -sha256 $(INSTALL_DIR)/aws-iam-authenticator

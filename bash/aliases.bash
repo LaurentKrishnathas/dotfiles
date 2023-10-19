@@ -71,7 +71,7 @@ alias gconsole='groovyConsole'
 
 alias gitsvn='git svn'
 alias gsvn='git svn'
-alias git='/usr/local/bin/git'
+# alias git='/usr/local/bin/git'
 alias gdiff='git diff'
 #unalias gst
 alias gst='pwd;ls -la .;git status --short || (echo "/>svn status" && svn status)'

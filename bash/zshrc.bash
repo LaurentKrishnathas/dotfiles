@@ -7,7 +7,7 @@ print "loading `pwd`/zshrc.bash  `date` version 2018-09-26 ..."
 # @version 0.1
 ##################################################
 
-source $HOME/code/src/github.com/dotfiles/bash/envs.bash
+source $HOME/code/github/dotfiles/bash/envs.bash
 #set -x
 bashfile_array=()
 bashfile_array+="$DOTFILES_DIR/bash/envs.bash"
@@ -20,7 +20,8 @@ do
     if [ -s "$file" ]; then
         source $file
     else
-        echo "ERROR $file missing"
+        echo "DOTFILES_DIR set to ${DOTFILES_DIR}"
+        echo "ERROR $file missing 3"
         return 0
     fi
 done
@@ -41,6 +42,7 @@ PATH=$PATH:$HOME/Applications/packer
 PATH=$PATH:/usr/local/Cellar/node/7.8.0/bin
 PATH=$PATH:$HOME/.config/yarn/global/node_modules/.bin
 PATH=$PATH:$HOME/.vimpkg/bin
+PATH=$PATH:$HOME/bin
 PATH=$PATH:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:$HOME/bin:/bin:/bin:/bin
 
 export PATH
@@ -62,9 +64,9 @@ else
 
     bashfile_array+="$ohmyzsh_file"
     bashfile_array+="$HOME/.sdkman/bin/sdkman-init.sh"
-    bashfile_array+="$HOME/.jenv/bin/jenv-init.sh"
-    bashfile_array+="$HOME/.jenv/commands/completion.sh"
-    bashfile_array+="$HOME/gits/zaw.git/zaw.zsh"
+    # bashfile_array+="$HOME/.jenv/bin/jenv-init.sh"
+    # bashfile_array+="$HOME/.jenv/commands/completion.sh"
+    # bashfile_array+="$HOME/gits/zaw.git/zaw.zsh"
 
 
 fi
@@ -81,7 +83,7 @@ done
 #set +x
 
 # loading jenkins autocomplete
-[[ -s "$HOME/bin/jenkins" ]] && echo "source jenkins autocomplete ..." && source $DOTFILES_DIR/bash/jenkins.bash autocomplete || echo "check $HOME/bin/jenkins symlink missing"
+# [[ -s "$HOME/bin/jenkins" ]] && echo "source jenkins autocomplete ..." && source $DOTFILES_DIR/bash/jenkins.bash autocomplete || echo "check $HOME/bin/jenkins symlink missing"
 
 #FILE="$GITHUB_DIR/zsh-autosuggestions/zsh-autosuggestions.zsh"
 #[[ -s "$FILE" ]] && echo "source autosug autocomplete ..." && source "$FILE"  || echo "check "$FILE"  symlink missing"
@@ -112,7 +114,7 @@ done
 # uninstall by removing these lines or running `tabtab uninstall sls`
 [[ -f /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh ]] && . /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh
 
-source <(/usr/local/bin/kubectl completion zsh)
+source <(${HOME}/bin/kubectl completion zsh)
 
 unalias grv #removed to support grv the commandline tools to browser git repository
 
