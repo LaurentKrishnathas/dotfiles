@@ -27,26 +27,21 @@ plugins+=git
 plugins+=git-extras
 plugins+=git-flow
 plugins+=gitignore
-plugins+=go
 plugins+=httpie
-plugins+=k
 plugins+=kubectl
 plugins+=mvn
-#plugins+=node
-#plugins+=npm
-#plugins+=pip
 plugins+=rsync
 plugins+=svn
 plugins+=sudo
 plugins+=tmux
-#plugins+=tmuxinator
 plugins+=terraform
 plugins+=vagrant
-#plugins+=virtualenv
-#plugins+=virtualenvwrapper
 plugins+=web-search
 plugins+=wd
 plugins+=zsh-completions
+plugins+=zsh-syntax-highlighting
+plugins+=zsh-autosuggestions
+
 
 plugins+=colorize
 plugins+=colored-man-pages
@@ -56,7 +51,7 @@ plugins+=gradle
 #expand aliases
 #plugins+=globalias
 
-echo "loading oh-my-zsh.sh ..."
+echo "loading $ZSH/oh-my-zsh.sh ..."
 source $ZSH/oh-my-zsh.sh
 #source $SHELL_SCRIPT_BASEDIR/prompt.bash
 

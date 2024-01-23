@@ -18,6 +18,7 @@ bashfile_array+="$DOTFILES_DIR/bash/aliases.bash"
 for file in "${bashfile_array[@]}"
 do
     if [ -s "$file" ]; then
+        echo "source $file ..."
         source $file
     else
         echo "DOTFILES_DIR set to ${DOTFILES_DIR}"
@@ -129,3 +130,5 @@ source ~/.config/up/up.sh
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
