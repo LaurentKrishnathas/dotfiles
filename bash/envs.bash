@@ -56,6 +56,6 @@ export MANPATH="$NPM_PACKAGES/share/man:$(manpath)"
 
 PATH=$PATH:/usr/local/opt/helm@2/bin:/usr/local/Cellar/subversion@1.8/1.8.19_1/bin/:$NPM_PACKAGES/node_modules/.bin
 PATH=$PATH:~/bin:$GOROOT/bin:$GOPATH/bin:$MVN_HOME/bin:$ACTIVATOR_HOME:$PACKER_HOME:$HOME/Library/Python/2.7/bin
-PATH=$PATH:$HOME/Library/Python/3.7/bin:/Applications/IntelliJ\ IDEA.app/Contents/MacOS
+PATH=$PATH:/Applications/IntelliJ IDEA.app/Contents/MacOS
 export PATH
 

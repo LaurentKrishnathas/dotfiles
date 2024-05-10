@@ -120,10 +120,10 @@ install/nvm:
 
 install_pip_list:
 	easy_install --user pip || $(WARNMSG)
-	pip install --user glances || $(WARNMSG)		# show cpu mem realtime report
-	pip install --user warchdog || $(WARNMSG)		#utility to watch filesystem for changes
-	pip install --user ansible --quiet || $(WARNMSG)
-	pip install --user virtualenv || $(WARNMSG)
+	pip3 install --user glances || $(WARNMSG)		# show cpu mem realtime report
+	pip3 install --user warchdog || $(WARNMSG)		#utility to watch filesystem for changes
+	pip3 install --user ansible --quiet || $(WARNMSG)
+	pip3 install --user virtualenv || $(WARNMSG)
 	cd /tmp/ && curl -O https://bootstrap.pypa.io/get-pip.py && python3 get-pip.py --user
 	pip3 install awscli --upgrade --user
 
@@ -131,7 +131,7 @@ install_pip_list:
 install_fonts:
 	brew tap caskroom/fonts
 	brew cask install font-fira-code
-	pip install --user powerline-status
+	pip3 install --user powerline-status
 
 
 install_zsh_autosuggestion:

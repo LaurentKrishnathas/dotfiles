@@ -6,7 +6,7 @@
 
 
 function terraform_project_init {
-	for file in ~/code/src/codecommit/buildscripts.git/infra/terraform/live/reference-project/*
+	for file in ~/code/codecommit/buildscripts.git/infra/terraform/live/reference-project/*
 	do
             name=${file##*/}
 			echo "copying file $file  to ${name}.TODO"

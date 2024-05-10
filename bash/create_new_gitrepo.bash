@@ -3,7 +3,7 @@ set -u
 set -e
 
 dir=/tmp/redirect
-source_dir=/Users/laurentkrishnathas/code/src/codecommit/devops-cd/
+source_dir=/Users/laurentkrishnathas/code/codecommit/devops-cd/
 rm -rf $dir
 mkdir $dir
 cp -fri $source_dir $dir || true

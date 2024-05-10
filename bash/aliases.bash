@@ -156,7 +156,7 @@ alias tf='aws sts get-caller-identity | cat && docker run -it --env-file <(aws-v
 
 alias ubuntu='aws sts get-caller-identity | cat && docker run -it --env-file <(aws-vault exec $AWS_DEFAULT_PROFILE -- env | grep AWS_)  -v $HOME/Downloads:/Downloads -v $(pwd):/workspace -w /workspace laurent_krishnathas/ubuntu:latest '
 alias centos='aws sts get-caller-identity | cat && docker run -it --env-file <(aws-vault exec $AWS_DEFAULT_PROFILE -- env | grep AWS_)  -v $HOME/Downloads:/Downloads -v $(pwd):/workspace -w /workspace laurent_krishnathas/centos:latest '
-alias devops='aws sts get-caller-identity | cat && docker run -it --env-file <(aws-vault exec $AWS_DEFAULT_PROFILE -- env | grep AWS_) -v $HOME/.ssh:/home/devops/.ssh -v $HOME/.ssh/config_linux:/home/devops/.ssh/config -v $HOME/Downloads:/Downloads -v $HOME/code/src/codecommit/devops-eks.git/infra/terraform/live/devopsprod-eks/prod/config/kubeconfig_eks-prod-v3:/home/devops/.kube/config  -v $(pwd):/workspace -w /workspace dotmatics-devops/amzlnx2_builder:latest '
+alias devops='aws sts get-caller-identity | cat && docker run -it --env-file <(aws-vault exec $AWS_DEFAULT_PROFILE -- env | grep AWS_) -v $HOME/.ssh:/home/devops/.ssh -v $HOME/.ssh/config_linux:/home/devops/.ssh/config -v $HOME/Downloads:/Downloads -v $HOME/code/codecommit/devops-eks.git/infra/terraform/live/devopsprod-eks/prod/config/kubeconfig_eks-prod-v3:/home/devops/.kube/config  -v $(pwd):/workspace -w /workspace dotmatics-devops/amzlnx2_builder:latest '
 
 alias ctop='docker run --rm -ti --name=ctop -v /var/run/docker.sock:/var/run/docker.sock quay.io/vektorlab/ctop:latest'
 
@@ -169,8 +169,8 @@ alias wify='networksetup -setairportpower en0'
 alias wify_on='networksetup -setairportpower en0 on'
 alias wify_off='networksetup -setairportpower en0 off'
 
-alias update_git_repo='find ~/code/src -type d -depth 2 -name "*.git" -exec sh -c "echo ''; echo ''; cd {} && pwd && git status --short -b && git fetch {}" \;'
-alias update_svn_repo='find ~/code/src -type d -depth 2 -not -name "*.git" -exec sh -c "echo ''; echo ''; cd {} && pwd && svn status -u && svn update {}" \;'
+alias update_git_repo='find ~/code -type d -depth 2 -name "*.git" -exec sh -c "echo ''; echo ''; cd {} && pwd && git status --short -b && git fetch {}" \;'
+alias update_svn_repo='find ~/code -type d -depth 2 -not -name "*.git" -exec sh -c "echo ''; echo ''; cd {} && pwd && svn status -u && svn update {}" \;'
 
 alias update_repos="update_git_repo; update_svn_repo"
 alias pullall="update_git_repo; update_svn_repo"

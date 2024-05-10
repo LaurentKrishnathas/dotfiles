@@ -4,7 +4,7 @@ set -x
 set -u
 set -e
 
-GITHUB_DIR=$HOME/code/src/github.com
+GITHUB_DIR=$HOME/code/github.com
 DOTFILES_DIR=$GITHUB_DIR/dotfiles
 
 mkdir -p $GITHUB_DIR
