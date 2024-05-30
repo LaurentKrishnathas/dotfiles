@@ -31,7 +31,6 @@ function push_docker_image_to_ecr(){
 function install_brew_list(){
 	brew update
 	brew install colordiff || ${WARNMSG}
-	brew install fasd	|| ${WARNMSG} # command line navigation utilities
 	brew install git || ${WARNMSG}
 	brew install git-extras || ${WARNMSG}
 	brew install git-flow || ${WARNMSG}
@@ -45,12 +44,9 @@ function install_brew_list(){
 	brew install fzf || ${WARNMSG}
 	brew install python || ${WARNMSG}
 	brew install watch || ${WARNMSG}
-	brew install node@8 || ${WARNMSG}
 	brew install yarn || ${WARNMSG}
 	brew install reattach-to-user-namespace || ${WARNMSG}
 	brew install the_silver_searcher   || ${WARNMSG}
-	brew cask install spectacle || ${WARNMSG}
-	brew cask install iterm2 || ${WARNMSG}
 	brew install unrar || ${WARNMSG}
 	brew install warrensbox/tap/tfswitch || true #choosing different terraform versions
 	brew install subversion@1.8 || ${WARNMSG}

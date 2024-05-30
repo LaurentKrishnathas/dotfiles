@@ -39,7 +39,6 @@ Brew List:
 	brew install autojump
 	brew install cheat 		# shorter man pages
 	brew install colordiff
-	brew install fasd	# command line navigation utilities
   brew install ctags
 	brew install gdbm
 	brew install git

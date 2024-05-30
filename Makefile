@@ -9,7 +9,8 @@ export DOTFILES_DIR=$(GITHUB_DIR)/dotfiles
 
 
 all:  install_tools install_files done
-install_tools: install_zsh install_brew_list  install_pip_list  install_sdkman install_aws_kubectl_aws_iam_authentication
+# install_tools: install_zsh install_brew_list  install_pip_list  install_sdkman install_aws_kubectl_aws_iam_authentication
+install_tools: install_zsh install_brew_list  install_pip_list  install_sdkman
 install_files: install_zsh install_fzf install_vim_files install_tmux_files install_vim_files
 
 clean:
@@ -119,22 +120,13 @@ install/nvm:
 	npm install -g @bchatard/alfred-jetbrains
 
 install_pip_list:
-    echo "not supported anymore, use:"
-    echo "python3 -m venv path/to/venv"
-    echo "source path/to/venv/bin/activate"
-    echo "python3 -m pip install xyz"
-# 	easy_install --user pip || $(WARNMSG)
-# 	pip3 install --user glances || $(WARNMSG)		# show cpu mem realtime report
-# 	pip3 install --user warchdog || $(WARNMSG)		#utility to watch filesystem for changes
-# 	pip3 install --user ansible --quiet || $(WARNMSG)
-# 	pip3 install --user virtualenv || $(WARNMSG)
-# 	cd /tmp/ && curl -O https://bootstrap.pypa.io/get-pip.py && python3 get-pip.py --user
-# 	pip3 install awscli --upgrade --user
-
+	echo "not supported anymore, use:"
+	echo "python3 -m venv path/to/venv"
+	echo "source path/to/venv/bin/activate"
+	echo "python3 -m pip install xyz"
 
 install_fonts:
 	brew tap caskroom/fonts
-	brew cask install font-fira-code
 	pip3 install --user powerline-status
 
 
