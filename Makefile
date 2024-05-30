@@ -119,13 +119,17 @@ install/nvm:
 	npm install -g @bchatard/alfred-jetbrains
 
 install_pip_list:
-	easy_install --user pip || $(WARNMSG)
-	pip3 install --user glances || $(WARNMSG)		# show cpu mem realtime report
-	pip3 install --user warchdog || $(WARNMSG)		#utility to watch filesystem for changes
-	pip3 install --user ansible --quiet || $(WARNMSG)
-	pip3 install --user virtualenv || $(WARNMSG)
-	cd /tmp/ && curl -O https://bootstrap.pypa.io/get-pip.py && python3 get-pip.py --user
-	pip3 install awscli --upgrade --user
+    echo "not supported anymore, use:"
+    echo "python3 -m venv path/to/venv"
+    echo "source path/to/venv/bin/activate"
+    echo "python3 -m pip install xyz"
+# 	easy_install --user pip || $(WARNMSG)
+# 	pip3 install --user glances || $(WARNMSG)		# show cpu mem realtime report
+# 	pip3 install --user warchdog || $(WARNMSG)		#utility to watch filesystem for changes
+# 	pip3 install --user ansible --quiet || $(WARNMSG)
+# 	pip3 install --user virtualenv || $(WARNMSG)
+# 	cd /tmp/ && curl -O https://bootstrap.pypa.io/get-pip.py && python3 get-pip.py --user
+# 	pip3 install awscli --upgrade --user
 
 
 install_fonts:
