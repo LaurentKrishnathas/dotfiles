@@ -90,6 +90,7 @@ alias j7="export JAVA_HOME=$JDK7; java -version"
 alias j8="export JAVA_HOME=$JDK8; java -version"
 alias j10="export JAVA_HOME=$JDK10; java -version"
 alias j11="export JAVA_HOME=$JDK11zulu; java -version"
+alias j11.0.23.fx-zulu="export JAVA_HOME=$HOME/.sdkman/candidates/java/11.0.23.fx-zulu; java -version"
 alias j11corretto="export JAVA_HOME=$JDK11_CORRETTO; java -version"
 
 alias ideaf='fasd -a -e idea'

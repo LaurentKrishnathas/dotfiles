@@ -340,3 +340,12 @@ debug:
 	#docker run -it -u gradle tmp tfswitch -v
 	#docker run -it -u gradle tmp terraform -v
 	docker run -it -u gradle tmp bash
+
+
+ollama/migrate_models:
+	./makefile.sh ollama_migrate_models
+
+
+ollama/symlink_models:
+	./makefile.sh ollama_symlink_models
+

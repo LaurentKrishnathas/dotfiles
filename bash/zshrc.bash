@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-print "loading `pwd`/zshrc.bash  `date` version 2018-09-26 ..."
+print "START zshrc.bash  `date` version 2018-09-26 ..."
 ##################################################
 #
 #
@@ -115,7 +115,7 @@ done
 # uninstall by removing these lines or running `tabtab uninstall sls`
 [[ -f /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh ]] && . /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh
 
-source <(${HOME}/bin/kubectl completion zsh)
+#source <(${HOME}/bin/kubectl completion zsh)
 
 unalias grv #removed to support grv the commandline tools to browser git repository
 
@@ -132,3 +132,9 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
+
+eval "$(pyenv init -)"
+
+print "END zshrc.bash"
+
+eval "$(gh copilot alias -- zsh)"

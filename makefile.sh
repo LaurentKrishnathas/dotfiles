@@ -54,4 +54,40 @@ function install_brew_list(){
   brew install helm || ${WARNMSG}
 }
 
+
+function ollama_migrate_models() {
+  local source_dir="${HOME}/.ollama/models"
+  local target_dir="/Users/Shared/ollama_models"
+
+  # Create the target directory if it doesn't exist
+  mkdir -p "${target_dir}"
+
+  # Move the models to the shared directory
+  mv "${source_dir}"/* "${target_dir}/"
+
+  # Set the appropriate permissions for the shared directory
+  chmod -R 755 "${target_dir}"
+  chown -R :staff "${target_dir}"
+
+  echo "Models have been moved to ${target_dir} and permissions set."
+}
+
+function ollama_symlink_models() {
+  local shared_dir="/Users/Shared/ollama_models"
+  local user_dir="${HOME}/.ollama/models"
+  local backup_dir="${HOME}/.ollama/models_backup_$(date +%s)"
+
+  # Rename the existing models directory if it exists
+  if [ -d "${user_dir}" ]; then
+    mv "${user_dir}" "${backup_dir}"
+  fi
+
+  # Create a symbolic link for the entire models directory
+  ln -s "${shared_dir}" "${user_dir}"
+
+  echo "Symbolic link created from ${shared_dir} to ${user_dir}. Existing models directory renamed to ${backup_dir}."
+}
+
+
+
 $*

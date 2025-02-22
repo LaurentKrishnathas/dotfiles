@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-
+print "START oh-my-zsh.bash"
 
 # take a/b/c/d      :  will mkdir then cd
 # command + click   : open url
@@ -55,4 +55,5 @@ echo "loading $ZSH/oh-my-zsh.sh ..."
 source $ZSH/oh-my-zsh.sh
 #source $SHELL_SCRIPT_BASEDIR/prompt.bash
 
+print "END oh-my-zsh.bash"
 
